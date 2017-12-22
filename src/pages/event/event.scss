@@ -1,0 +1,38 @@
+page-event {
+
+  button{
+    background-color: color($colors, bordeaux_);
+    text-align: center;
+    color: color($colors, white);
+    width: 100%;
+    padding: 5%;
+    border: 0;
+
+  }
+  .list{
+
+    margin: 0;
+    padding: 0;
+    border: 0px solid #000000;
+  }
+  .card_{
+    margin: 0;
+    padding: 0;
+    border: 0px solid #21b94e;
+  }
+  .card-title{
+    text-align: center;
+  }
+  .card-description{
+    text-align: justify;
+    margin: 15px;
+  }
+  .content{
+    background: color($colors, lightgrey_);
+  }
+  .card:hover{
+    background-color: #faf7f5;
+  }
+
+
+}

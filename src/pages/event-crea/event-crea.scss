@@ -1,0 +1,46 @@
+page-event-crea {
+
+  .evento-crea{
+    background-color: color($colors, lightblack_);
+    text-align: center;
+  }
+  div{
+
+    margin-bottom: 5%;
+  }
+ /* ion-grid{
+    border: 1px solid #5f8ee1;
+  }
+  */
+  #invia.button{
+    background-color: color($colors, bordeaux_);
+    text-align: center;
+    width: 80%;
+    padding: 10%;
+    border: 0;
+    -webkit-border-radius: 24px 24px;
+  }
+  #data-ora input{
+    padding: 4%;
+    border: 0;
+    width: 80%;
+    -webkit-border-radius: 3px 3px;
+  /*  -webkit-border-radius: 24px 24px; */
+  }
+  input[type=text]{
+    -webkit-border-radius: 3px 3px;
+    padding: 4%;
+    margin: 1px;
+    width: 80%;
+    border: 0;
+
+  /*  -webkit-border-radius: 24px 24px;*/
+  }
+  textarea{
+    width: 80%;
+    border: 0;
+    -webkit-border-radius: 3px 3px;
+  /*  -webkit-border-radius: 24px 24px; */
+  }
+
+}

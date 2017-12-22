@@ -1,0 +1,175 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/theming/
+
+// Font path is used to include ionicons,
+// roboto, and noto sans fonts
+$font-path: "../assets/fonts";
+
+
+// The app direction is used to include
+// rtl styles in your app. For more info, please see:
+// http://ionicframework.com/docs/theming/rtl-support/
+$app-direction: ltr;
+
+
+@import "ionic.globals";
+
+
+// Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+// To view all the possible Ionic variables, see:
+// http://ionicframework.com/docs/theming/overriding-ionic-variables/
+
+
+
+
+// Named Color Variables
+// --------------------------------------------------
+// Named colors makes it easy to reuse colors on various components.
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map.
+
+$colors: (
+  primary:    #2A2C43,
+  secondary:  #677077,
+  danger:     #85B5B7,
+  light:      #f4f4f4,
+  dark:       #222,
+  energy: #f2b632,
+  white: #ffffff,
+
+ bordeaux_: #c14835,
+        /*bordeaux_: #00309f,*/
+  lightgrey_: #eaeaea,
+  darkgrey_: #9b9b9b,
+  lightblack_: #656460,
+  lightblack_2: #3f3d3e,
+  lightblack_3: #4e4d49
+/*
+arancio: c18035
+blu: 00309f
+verde: 2ea938
+
+*/
+);
+
+
+/*******************font-awesome***********************/
+input[type=text],
+input[type=email],
+input[type=password],
+select,
+input[type=date]{
+  width:100%;
+  border:2px solid #aaa;
+  border-radius:4px;
+  margin:8px 0;
+  outline:none;
+  padding:8px;
+  box-sizing:border-box;
+  transition:.3s;
+}
+
+input[type=text]:focus,
+input[type=email]:focus,
+input[type=password]:focus,
+select:focus,
+input[type=date]:focus{
+  border-color:color($colors, bordeaux_);
+  box-shadow:0 0 8px 0 color($colors, bordeaux_);
+}
+
+.inputWithIcon input[type=text],
+.inputWithIcon input[type=email],
+.inputWithIcon input[type=password],
+.inputWithIcon select,
+.inputWithIcon input[type=date]{
+  padding-left:40px;
+}
+
+.inputWithIcon{
+  position:relative;
+}
+
+.inputWithIcon i{
+  position:absolute;
+  left:0;
+  top:8px;
+  padding:9px 8px;
+  color:color($colors, bordeaux_);
+  transition:.3s;
+}
+
+.inputWithIcon input[type=text]:focus + i,
+.inputWithIcon input[type=email]:focus + i,
+.inputWithIcon input[type=password]:focus + i,
+.inputWithIcon select:focus + i,
+.inputWithIcon input[type=date]:focus + i{
+  color:color($colors, bordeaux_);
+}
+
+.inputWithIcon.inputIconBg i{
+  background-color:#aaa;
+  color:#fff;
+  padding:9px 4px;
+  border-radius:4px 0 0 4px;
+}
+
+.inputWithIcon.inputIconBg input[type=text]:focus + i{
+  color:#fff;
+  background-color:color($colors, bordeaux_);
+}
+/*******************font-awesome END***********************/
+
+
+// App iOS Variables
+// --------------------------------------------------
+// iOS only Sass variables can go here
+
+
+
+
+// App Material Design Variables
+// --------------------------------------------------
+// Material Design only Sass variables can go here
+
+
+
+
+// App Windows Variables
+// --------------------------------------------------
+// Windows only Sass variables can go here
+
+
+
+
+// App Theme
+// --------------------------------------------------
+// Ionic apps can have different themes applied, which can
+// then be future customized. This import comes last
+// so that the above variables are used and Ionic's
+// default are overridden.
+
+@import "ionic.theme.default";
+
+$toolbar-background: color($colors, lightblack_2);
+$toolbar-color: color($colors, lightgrey_);
+
+
+// Ionicons
+// --------------------------------------------------
+// The premium icon font for Ionic. For more info, please see:
+// http://ionicframework.com/docs/ionicons/
+
+@import "ionic.ionicons";
+
+
+// Fonts
+// --------------------------------------------------
+
+@import "roboto";
+@import "noto-sans";

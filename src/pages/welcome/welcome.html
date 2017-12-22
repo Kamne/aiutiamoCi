@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+<!--
+    <button class="search" ion-button (click)="openResearch()">
+      <ion-icon name="search"></ion-icon>
+    </button>-->
+    <ion-title class="title">AiutiamoCi</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding id="welcome">
+  <ion-img id="logo" width="250" height="170" src="assets/imgs/my_logo.png" ></ion-img>
+  <div id="styleForm" style="margin-top: 10%">
+    <button block (click)="login()" style="margin-bottom: 5%">Login</button>
+    <button block (click)="signup()">Registrati</button>
+  </div>
+</ion-content>

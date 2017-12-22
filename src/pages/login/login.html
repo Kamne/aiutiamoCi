@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-navbar>
+
+        <ion-title>Login</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding id="login">
+    <ion-img id="logo" width="250" height="170" src="assets/imgs/my_logo.png" ></ion-img>
+   <!-- <label>Login</label>-->
+    <div id="styleForm">
+
+        <!--    <ion-label color="primary">Username</ion-label>-->
+        <div class="inputWithIcon">
+            <input placeholder="Username" type="text" />
+            <i class="fa fa-id-badge" aria-hidden="true"></i>
+        </div>
+        <div class="inputWithIcon">
+            <input placeholder="Password" type="password" />
+            <i class="fa fa-lock fa-fw" aria-hidden="true"></i>
+        </div>
+
+
+         <!--   <ion-label color="primary">Password</ion-label>-->
+
+
+    </div>
+    <div id="buttons">
+        <button style="color: #000000; background-color: transparent; text-align: right;"><u>Password dimenticata?</u></button>
+
+        <button   class="b1">Login</button>
+    </div>
+    <div id="usignup">
+        <button  (click)="signup()">
+           Non sei registrato? Registrati!
+        </button>
+    </div>
+  </ion-content>

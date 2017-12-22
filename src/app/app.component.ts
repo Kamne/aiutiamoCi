@@ -1,0 +1,103 @@
+///<reference path="../pages/ricerca/ricerca.ts"/>
+import { Component, ViewChild } from '@angular/core';
+import { Platform, MenuController, Nav  } from 'ionic-angular';
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
+
+import { WelcomePage } from '../pages/welcome/welcome';
+import { HomePage } from '../pages/home/home';
+import { RubricaPage } from '../pages/rubrica/rubrica';
+import { RicercaPage } from '../pages/ricerca/ricerca';
+import {EventPage} from '../pages/event/event';
+import {InserisciPage} from '../pages/inserisci/inserisci';
+import {LoginPage} from '../pages/login/login';
+import {SignupPage} from '../pages/signup/signup';
+
+
+@Component({
+
+  templateUrl: 'app.html'
+})
+// pagina iniziale
+export class MyApp {
+  @ViewChild(Nav) nav: Nav;
+
+  rootPage:any = WelcomePage;
+//  pages: Array<{title: string, component: any, icon: string}>;
+
+  pages: any;
+  constructor(public platform: Platform,
+              public menu: MenuController,
+              public statusBar: StatusBar,
+              public splashScreen: SplashScreen
+  ) {
+    this.initializeApp();
+
+    this.pages = [
+      {label:'Home',items:[
+                            { title: 'Home', component: HomePage, icon: 'home' },
+                            { title: 'Inserisci Annuncio', component: InserisciPage, icon: 'create'  },
+                            { title: 'Bacheca', component: WelcomePage, icon: 'paper' },*/
+                            { title: 'Rubrica', component: RubricaPage, icon: 'bookmarks' },
+                            { title: 'Cerca Assistente', component: WelcomePage, icon: 'search' },
+                            { title: 'Eventi', component: EventPage, icon: 'people' },
+                      ]},
+      {label:'utente',items:[
+                            { title: 'Profilo', component: WelcomePage, icon: 'contact' },
+                            { title: 'Info - FAQ', component: WelcomePage, icon: 'information-circle' },
+                            ]},
+
+      {label:'setting',items:[
+                            { title: 'Opzioni Amministratore', component: WelcomePage, icon: 'construct' }
+                            ]},
+      {label:'',items:[
+                            { title: 'Login', component: LoginPage, icon: 'log-in' },
+                            { title: 'Registrati', component: SignupPage, icon: 'log-in' },
+                            { title: 'Logout', component: WelcomePage, icon: 'log-out' }
+      ]},
+        {label:'ricerca',items:[
+            { title: 'Ricerca', component: RicercaPage, icon: 'search' }
+
+        ]},
+    ];
+
+    this.pages = [
+      { title: 'Home', component: HomePage, icon: 'home' },
+      { title: 'Inserisci Annuncio', component: WelcomePage, icon: 'create'  },
+      { title: 'Bacheca', component: WelcomePage, icon: 'paper' },
+      { title: 'Cerca Assistente', component: WelcomePage, icon: 'search' },
+      { title: 'Opzioni Amministratore', component: WelcomePage, icon: 'construct' },
+      { title: 'Eventi', component: WelcomePage, icon: 'people' },
+      { title: 'Info - FAQ', component: WelcomePage, icon: 'information-circle' },
+      { title: 'Profilo', component: WelcomePage, icon: 'contact' },
+      { title: 'Logout', component: WelcomePage, icon: 'log-out' }
+    ];
+
+  }
+    initializeApp()
+    {
+      this.platform.ready().then(() => {
+        // Okay, so the platform is ready and our plugins are available.
+        // Here you can do any higher level native things you might need.
+        this.statusBar.styleDefault();
+        this.splashScreen.hide();
+      });
+    }
+  openPage(page)
+    {
+    // close the menu when clicking a link from the menu
+    this.menu.close();
+    // navigate to the new page if it is not the current page
+   // this.nav.setRoot(page.component);
+     this.nav.push(page.component);
+    }
+    openResearch(){
+        this.menu.close();
+        this.nav.push(RicercaPage);
+
+    }
+
+
+
+}
+

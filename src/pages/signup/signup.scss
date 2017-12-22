@@ -1,0 +1,66 @@
+page-signup {
+
+    .flexContainer{
+        display: flex;
+    }
+    .inputField{
+        flex: 1;
+    }
+    #avatar-anonymous{
+        color: color($colors, bordeaux_);
+        text-align: center;
+    }
+    #logo {
+        background-color: color($colors, lightgrey_);
+
+        margin-left: 25px;
+    }
+
+    #signup {
+        font-size: 1.6em;
+        background: color($colors, lightgrey_);
+        h1 {
+            font-size: 32px;
+            margin-top: 25px;
+            margin-bottom: 25px;
+        }
+    }
+    #styleForm {
+        background-color: color($colors, darkgrey_);
+        padding: 5%;
+        text-align: center;
+        width: 100%;
+        margin: 0 auto;
+/*
+        input,select{
+            padding: 4%;
+            margin: 1px;
+            width: 100%;
+            border: 0;
+        }
+*/
+
+        select, input[type=date]{
+            background-color: white;
+            color: gray;
+        }
+        option[value=""][disabled] {
+            display: none;
+        }
+        option {
+            color: black;
+        }
+
+    }
+    button{
+        background-color: color($colors, bordeaux_);
+        text-align: center;
+        color: color($colors, white);
+        width: 100%;
+        padding: 5%;
+        margin-top: 5%;
+        border: 0;
+        font-size: 1.6em;
+        font-family: 'Roboto', 'sans-serif';
+    }
+}

@@ -1,0 +1,77 @@
+page-login {
+
+    #logo {
+        background-color: color($colors, lightgrey_);
+        margin-left: 25px;
+    }
+
+    #login {
+        background: color($colors, lightgrey_);
+        h1 {
+            font-size: 32px;
+            margin-top: 50px;
+            text-align: center;
+        }
+    }
+
+    #styleForm {
+        background-color: color($colors, darkgrey_);
+        padding: 5%;
+        text-align: center;
+        width: 100%;
+        margin: 0 auto;
+        font-size: 1.6em;
+        /*
+        input{
+            padding: 4%;
+            margin: 1px;
+            width: 100%;
+            border: 0;
+        }
+        */
+    }
+
+    #buttons, #usignup {
+
+        button{
+            background-color: color($colors, bordeaux_);
+            text-align: center;
+            width: 100%;
+            padding: 7%;
+            border: 0;
+            -webkit-border-radius: 24px 24px;
+            font-size: 1.6em;
+            color: white;
+            /*
+
+            background-color: color($colors, bordeaux_);
+            text-align: center;
+            color: color($colors, white);
+            width: 100%;
+            padding: 5%;
+            border: 0;
+            */
+        }
+    }
+
+    #usignup {
+        text-align: center;
+        margin-top: 10%;
+        button{
+            background-color: color($colors, lightblack_2);
+            text-align: center;
+            color: color($colors, white);
+            width: 100%;
+            padding: 5%;
+            border: 0;
+
+        }
+
+        /*
+        a {
+            text-decoration: underline;
+            cursor: auto;
+        }
+        */
+    }
+}

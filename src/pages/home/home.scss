@@ -1,0 +1,93 @@
+page-home {
+
+  .title{
+    position: relative;
+    left: 25%;
+  }
+
+  table{
+    position: absolute;
+    width: 90%;
+    height: 60%;
+    left: 10%;
+    bottom: 10px;
+  }
+  td{
+    width: 50%;
+    height: 50%;
+    align-content: center;
+  }
+  .dio{
+    width: 90%;
+    height: 90% !important;
+    position: relative;
+    align-items: center;
+    font-size: 150%;
+    padding: 5%;
+    background-color: YELLOW;
+    border-radius: 25px !important;
+    flex-flow: column;
+
+  }
+  .search{
+    width: 20%;
+    position: absolute;
+    float: right;
+    right: 5%;
+    background: none;
+    font-size: 25px !important;
+  }
+
+  .title{
+    position: relative;
+    bottom: 5%;
+    left: 10%;
+    width: 80%;
+    height: 35%;
+  }
+
+  .bars{
+    position: relative;
+    background: none;
+    font-size: 25px !important;
+  }
+  .bacheca{
+    position: relative;
+    //height: 100px;
+    //width: 100%;
+    padding: 5%;
+  }
+  .rubrica{
+    position: relative;
+    height: 40%;
+    width: 60%;
+    padding: 5%;
+  }
+  .insert{
+    position: relative;
+    bottom: 5%;
+    left: 15%;
+    width: 20% !important;
+    height: 15%;
+  }
+  b{
+    position: relative;
+    align-content: center;
+  }
+  .insert{
+    position: relative;
+    background: none !important;
+
+    width: 100%;
+    font-size: 150%;
+  }
+  .OMG{
+    position: relative;
+    bottom: 5%;
+    left:15%;
+  }
+  .div{
+    position: relative;
+    bottom: 4%;
+  }
+}

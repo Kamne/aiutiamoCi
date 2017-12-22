@@ -1,0 +1,98 @@
+<ion-header>
+    <ion-navbar>
+
+        <ion-title>Registrati</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding id="signup">
+
+    <ion-img id="logo" width="250" height="170" src="assets/imgs/my_logo.png" ></ion-img>
+    <div style="text-align: center;">
+        <i class="fa fa-user-circle-o fa-5x" aria-hidden="true" id="avatar-anonymous"></i>
+
+    </div>
+    <br/>
+    <div id="styleForm">
+
+        <div class="inputWithIcon">
+            <input type="text" value="" placeholder="Nome"/>
+            <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
+        </div>
+
+        <div class="inputWithIcon">
+            <input type="text" value="" placeholder="Cognome"/>
+            <i class="fa fa-users" aria-hidden="true"></i>
+        </div>
+
+        <div class="inputWithIcon">
+            <input type="text" value="" placeholder="Username"/>
+            <i class="fa fa-id-badge" aria-hidden="true"></i>
+        </div>
+
+        <div class="inputWithIcon">
+            <input type="password" value="" placeholder="Password"/>
+            <i class="fa fa-lock fa-fw" aria-hidden="true"></i>
+        </div>
+
+        <div class="inputWithIcon">
+            <select name="tipologia" >
+                <option value="" disabled selected hidden>Scegli la tipologia</option>
+                <option value="assistente">Assistente</option>
+                <option value="associazione">Associazione</option>
+                <option value="amministratore">Amministratore</option>
+            </select>
+            <i class="fa fa-male  fa-fw" aria-hidden="true"></i>
+        </div>
+
+        <div class="inputWithIcon">
+            <input type="date" value="" placeholder="Data di nascita"/>
+            <i class="fa fa-calendar  fa-lg fa-fw" aria-hidden="true"></i>
+        </div>
+
+        <div class="inputWithIcon">
+            <input type="text" value="" placeholder="Competenze"/>
+            <i class="fa fa-cogs" aria-hidden="true"></i>
+        </div>
+
+        <div class="inputWithIcon">
+            <input type="text" value="" placeholder="Titolo di studio"/>
+            <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+        </div>
+
+        <div class="inputWithIcon">
+            <input type="text" value="" placeholder="Codice Fiscale"/>
+            <i class="fa fa-address-card" aria-hidden="true"></i>
+        </div>
+
+            <div class="inputWithIcon flexContainer" style="text-align: left">
+                <input type="text" value="" placeholder="Indirizzo" class="inputField" style="padding-left: 10px; " />
+                <!--    <button><i class="fa fa-map-marker" aria-hidden="true" style=" cursor: pointer; "></i></button>-->
+                <button style="width: 35px; height: 45px; padding: 0; margin-top: 10px; " ><ion-icon class="fa fa-map-marker" style=" "></ion-icon></button>
+
+            </div>
+
+        <div class="inputWithIcon">
+            <input type="text" value="" placeholder="Città" />
+            <i class="fa fa-globe" aria-hidden="true"></i>
+        </div>
+
+        <div class="inputWithIcon">
+            <input type="text" value="" placeholder="Provincia"/>
+            <i class="fa fa-bandcamp" aria-hidden="true"></i>
+        </div>
+
+
+        <div class="inputWithIcon">
+            <input type="email" placeholder="Email" value=""/>
+            <i class="fa fa-envelope fa-fw" aria-hidden="true"></i>
+        </div>
+
+        <div class="inputWithIcon">
+            <input type="text" value="" placeholder="Numero di telefono"/>
+            <i class="fa fa-phone-square" aria-hidden="true"></i>
+        </div>
+
+    </div>
+    <button block  (click)="login()"><b>Conferma</b></button>
+    </ion-content>

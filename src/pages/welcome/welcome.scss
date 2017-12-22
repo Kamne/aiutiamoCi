@@ -1,0 +1,27 @@
+page-welcome {
+    #welcome {
+        background: color($colors, lightgrey_);
+        #logo {
+            background-color: color($colors, lightgrey_);
+            margin-top: 75px;
+            margin-left: 25px;
+        }
+        h1 {
+            font-size: 32px;
+            margin-top: 50px;
+            text-align: center;
+        }
+        .marginTop {
+            margin-top: 200px;
+        }
+        button{
+            background-color: color($colors, lightblack_2);
+            text-align: center;
+            color: color($colors, white);
+            width: 100%;
+            padding: 5%;
+            border: 0;
+            font-size: 1.5em;
+        }
+    }
+}
