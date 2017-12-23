@@ -37,7 +37,7 @@ export class MyApp {
       {label:'Home',items:[
                             { title: 'Home', component: HomePage, icon: 'home' },
                             { title: 'Inserisci Annuncio', component: InserisciPage, icon: 'create'  },
-                            { title: 'Bacheca', component: WelcomePage, icon: 'paper' },*/
+                            { title: 'Bacheca', component: WelcomePage, icon: 'paper' },
                             { title: 'Rubrica', component: RubricaPage, icon: 'bookmarks' },
                             { title: 'Cerca Assistente', component: WelcomePage, icon: 'search' },
                             { title: 'Eventi', component: EventPage, icon: 'people' },
@@ -60,7 +60,7 @@ export class MyApp {
 
         ]},
     ];
-
+/*
     this.pages = [
       { title: 'Home', component: HomePage, icon: 'home' },
       { title: 'Inserisci Annuncio', component: WelcomePage, icon: 'create'  },
@@ -72,7 +72,7 @@ export class MyApp {
       { title: 'Profilo', component: WelcomePage, icon: 'contact' },
       { title: 'Logout', component: WelcomePage, icon: 'log-out' }
     ];
-
+*/
   }
     initializeApp()
     {
