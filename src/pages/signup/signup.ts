@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {LoginPage} from '../login/login';
+import {MapPage} from '../map/map';
 import { Http, Headers, RequestOptions } from "@angular/http";
 import 'rxjs/add/operator/map';
 /**
@@ -30,6 +31,10 @@ export class SignupPage {
    var myData = JSON.stringify({nome:nome.value ,cognome:cognome.value,username: username.value,password: password.value,tipologia:tipologia.value,nato:data.value,competenze:competenze.value,titolo:titolo.value,cf:cf.value,indirizzo:indirizzo.value,citta:citta.value,provincia:provincia.value,email:email.value,tel:tel.value});
   this.http.post('http://aiutiamoc.altervista.org/registrazioneUtente.php',myData,options).map(res => res.json()).subscribe(   data => {
   console.log(data);})
+}
+
+geolocalization(){
+  this.navCtrl.setRoot(MapPage)
 }
 
 }

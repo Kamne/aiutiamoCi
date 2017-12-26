@@ -15,11 +15,16 @@ import { RicercaPage } from '../pages/ricerca/ricerca';
 import {EventPage} from '../pages/event/event';
 import {EventCreaPage} from '../pages/event-crea/event-crea';
 import {InserisciPage} from '../pages/inserisci/inserisci';
+import { MapPage } from '../pages/map/map';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule } from "@angular/http";
 import { SpeechRecognition } from '@ionic-native/speech-recognition';
+
+import { GoogleMaps} from '@ionic-native/google-maps';
+import { Geolocation } from '@ionic-native/geolocation';
+import { NativeGeocoder } from '@ionic-native/native-geocoder';
 
 
 @NgModule({
@@ -29,6 +34,7 @@ import { SpeechRecognition } from '@ionic-native/speech-recognition';
     WelcomePage,
     LoginPage,
     SignupPage,
+    MapPage,
     ContactPage,
     HomePage,
     TabsPage,
@@ -55,6 +61,7 @@ import { SpeechRecognition } from '@ionic-native/speech-recognition';
     TabsPage,
     RubricaPage,
     RicercaPage,
+    MapPage,
     EventPage,
     EventCreaPage,
     InserisciPage
@@ -62,6 +69,9 @@ import { SpeechRecognition } from '@ionic-native/speech-recognition';
   providers: [
     StatusBar,
     SplashScreen,
+    GoogleMaps,
+    Geolocation,
+    NativeGeocoder,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SpeechRecognition
 
