@@ -30,7 +30,7 @@ export class LoginPage {
       console.log("valori errati")
   else{
     var myData = JSON.stringify({username: username.value,password: password.value});
-  this.http.post('http://aiutiamoc.altervista.org/registrazione.php',myData).map(res => res.json()).subscribe(   data => {
+  this.http.post('http://aiutiamoc.altervista.org/login.php',myData).map(res => res.json()).subscribe(   data => {
   console.log(data);})
   }
 }
