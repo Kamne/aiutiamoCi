@@ -36,29 +36,36 @@
         </div>
 
         <div class="inputWithIcon">
-            <select name="tipologia" #tipologia>
-                <option value="" disabled selected hidden>Scegli la tipologia</option>
+            <select name="tipologia" #tipologia (change)="onChange(tipologia.value)" >
+                <option value="" disabled selected hidden >Scegli la tipologia</option>
                 <option value="assistente">Assistente</option>
                 <option value="associazione">Associazione</option>
                 <option value="amministratore">Amministratore</option>
             </select>
             <i class="fa fa-male  fa-fw" aria-hidden="true"></i>
         </div>
+        <!-- input nascosti -->
+        <div class="inputWithIcon" style="display: none" id="iva">
+            <input type="text" value="" placeholder="Partita Iva" #iva/>
+            <i class="fa fa-cogs" aria-hidden="true"></i>
+        </div>
 
+        <div class="inputWithIcon" style="display: none" id="competenze">
+            <input type="text" value="" placeholder="Competenze" #competenze/>
+            <i class="fa fa-cogs" aria-hidden="true"></i>
+        </div>
+
+        <div class="inputWithIcon"  style="display: none" id="titolo">
+            <input type="text" value="" placeholder="Titolo di studio" #titolo/>
+            <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+        </div>
+        <!-- end input nascosti -->
         <div class="inputWithIcon">
             <input type="date" value="" placeholder="Data di nascita" #data/>
             <i class="fa fa-calendar  fa-lg fa-fw" aria-hidden="true"></i>
         </div>
 
-        <div class="inputWithIcon">
-            <input type="text" value="" placeholder="Competenze" #competenze/>
-            <i class="fa fa-cogs" aria-hidden="true"></i>
-        </div>
 
-        <div class="inputWithIcon">
-            <input type="text" value="" placeholder="Titolo di studio" #titolo/>
-            <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-        </div>
 
         <div class="inputWithIcon">
             <input type="text" value="" placeholder="Codice Fiscale" #cf/>

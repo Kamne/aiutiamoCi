@@ -36,5 +36,20 @@ export class SignupPage {
 geolocalization(){
   this.navCtrl.setRoot(MapPage)
 }
+ onChange(v){
+   if(v=="associazione"){
+     document.getElementById("iva").style.display="block";
+   }else{
+     document.getElementById("iva").style.display="none";
+   }
+   if(v=="assistente"){
+     document.getElementById("titolo").style.display="block";
+     document.getElementById("competenze").style.display="block";
+   }else{
+     document.getElementById("titolo").style.display="none";
+     document.getElementById("competenze").style.display="none";
+   }
 
+   console.log(v);
+ }
 }
