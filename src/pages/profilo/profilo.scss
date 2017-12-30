@@ -1,0 +1,79 @@
+page-profilo {
+
+ .content{
+    background-color: color($colors, lightblack_3);
+    text-align: center;
+  }
+  #profilo-nome,#profilo-avatar{
+
+    width: 100%;
+    background-color: color($colors, lightblack_3);
+    text-align: center;
+
+  }
+  #profilo-nome button{
+    background-color: color($colors, lightblack_3);
+    color: color($colors, white);
+  }
+  #profilo-avatar img{
+    width: 40%;
+    height: 40%;
+    margin: auto;
+  }
+
+  #profilo-info{
+    margin: auto;
+    width: 99%;
+    background-color: color($colors, lightgrey_);
+  }
+
+  .profilo-testo{
+    padding: 10px;
+    text-align: left;
+  }
+  .profilo-testo label{
+    font-size: 1.4em;
+    color: color($colors, bordeaux_);
+  }
+  .profilo-testo span{
+    font-size: 1.4em;
+    color: color($colors, lightblack_2);
+  }
+  /*******MENU********/
+  .menu{
+    width: 95%;
+    margin: auto;
+    position: relative;
+    top: -15px;
+  }
+  .menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+
+    background-color: white;
+  }
+
+  .menu li {
+    font-size: 1.5em;
+    float: left;
+    border-right: 1px solid #bbb;
+  }
+  .menu li:last-child {
+    border-right: none;
+  }
+  .menu li a {
+    display: block;
+    color: color($colors, bordeaux_);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  /* Change the link color to #111 (black) on hover*/
+  .menu li a:hover {
+    color: color($colors, lightblack_);
+  }
+  /*******end MENU********/
+}

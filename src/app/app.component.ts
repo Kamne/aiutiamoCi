@@ -12,6 +12,7 @@ import {EventPage} from '../pages/event/event';
 import {InserisciPage} from '../pages/inserisci/inserisci';
 import {LoginPage} from '../pages/login/login';
 import {SignupPage} from '../pages/signup/signup';
+import {ProfiloPage} from '../pages/profilo/profilo';
 
 
 @Component({
@@ -43,7 +44,7 @@ export class MyApp {
                             { title: 'Eventi', component: EventPage, icon: 'people' },
                       ]},
       {label:'utente',items:[
-                            { title: 'Profilo', component: WelcomePage, icon: 'contact' },
+                            { title: 'Profilo', component: ProfiloPage, icon: 'contact' },
                             { title: 'Info - FAQ', component: WelcomePage, icon: 'information-circle' },
                             ]},
 
@@ -60,19 +61,7 @@ export class MyApp {
 
         ]},
     ];
-/*
-    this.pages = [
-      { title: 'Home', component: HomePage, icon: 'home' },
-      { title: 'Inserisci Annuncio', component: WelcomePage, icon: 'create'  },
-      { title: 'Bacheca', component: WelcomePage, icon: 'paper' },
-      { title: 'Cerca Assistente', component: WelcomePage, icon: 'search' },
-      { title: 'Opzioni Amministratore', component: WelcomePage, icon: 'construct' },
-      { title: 'Eventi', component: WelcomePage, icon: 'people' },
-      { title: 'Info - FAQ', component: WelcomePage, icon: 'information-circle' },
-      { title: 'Profilo', component: WelcomePage, icon: 'contact' },
-      { title: 'Logout', component: WelcomePage, icon: 'log-out' }
-    ];
-*/
+
   }
     initializeApp()
     {

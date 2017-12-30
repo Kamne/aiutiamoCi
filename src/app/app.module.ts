@@ -16,6 +16,7 @@ import {EventPage} from '../pages/event/event';
 import {EventCreaPage} from '../pages/event-crea/event-crea';
 import {InserisciPage} from '../pages/inserisci/inserisci';
 import { MapPage } from '../pages/map/map';
+import {ProfiloPage} from '../pages/profilo/profilo';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -42,7 +43,8 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder';
     RicercaPage,
     EventPage,
     EventCreaPage,
-    InserisciPage
+    InserisciPage,
+    ProfiloPage
   ],
   imports: [
     BrowserModule,
@@ -64,7 +66,8 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder';
     MapPage,
     EventPage,
     EventCreaPage,
-    InserisciPage
+    InserisciPage,
+    ProfiloPage
   ],
   providers: [
     StatusBar,
