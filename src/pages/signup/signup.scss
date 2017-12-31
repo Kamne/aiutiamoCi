@@ -63,4 +63,12 @@ page-signup {
         font-size: 1.6em;
         font-family: 'Roboto', 'sans-serif';
     }
+
+
+    input[type="date"]:not(.has-value):before{
+  color: gray;
+  content: attr(placeholder);
+}
+
+
 }
