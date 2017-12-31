@@ -25,6 +25,8 @@ import { SpeechRecognition } from '@ionic-native/speech-recognition';
 import { GoogleMaps} from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
+import { GooglePlacesAutocompleteComponentModule } from 'ionic2-google-places-autocomplete';
+
 
 
 @NgModule({
@@ -47,7 +49,10 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder';
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp)
+    GooglePlacesAutocompleteComponentModule,
+    IonicModule.forRoot(MyApp,
+        {scrollAssist: false,
+        autoFocusAssist: false})
   ],
   bootstrap: [IonicApp],
   entryComponents: [

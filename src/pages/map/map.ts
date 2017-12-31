@@ -1,4 +1,4 @@
-import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform, App } from 'ionic-angular';
 import { Component, ViewChild } from '@angular/core';
 import {
  GoogleMaps,
@@ -29,6 +29,7 @@ export class MapPage {
   lat:number
   lng:number
   street: string
+  map:any
 
   @ViewChild('map') element;
 
@@ -48,23 +49,41 @@ export class MapPage {
 });
   }
 
-  /*ngAfterViewInit() {
-   this.plt.ready().then(() => {
-     this.initMap();
-   });
- }*/
+  detail(event) {
+this.map.clear()
+console.log(event)
+this.nativeGeocoder.forwardGeocode(event.description)
+  .then((coordinates: NativeGeocoderForwardResult) =>{
+    let coordinate: LatLng = new LatLng(Number(coordinates.latitude),Number(coordinates.longitude));
+    let position = {
+      target: coordinate,
+      zoom: 17
+    };
+    this.map.animateCamera(position);
+      this.createMarker(coordinate,this.map,event.description)
+     console.log('The coordinates are latitude=' + coordinates.latitude + ' and longitude=' + coordinates.longitude)
+     console.log("position value :"+position)
+
+   })
+
+
+  .catch((error: any) => console.log("OMG "+error));
+
+ }
 
  initMap() {
 
   let map: GoogleMap = this.googleMaps.create(this.element.nativeElement);
-
+  this.map = map
   map.one(GoogleMapsEvent.MAP_READY).then((data: any) => {
+
+
 
     let coordinates: LatLng = new LatLng(this.lat, this.lng);
     this.nativeGeocoder.reverseGeocode(this.lat, this.lng).then((result: NativeGeocoderReverseResult) => {
-      this.street = result.thoroughfare+" "+result.subThoroughfare
-      this.createMarker(coordinates,map)
-  console.log(result.thoroughfare);
+      this.street = result.thoroughfare+","+result.locality
+      this.createMarker(coordinates,map,this.street)
+  console.log(result);
   console.log(result.countryName);
 })
     console.log("coords:"+this.lat +" " + this.lng)
@@ -82,11 +101,11 @@ export class MapPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad MapPage');
   }
-createMarker(coordinates,map){
+createMarker(coordinates,map,street){
   let markerOptions: MarkerOptions = {
     position: coordinates,
     icon: "assets/images/icons8-Marker-64.png",
-    title: this.street
+    title: street
   };
 
   const marker = map.addMarker(markerOptions)
