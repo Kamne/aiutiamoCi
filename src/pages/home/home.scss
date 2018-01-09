@@ -1,10 +1,40 @@
 page-home {
+  #pulsanti_home div{
+    width:50%;
+    height:50%;
+    border:0px solid black;
+    float:left;
+    color: color($colors, lightblack_3);
+    cursor: pointer;
+  }
+  #circle {
+    width: 100px;
+    height: 100px;
+    background: color($colors, grey_2);
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    text-align: center;
 
-  .title{
-    position: relative;
-    left: 25%;
+  }
+  p {
+    margin-left: auto;
+    margin-right: auto;
+    width: 8em
+  }
+  #pulsanti_home label {
+    text-align: center;
+    font-size: bold;
   }
 
+  .logo {
+    display: block;
+
+    margin:0 auto;
+    width: 250px;
+    height: 170px;
+  }
+/*
   table{
     position: absolute;
     width: 90%;
@@ -38,13 +68,6 @@ page-home {
     font-size: 25px !important;
   }
 
-  .title{
-    position: relative;
-    bottom: 5%;
-    left: 10%;
-    width: 80%;
-    height: 35%;
-  }
 
   .bars{
     position: relative;
@@ -90,4 +113,5 @@ page-home {
     position: relative;
     bottom: 4%;
   }
+  */
 }

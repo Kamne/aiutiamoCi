@@ -27,10 +27,44 @@
     <ion-title>Aiutiamoci</ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding>
+<ion-content >
+  <div class="logo">
+    <img  src ="assets/imgs/my_logo.png">
+  </div>
 
-  <img class="title" src ="assets/imgs/my_logo.png">
+  <div id="pulsanti_home">
+    <div style="background-color: #eaeaea; text-align: center; height: 100%; " (click)="cerca()">
+      <p id="circle">
+        <i class="fa fa-search fa-5x" aria-hidden="true"></i>
+      </p>
+      <label>Cerca</label>
+      <br />
+    </div>
+    <div style="background-color: #fff; text-align: center; " (click)="bacheca()">
+      <p id="circle">
+        <i class="fa fa-newspaper-o fa-5x" aria-hidden="true"></i>
+      </p>
+      <label>Bacheca</label>
+      <br />
+    </div>
+    <div style="background-color: #fff; text-align: center; " (click)="eventi()">
+      <p id="circle">
+        <i class="fa fa-refresh fa-5x" aria-hidden="true"></i>
+      </p>
+      <label>Eventi</label>
+      <br />
+    </div>
+    <div style="background-color: #eaeaea; text-align: center;" (click)="rubrica()">
+      <p id="circle">
+        <i class="fa fa-book fa-5x" aria-hidden="true"></i>
+      </p>
+      <label>Rubrica</label>
+      <br />
+    </div>
+  </div>
 
+  <br/><br/><br/>
+<!--
 <div class="div">
 <img style='vertical-align:middle;' src ="assets/imgs/insert.png" class="insert">
 <div style='vertical-align:middle; display:inline;'>
@@ -65,4 +99,5 @@
 
   </tr>
 </table>
+-->
 </ion-content>
