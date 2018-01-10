@@ -29,34 +29,34 @@
     <br />
     <ion-list no-lines>
         <div>
-            <input type="file" placeholder="Immagine evento" name="img_evento" />
+            <input type="file" placeholder="Immagine evento" name="img_evento" #img />
         </div>
 
         <div>
-            <input type="text" placeholder="Nome Evento" name="nome_evento"/>
+            <input type="text" placeholder="Nome Evento" name="nome_evento" #nome/>
         </div>
 
         <div>
-            <input type="text" placeholder="Luogo" name="luogo"/>
+            <input type="text" placeholder="Luogo" name="luogo" #luogo/>
         </div>
 
         <div id="data-ora">
-            <input type="date" />
+            <input type="date" #date />
         </div>
         <div id="data-ora">
-            <input type="time" name="ora" value="--:--"/>
+            <input type="time" name="ora" value="--:--" #ora/>
         </div>
 
         <div>
-            <textarea cols="20" rows="5" placeholder="Descrizione" name="descrizione"></textarea>
+            <textarea cols="20" rows="5" placeholder="Descrizione" name="descrizione" #descrizione></textarea>
         </div>
 
         <div>
-            <input type="text" name="hashtag" placeholder="Hashtag" />
+            <input type="text" name="hashtag" placeholder="Hashtag" #hashtag/>
         </div>
 
         <div>
-            <button ion-button id="invia">Invia</button>
+            <button ion-button id="invia" (click) = "creaEvento(img,nome,luogo.date,ora,descrizione,hashtag)">Invia</button>
         </div>
     </ion-list>
 
