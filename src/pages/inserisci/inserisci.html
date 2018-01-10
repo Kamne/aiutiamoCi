@@ -31,16 +31,30 @@
   <h1> Inserisci annuncio</h1>
 
   <div style="background-color: white">
-    <form>
+
       <div class="radio_assistenza">
-        <p>
+
+    <!--    <p>
           <input type="radio" name = "assistenza" value = "richiesta" id = "richiesta" />
           <label for="richiesta">Richiesta assistenza</label>
         </p>
         <p>
           <input type="radio" name = "assistenza" value = "offerta" id = "offerta"/>
           <label for="offerta">Offerta assistenza</label>
-        </p>
+        </p> !-->
+
+  <ion-list radio-group [(ngModel)]="richiesta">
+  <ion-item>
+    <ion-label>Richiesta assistenza</ion-label>
+    <ion-radio value="Richiesta" checked></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label>Offerta assistenza</ion-label>
+    <ion-radio value="Offerta"></ion-radio>
+  </ion-item>
+
+</ion-list>
+
         <!--
       <input type="radio" name = "assistenza" value = "richiesta" class = "richiesta"/><b class = "richiesta">richiesta ass.</b>
       <input type="radio" name = "assistenza" value = "offerta" class = "offerta"/><b class = "offerta">offerta ass.</b>
@@ -63,7 +77,7 @@
       -->
       <ion-item>
         <div style="text-align: center">
-          <textarea rows="6" cols="25" (change)="doTextareaValueChange($event)">
+          <textarea rows="6" cols="25" (change)="doTextareaValueChange($event)" #testo>
             {{textareaValue}}
           </textarea>
         </div>
@@ -83,21 +97,22 @@
 
   <div class="checkbox">
     <label>
-      <input type="checkbox" name="urgenza" value="urgenza">
+      <input type="checkbox" name="patente" value="patente" #patente>
       <i class="helper"></i>
       <b>Patente</b>
     </label>
   </div>
   <div class="checkbox">
     <label>
-      <input type="checkbox" name="automunito" value="automunito">
+      <input type="checkbox" name="automunito" value="automunito" #automunito>
       <i class="helper"></i>
       <b >Automunito</b>
     </label>
   </div>
   <div class="checkbox">
     <label>
-      <input type="checkbox" name="patente" value="patente">
+      <input type="checkbox" name="urgenza" value="urgenza" #urgenza>
+
       <i class="helper"></i>
       <b>Disponibilità alle urgenze</b>
     </label>
@@ -110,7 +125,7 @@
     <input type="checkbox" name="patente" class= "patente"><b class= "patente" style = "font-size:120%;">Disp. alle urgenze</b>
   -->
     </div>
-      </form>
+
       <br />
    <!--<div text-center class = "conferma">-->
     <!--
@@ -118,7 +133,7 @@
     indietro
   </button>-->
 
-  <button  (click)="indietro()">
+  <button  (click)="indietro(testo,patente,automunito,urgenza)">
     Conferma
   </button>
 <!--</div>-->
