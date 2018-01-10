@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {SignupPage} from '../signup/signup';
+import {HomePage} from '../home/home';
+import { ShareService } from '../../providers/shareService';
+import { Utente } from '../../classes/utente';
+import { Dialogs } from '@ionic-native/dialogs';
 import { Http, Headers, RequestOptions } from "@angular/http";
 /**
  * Generated class for the LoginPage page.
@@ -16,7 +20,7 @@ import { Http, Headers, RequestOptions } from "@angular/http";
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public dialogs: Dialogs,public shareService: ShareService) {
   }
 
   ionViewDidLoad() {
@@ -31,7 +35,22 @@ export class LoginPage {
   else{
     var myData = JSON.stringify({username: username.value,password: password.value});
   this.http.post('http://aiutiamoc.altervista.org/login.php',myData).map(res => res.json()).subscribe(   data => {
-  console.log(data);})
+  console.log(data);
+  if(data.success){
+    var competenze = data.user.Competenze.split(",")
+    console.log(competenze)
+    this.shareService.setUser(new Utente(data.user.Nome,data.user.Cognome,data.user.Username,
+                                         data.user.Nato,competenze,data.user.TitoloStudio,data.user.CF,
+                                         data.user.Citta,data.user.Provincia,data.user.Indirizzo,
+                                         data.user.Email,data.user.NumTelefono,data.user.Tipologia))
+
+    this.navCtrl.setRoot(HomePage)
+  }
+
+  else{
+    this.dialogs.alert("Valori errati")
+  }
+})
   }
 }
 

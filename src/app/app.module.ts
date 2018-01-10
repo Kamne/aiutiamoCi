@@ -22,6 +22,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule } from "@angular/http";
 import { SpeechRecognition } from '@ionic-native/speech-recognition';
+import { Dialogs } from '@ionic-native/dialogs';
+import { ShareService } from '../providers/shareService';
 
 import { GoogleMaps} from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation';
@@ -77,9 +79,11 @@ import { GooglePlacesAutocompleteComponentModule } from 'ionic2-google-places-au
   providers: [
     StatusBar,
     SplashScreen,
+    Dialogs,
     GoogleMaps,
     Geolocation,
     NativeGeocoder,
+    ShareService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SpeechRecognition
 
