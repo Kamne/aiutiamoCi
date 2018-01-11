@@ -10,6 +10,7 @@ import {EventPage} from '../event/event';
 /**
  * Generated class for the HomePage page.
  *
+ *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
@@ -23,18 +24,17 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public shareService: ShareService ) {
   }
-
+/*
   ionViewDidLoad() {
-<<<<<<< HEAD
+
     console.log(this.shareService.getUser().getUsername());
 
   }
+  */
 insert(){
-  this.navCtrl.setRoot(InserisciPage)
+  this.navCtrl.setRoot(InserisciPage);
 }
-=======
-    console.log('ionViewDidLoad HomePage');
-  }
+
   cerca(){
     this.navCtrl.push(RicercaPage);
   }
@@ -47,5 +47,5 @@ insert(){
   rubrica(){
     this.navCtrl.push(RubricaPage);
   }
->>>>>>> 2b5bb461cdff8fdb2f1540e4cb6b87eb59f90e74
+
 }
