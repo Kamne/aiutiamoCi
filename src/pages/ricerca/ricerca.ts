@@ -22,4 +22,22 @@ export class RicercaPage {
     console.log('ionViewDidLoad RicercaPage');
   }
 
+  onChange(v){
+    if(v=="richieste"){
+      document.getElementById("richieste").style.display="block";
+    }else{
+      document.getElementById("richieste").style.display="none";
+    }
+    if(v=="assistenti"){
+      document.getElementById("assistenti").style.display="block";
+    }else{
+      document.getElementById("assistenti").style.display="none";
+    }
+    if(v=="eventi"){
+      document.getElementById("eventi").style.display="block";
+    }else{
+      document.getElementById("eventi").style.display="none";
+    }
+  }
+
 }

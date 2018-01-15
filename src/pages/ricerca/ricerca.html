@@ -6,7 +6,6 @@
 -->
 <ion-header>
   <ion-navbar>
-
     <ion-title>Ricerca</ion-title>
   </ion-navbar>
 </ion-header>
@@ -25,8 +24,125 @@
 </ion-header>
 -->
 
-<ion-content padding>
+<ion-content padding class="content">
   <br />
+  <div id="ricerca-div">
+  <div class="menu">
+    <ul>
+      <li id="li-richeste"><a (click)="onChange('richieste')">Richieste</a></li>
+      <li id="li-assistenti"><a (click)="onChange('assistenti')">Assistenti</a></li>
+      <li id="li-eventi"><a (click)="onChange('eventi')">Eventi</a></li>
+    </ul>
+  </div>
+<!-- RICHIESTA ASSISTENZA -->
   <br />
-  <input type="search" />
+  <div id="richieste">
+
+      <div style="text-align: center">
+        <h2>Richiesta Assistenza</h2>
+          <textarea rows="6" cols="30"  #testo>
+            {{textareaValue}}
+          </textarea>
+      </div>
+      <br>
+      <div  class="microfono">
+        <ion-fab>
+          <button  ion-fab (click)="startListening()">
+            <ion-icon name="microphone"></ion-icon>
+          </button>
+        </ion-fab>
+      </div>
+      <br><br><br><br>
+    <select (change)="onChange(tipologia.value)"  #competenza>
+      <option value="0"  >Tutte le competenze</option>
+      <option value="oss">O.S.S</option>
+    </select>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="automunito" value="automunito" #automunito>
+        <i class="helper"></i>
+        <b >Automunito</b>
+      </label>
+    </div>
+
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="patente" value="patente" #patente>
+          <i class="helper"></i>
+          <b>Patente di guida</b>
+        </label>
+      </div>
+
+    <ion-range min="0" max="100" [(ngModel)]="singleValue" color="bordeaux_" pin="true">
+      <ion-label range-left>0km</ion-label>
+      <ion-label range-right>100km</ion-label>
+    </ion-range>
+
+    <button  >
+      Cerca
+    </button>
+
+  </div>
+  <!-- END RICHIESTA ASSISTENZA -->
+  <!-- ASSISTENTI -->
+  <div id="assistenti" style="display: none">
+      <div style="text-align: center">
+        <h2>Offro Assistenza</h2>
+          <textarea rows="6" cols="30"  #testo>
+            {{textareaValue}}
+          </textarea>
+      </div>
+    <br>
+    <div  class="microfono">
+      <ion-fab>
+        <button  ion-fab (click)="startListening()">
+          <ion-icon name="microphone"></ion-icon>
+        </button>
+      </ion-fab>
+    </div>
+    <br><br><br>
+    <select (change)="onChange(tipologia.value)"  #competenza>
+      <option value="0"  >Tutte le competenze</option>
+      <option value="oss">O.S.S</option>
+    </select>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="automunito" value="automunito" #automunito>
+        <i class="helper"></i>
+        <b >Automunito</b>
+      </label>
+    </div>
+
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="patente" value="patente" #patente>
+        <i class="helper"></i>
+        <b>Patente di guida</b>
+      </label>
+    </div>
+
+
+    <ion-range min="0" max="100" [(ngModel)]="singleValue" color="bordeaux_" pin="true">
+      <ion-label range-left>0km</ion-label>
+      <ion-label range-right>100km</ion-label>
+    </ion-range>
+
+
+    <button  >
+      Cerca
+    </button>
+  </div>
+  <!-- END ASSISTENTI -->
+  <!-- EVENTI -->
+  <div id="eventi" style="display: none; text-align: center; ">
+
+    <div class="list list-inset">
+      <label class="item item-input">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" placeholder="Cerca evento">
+      </label>
+    </div>
+  </div>
+  <!-- END EVENTI -->
+    </div>
 </ion-content>
