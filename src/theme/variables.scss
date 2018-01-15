@@ -125,6 +125,178 @@ input[type=date]:focus{
   background-color:color($colors, bordeaux_);
 }
 /*******************font-awesome END***********************/
+/*******MENU********/
+.menu{
+  width: 95%;
+  margin: auto;
+  position: relative;
+  top: -15px;
+}
+.menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+
+  background-color: white;
+}
+
+.menu li {
+  font-size: 1.5em;
+  float: left;
+  border-right: 1px solid #bbb;
+}
+.menu li:last-child {
+  border-right: none;
+}
+.menu li a {
+  display: block;
+  color: color($colors, bordeaux_);
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover*/
+.menu li a:hover {
+  color: color($colors, lightblack_);
+}
+/*******end MENU********/
+/****************CHECKBOX*************************/
+input[type=checkbox] {
+  /* transform: scale(1.5);
+   background-color: color($colors, bordeaux_);*/
+  width: auto;
+  opacity: 0.00000001;
+  position: absolute;
+  left: 0;
+  margin-left: -20px;
+
+}
+.checkbox {
+  margin: 20px auto;
+  position: relative;
+  display: block;
+  width: 90%;
+  font-size: 1.2em;
+}
+.helper {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  cursor: pointer;
+  display: block;
+  font-size: 16px;
+  user-select: none;
+  color: #e7e7e7;
+}
+.helper:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 4px;
+  width: 22px;
+  height: 22px;
+  transition: transform 0.28s ease;
+  border-radius: 3px;
+  border: 2px solid color($colors, bordeaux_);;
+}
+.helper:after {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 5px;
+  border-bottom: 2px solid color($colors, bordeaux_);;
+  border-left: 2px solid color($colors, bordeaux_);;
+  -webkit-transform: rotate(-45deg) scale(0);
+  -moz-transform: rotate(-45deg) scale(0);
+  -ms-transform: rotate(-45deg) scale(0);
+  transform: rotate(-45deg) scale(0);
+  position: absolute;
+  top: 12px;
+  left: 10px;
+}
+input[type="checkbox"]:checked ~ .helper::before {
+  color: color($colors, bordeaux_);
+}
+input[type="checkbox"]:checked ~ .helper::after {
+  -webkit-transform: rotate(-45deg) scale(1);
+  -moz-transform: rotate(-45deg) scale(1);
+  -ms-transform: rotate(-45deg) scale(1);
+  transform: rotate(-45deg) scale(1);
+}
+
+.checkbox label {
+  min-height: 24px;
+  padding-left: 35px;
+  margin-bottom: 0;
+  font-weight: normal;
+  cursor: pointer;
+  vertical-align: sub;
+}
+input[type="checkbox"]:focus + label::before {
+  outline: rgb(59, 153, 252) auto 5px;
+}
+/*****************CHECKBOX END******************/
+/*****************RADIO******************/
+/*
+  input[type=radio] {
+ transform: scale(1.5);
+}
+*/
+.radio_assistenza{
+  margin-left: 15px;
+  padding-top: 15px;
+
+}
+/* Nasconde  radio button */
+p:not(#foo) > input[type='radio'] {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+input[type='radio'] + label {
+  cursor: pointer; /* Imposta il cursore per le label */
+  padding: 0 0 0 15px; /* Padding a sinistra per rendere il controllo cliccabile */
+  margin: 0 0 0 5px; /* Margine a destra per posizionare al meglio il controllo */
+  position: relative; /* Creiamo un contesto di posizionamento per il contenuto generato */
+}
+p:not(#foo) > input[type='radio'] + label:before { /* Contenuto generato per le label associate ai radio button */
+  content: "";
+  width: 15px;
+  height: 15px;
+  border: solid 1px color($colors, bordeaux_);
+  -webkit-border-radius: 7.5px;
+  border-radius: 7.5px; /* Border-radius: 7.5px = metà di larghezza e altezza */
+  background: #fff;
+  cursor: pointer;
+  position: absolute; /* Posizioniamo il contenuto generato rispetto alla label */
+  top: -1px; /* Spostamento verticale */
+  left: -5px; /* Spostamento orizzontale */
+}
+p:not(#foo) > input[type='radio']:checked + label:after { /* Segno di spunta dei radio button e suo colore */
+  content: "";
+  display: block; /* Display: block per centrare il segno di spunta orizzontalmente */
+  width: 8px; /* Creiamo un cerchio più piccolo */
+  height: 8px; /* Anche in altezza */
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  position: absolute;
+  top: 3px;
+  left: 0;
+  margin: 0 auto;
+  background-color: color($colors, bordeaux_); /* Colore di sfondo */
+}
+
+/*****************RADIO END******************/
+.microfono{
+  text-align: center;
+  width: 90%;
+}
+.microfono button{
+
+  background-color: color($colors, bordeaux_);
+}
 
 
 // App iOS Variables
