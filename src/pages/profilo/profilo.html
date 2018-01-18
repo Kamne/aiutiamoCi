@@ -37,8 +37,8 @@
         </ul>
       </div>
 
-      <div class="profilo-testo" *ngIf="shareService.getUser()!=undefined" ><!--    }-->
-        <label>Cognome:</label>&nbsp;<span>{{shareService.getUser().getCognome()}</span> <br />
+      <div class="profilo-testo" *ngIf="shareService.getUser()!=undefined" ><!--    -->
+        <label>Cognome:</label>&nbsp;<span>{{shareService.getUser().getCognome()}}</span> <br />
         <label>Nome:</label>&nbsp;<span>Maria Cristina</span><br />
       </div>
       <div [innerHtml]="myTemplate"></div>
