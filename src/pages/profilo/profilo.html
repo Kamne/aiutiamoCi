@@ -32,18 +32,21 @@
       <div class="menu">
         <ul >
           <li><a (click)="openPage(item)">Info</a></li>
-          <li><a (click)="openPage(item)">Annunci</a></li>
+          <li><a (click)="loadPage('annunci')">Annunci</a></li>
           <li><a (click)="openPage(item)">Preferiti</a></li>
         </ul>
       </div>
 
-      <div class="profilo-testo">
-        <label>Cognome:</label>&nbsp;<span>Ricciardi</span> <br />
+      <div class="profilo-testo" *ngIf="shareService.getUser()!=undefined" ><!--    }-->
+        <label>Cognome:</label>&nbsp;<span>{{shareService.getUser().getCognome()}</span> <br />
         <label>Nome:</label>&nbsp;<span>Maria Cristina</span><br />
       </div>
-
+      <div [innerHtml]="myTemplate"></div>
     </div>
   </div>
 
+<!--div#page>div.logo+ul#navigation>li*5>a
+{{shareService.getUser().getCognome()}}
+-->
 
 </ion-content>
