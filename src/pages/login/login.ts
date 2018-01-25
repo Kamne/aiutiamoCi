@@ -5,7 +5,9 @@ import {HomePage} from '../home/home';
 import { ShareService } from '../../providers/shareService';
 import { Utente } from '../../classes/utente';
 import { Dialogs } from '@ionic-native/dialogs';
+
 import { Http, Headers, RequestOptions } from "@angular/http";
+import { Events } from 'ionic-angular';
 /**
  * Generated class for the LoginPage page.
  *
@@ -20,7 +22,7 @@ import { Http, Headers, RequestOptions } from "@angular/http";
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public dialogs: Dialogs,public shareService: ShareService) {
+  constructor(public event:Events,public navCtrl: NavController, public navParams: NavParams, public http: Http, public dialogs: Dialogs,public shareService: ShareService) {
   }
 
   ionViewDidLoad() {
@@ -39,11 +41,11 @@ export class LoginPage {
   if(data.success){
     var competenze = data.user.Competenze.split(",")
     console.log(competenze)
-    this.shareService.setUser(new Utente(data.user.Nome,data.user.Cognome,data.user.Username,
+    this.shareService.setUser(new Utente(data.user.Nome,data.user.Cognome,data.user.Username,data.user.Immagine,
                                          data.user.Nato,competenze,data.user.TitoloStudio,data.user.CF,
                                          data.user.Citta,data.user.Provincia,data.user.Indirizzo,
                                          data.user.Email,data.user.NumTelefono,data.user.Tipologia))
-
+    this.event.publish('image', data.user.Immagine);
     this.navCtrl.setRoot(HomePage)
   }
 
