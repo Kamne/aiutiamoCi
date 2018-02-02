@@ -13,6 +13,7 @@ import {InserisciPage} from '../pages/inserisci/inserisci';
 import {LoginPage} from '../pages/login/login';
 import {SignupPage} from '../pages/signup/signup';
 import {ProfiloPage} from '../pages/profilo/profilo';
+import { Events } from 'ionic-angular';
 
 
 @Component({
@@ -22,7 +23,7 @@ import {ProfiloPage} from '../pages/profilo/profilo';
 // pagina iniziale
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-
+  Image:String = "assets/imgs/avatar.png"
   rootPage:any = WelcomePage;
 //  pages: Array<{title: string, component: any, icon: string}>;
 
@@ -30,8 +31,13 @@ export class MyApp {
   constructor(public platform: Platform,
               public menu: MenuController,
               public statusBar: StatusBar,
-              public splashScreen: SplashScreen
-  ) {
+              public splashScreen: SplashScreen,
+              public events:Events) {
+
+    this.events.subscribe('image', (img) => {
+      this.Image = img;
+  console.log('Welcome', img);
+});
     this.initializeApp();
 
     this.pages = [
@@ -87,6 +93,9 @@ export class MyApp {
     }
 
 
+    setImage(src){
+      this.Image = src;
+    }
+
 
 }
-
