@@ -2,6 +2,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+import {HttpClientModule} from '@angular/common/http';
 
 import {WelcomePage} from '../pages/welcome/welcome';
 import {LoginPage} from '../pages/login/login';
@@ -53,6 +54,7 @@ import { GooglePlacesAutocompleteComponentModule } from 'ionic2-google-places-au
   imports: [
     BrowserModule,
     HttpModule,
+    HttpClientModule,
     GooglePlacesAutocompleteComponentModule,
     IonicModule.forRoot(MyApp,
         {scrollAssist: false,
