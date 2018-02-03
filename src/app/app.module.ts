@@ -18,6 +18,8 @@ import {EventCreaPage} from '../pages/event-crea/event-crea';
 import {InserisciPage} from '../pages/inserisci/inserisci';
 import { MapPage } from '../pages/map/map';
 import {ProfiloPage} from '../pages/profilo/profilo';
+import { BachecaPage } from '../pages/bacheca/bacheca';
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -25,8 +27,8 @@ import { HttpModule } from "@angular/http";
 import { SpeechRecognition } from '@ionic-native/speech-recognition';
 import { Dialogs } from '@ionic-native/dialogs';
 import { ShareService } from '../providers/shareService';
+import { Utente } from '../classes/utente';
 import { Camera } from '@ionic-native/camera'
-
 import { GoogleMaps} from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
@@ -50,7 +52,8 @@ import { GooglePlacesAutocompleteComponentModule } from 'ionic2-google-places-au
     EventPage,
     EventCreaPage,
     InserisciPage,
-    ProfiloPage
+    ProfiloPage,
+    BachecaPage
   ],
   imports: [
     BrowserModule,
@@ -77,7 +80,8 @@ import { GooglePlacesAutocompleteComponentModule } from 'ionic2-google-places-au
     EventPage,
     EventCreaPage,
     InserisciPage,
-    ProfiloPage
+    ProfiloPage,
+    BachecaPage
   ],
   providers: [
     StatusBar,
@@ -89,8 +93,11 @@ import { GooglePlacesAutocompleteComponentModule } from 'ionic2-google-places-au
     NativeGeocoder,
     ShareService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    SpeechRecognition
+    SpeechRecognition,
+    Utente
 
   ]
 })
-export class AppModule {}
+export class AppModule {
+
+}

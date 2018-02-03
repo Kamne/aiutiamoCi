@@ -43,7 +43,10 @@
                     <img [src]="Image">
                 </ion-avatar>
                 <br />
-                <h2>Cristina</h2>
+                <h2 *ngIf="shareService.getUser()!=undefined">
+                    {{shareService.getUser().getCognome()}}
+                    {{shareService.getUser().getNome()}}
+                </h2><!--  -->
                 <button>
                     <ion-icon name="create"></ion-icon>
                 </button>
