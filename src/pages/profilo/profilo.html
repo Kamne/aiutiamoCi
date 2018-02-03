@@ -6,7 +6,7 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>Cristina Profilo</ion-title>
+    <ion-title>{{shareService.getUser().getNome()}} Profilo</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -16,12 +16,12 @@
 
     <ion-item id="profilo-avatar" no-lines>
       <ion-avatar  >
-        <img src="assets/imgs/avatar.png">
+        <img [src]="Image">
       </ion-avatar>
     </ion-item>
 
     <ion-item id="profilo-nome"  no-lines>
-      <label style="color: white;">Cristina</label>
+      <label style="color: white;">{{shareService.getUser().getNome()}}</label>
       <button>
         <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
       </button>
@@ -39,7 +39,20 @@
 
       <div class="profilo-testo" *ngIf="shareService.getUser()!=undefined" ><!--    -->
         <label>Cognome:</label>&nbsp;<span>{{shareService.getUser().getCognome()}}</span> <br />
-        <label>Nome:</label>&nbsp;<span>Maria Cristina</span><br />
+        <label>Nome:</label>&nbsp;<span>{{shareService.getUser().getNome()}}</span><br />
+        <label>Username:</label>&nbsp;<span>{{shareService.getUser().getUsername()}}</span><br />
+        <label>Data di nascita:</label>&nbsp;<span>{{shareService.getUser().getNato()}}</span><br />
+        <label>Competenze:</label>&nbsp;<span>{{shareService.getUser().getCompetenze()}}</span><br />
+        <label>Codice fiscale:</label>&nbsp;<span>{{shareService.getUser().getCF()}}</span><br />
+        <label>Città:</label>&nbsp;<span>{{shareService.getUser().getCitta()}}</span><br />
+        <label>Provincia:</label>&nbsp;<span>{{shareService.getUser().getProvincia()}}</span><br />
+        <label>Indirizzo:</label>&nbsp;<span>{{shareService.getUser().getIndirizzo()}}</span><br />
+        <label>Email:</label>&nbsp;<span>{{shareService.getUser().getEmail()}}</span><br />
+        <label>Telefono:</label>&nbsp;<span>{{shareService.getUser().getTel()}}</span><br />
+        <label>Tipologia:</label>&nbsp;<span>{{shareService.getUser().getTipologia()}}</span><br /><br />
+
+     <!--   <label>Email:</label>&nbsp;<span>{{shareService.getUser().getToStringCompetenze()}}</span><br />-->
+
       </div>
       <div [innerHtml]="myTemplate"></div>
     </div>
