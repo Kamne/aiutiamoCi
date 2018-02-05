@@ -1,3 +1,30 @@
 page-bacheca {
+  .bacheca{
+    background: color($colors, lightgrey_);
 
+  }
+
+  #post{
+    background: color($colors, white);
+    padding: 10px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+  }
+  #pulsante{
+    color: color($colors, bordeaux_);
+  }
+  #testo{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 1.2em;
+  }
+  #nome-contatti{
+    padding-top: 5px;
+
+  }
+  #data{
+
+    font-size: 1em;
+  }
 }
