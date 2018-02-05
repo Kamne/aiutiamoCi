@@ -24,16 +24,20 @@ export class InserisciPage {
   matches: String[];
   isRecording = false;
   value:string[];
+  testo:String;
   richiesta:any
   constructor(public navCtrl: NavController, public navParams: NavParams, private speechRecognition: SpeechRecognition, private cd: ChangeDetectorRef,public http: Http,public dialogs: Dialogs, public shareService : ShareService) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad InserisciPage');
+    this.testo = "salve a tutti"
+    this.speechRecognition.isRecognitionAvailable()
+  .then((available: boolean) => console.log("recognition "+available))
   }
 
   indietro(testo: HTMLInputElement,patente: HTMLInputElement,automunito: HTMLInputElement,urgenza: HTMLInputElement){
-    console.log("prova"+Number(automunito.checked))
+    console.log("prova "+ this.richiesta)
     var headers = new Headers();
 
 
@@ -44,12 +48,12 @@ export class InserisciPage {
         automunito : Number(automunito.checked),
         patente : Number(patente.checked),
         urgenza : Number(urgenza.checked),
-        testo : testo.value,
-        tipologia : this.richiesta.value,
+        testo : this.testo,
+        tipologia : this.richiesta,
         username : this.shareService.getUser().getUsername(),
         tel : this.shareService.getUser().getTel(),
         email : this.shareService.getUser().getEmail(),
-        data : "13/3/2015",
+        data : this.shareService.getUser().getNato(),
         competenze : this.shareService.getUser().getToStringCompetenze()
     });
     console.log(myData)
@@ -74,7 +78,11 @@ export class InserisciPage {
     this.speechRecognition.hasPermission()
         .then((hasPermission: boolean) => {
           if (!hasPermission) {
-            this.speechRecognition.requestPermission();
+            this.speechRecognition.requestPermission()
+  .then(
+    () => console.log('Granted'),
+    () => console.log('Denied')
+  );
           }
         });
   }
@@ -84,12 +92,16 @@ export class InserisciPage {
     let options = {
       language: 'it-IT'
     }
+      console.log("salve ciccio")
     this.speechRecognition.startListening(options).subscribe(matches => {
+            console.log("salve ciccio")
       this.matches = matches;
+      console.log(matches)
       this.cd.detectChanges();
     });
     this.isRecording = true;
   }
+
   private textareaValue = '';
   doTextareaValueChange(ev) {
     try {
