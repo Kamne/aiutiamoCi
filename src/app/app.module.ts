@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
+import { MatDialogModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {WelcomePage} from '../pages/welcome/welcome';
 import {LoginPage} from '../pages/login/login';
@@ -57,6 +59,8 @@ import { GooglePlacesAutocompleteComponentModule } from 'ionic2-google-places-au
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
     HttpModule,
     HttpClientModule,
     GooglePlacesAutocompleteComponentModule,

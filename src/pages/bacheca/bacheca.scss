@@ -27,4 +27,14 @@ page-bacheca {
 
     font-size: 1em;
   }
+
+  button{
+    background-color: color($colors, bordeaux_);
+    text-align: center;
+    color: color($colors, white);
+    width: 100%;
+    padding: 5%;
+    border: 0;
+    font-size: 1.2em;
+  }
 }

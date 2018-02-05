@@ -6,7 +6,7 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>{{shareService.getUser().getNome()}} Profilo</ion-title>
+    <ion-title *ngIf="shareService.getUser()!=undefined">{{shareService.getUser().getNome()}} Profilo</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -21,7 +21,7 @@
     </ion-item>
 
     <ion-item id="profilo-nome"  no-lines>
-      <label style="color: white;">{{shareService.getUser().getNome()}}</label>
+      <label style="color: white;" *ngIf="shareService.getUser()!=undefined">{{shareService.getUser().getNome()}}</label>
       <button>
         <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
       </button>

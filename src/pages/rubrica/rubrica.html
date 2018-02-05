@@ -15,4 +15,11 @@
       (ionCancel)="onCancel($event)">
     </ion-searchbar>
   </div>
+
+  <div class="menu">
+    <ul >
+      <li><a (click)="openPage(item)">Utente</a></li>
+      <li><a (click)="loadPage('annunci')">Associazione</a></li>
+    </ul>
+  </div>
 </ion-content>
