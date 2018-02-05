@@ -13,6 +13,7 @@ import {InserisciPage} from '../pages/inserisci/inserisci';
 import {LoginPage} from '../pages/login/login';
 import {SignupPage} from '../pages/signup/signup';
 import {ProfiloPage} from '../pages/profilo/profilo';
+import {BachecaPage} from '../pages/bacheca/bacheca';
 import { Events } from 'ionic-angular';
 
 
@@ -24,7 +25,7 @@ import { Events } from 'ionic-angular';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
   Image:String = "assets/imgs/avatar.png"
-  rootPage:any = WelcomePage;
+  rootPage:any = LoginPage;
 //  pages: Array<{title: string, component: any, icon: string}>;
 
   pages: any;
@@ -36,7 +37,7 @@ export class MyApp {
 
     this.events.subscribe('image', (img) => {
       this.Image = img;
-  console.log('Welcome', img);
+//  console.log('Welcome', pages);
 });
     this.initializeApp();
 
@@ -44,7 +45,7 @@ export class MyApp {
       {label:'Home',items:[
                             { title: 'Home', component: HomePage, icon: 'home' },
                             { title: 'Inserisci Annuncio', component: InserisciPage, icon: 'create'  },
-                            { title: 'Bacheca', component: WelcomePage, icon: 'paper' },
+                            { title: 'Bacheca', component: BachecaPage, icon: 'paper' },
                             { title: 'Rubrica', component: RubricaPage, icon: 'bookmarks' },
                             { title: 'Cerca Assistente', component: WelcomePage, icon: 'search' },
                             { title: 'Eventi', component: EventPage, icon: 'people' },
@@ -67,7 +68,7 @@ export class MyApp {
 
         ]},
     ];
-
+console.log('Welcome', this.pages);
   }
     initializeApp()
     {

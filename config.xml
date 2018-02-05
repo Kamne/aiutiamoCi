@@ -92,4 +92,5 @@
     <plugin name="cordova-plugin-nativegeocoder" spec="^2.0.4" />
     <allow-navigation href="http://192.168.1.19:8100" />
     <plugin name="cordova-plugin-dialogs" spec="^2.0.1" />
+    <allow-navigation href="http://192.168.1.127:8100" />
 </widget>
