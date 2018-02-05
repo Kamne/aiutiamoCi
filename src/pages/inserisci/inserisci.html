@@ -77,8 +77,8 @@
 
       <ion-item>
         <div style="text-align: center">
-          <textarea rows="6" cols="25" (change)="doTextareaValueChange($event)" #testo>
-            {{textareaValue}}
+          <textarea rows="6" cols="25"  [value] = "testo"> <!--(change)="doTextareaValueChange($event)" -->
+            
           </textarea>
         </div>
 

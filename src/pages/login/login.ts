@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { LoadingController } from 'ionic-angular';
 import {SignupPage} from '../signup/signup';
 import {HomePage} from '../home/home';
 import { ShareService } from '../../providers/shareService';
@@ -22,7 +23,7 @@ import { Events } from 'ionic-angular';
 })
 export class LoginPage {
 
-  constructor(public event:Events,public navCtrl: NavController, public navParams: NavParams, public http: Http, public dialogs: Dialogs,public shareService: ShareService) {
+  constructor(public loadingCtrl: LoadingController, public event:Events,public navCtrl: NavController, public navParams: NavParams, public http: Http, public dialogs: Dialogs,public shareService: ShareService) {
   }
 
   ionViewDidLoad() {
@@ -30,12 +31,23 @@ export class LoginPage {
   }
 
   login(username: HTMLInputElement, password: HTMLInputElement): void {
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
 
+    loading.present();
+
+    setTimeout(() => {
+      loading.dismiss();
+    }, 5000);
+
+loading.present();
 
   if(username.value === "" || password.value === "")
       console.log("valori errati")
   else{
     var myData = JSON.stringify({username: username.value,password: password.value});
+    console.log(myData)
   this.http.post('http://aiutiamoc.altervista.org/login.php',myData).map(res => res.json()).subscribe(   data => {
   console.log(data);
   if(data.success){
@@ -46,6 +58,7 @@ export class LoginPage {
                                          data.user.Citta,data.user.Provincia,data.user.Indirizzo,
                                          data.user.Email,data.user.NumTelefono,data.user.Tipologia))
     this.event.publish('image', data.user.Immagine);
+    loading.dismiss();
     this.navCtrl.setRoot(HomePage)
   }
 

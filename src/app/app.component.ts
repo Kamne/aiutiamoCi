@@ -14,6 +14,7 @@ import {InserisciPage} from '../pages/inserisci/inserisci';
 import {LoginPage} from '../pages/login/login';
 import {SignupPage} from '../pages/signup/signup';
 import {ProfiloPage} from '../pages/profilo/profilo';
+import {BachecaPage} from '../pages/bacheca/bacheca';
 import { Events } from 'ionic-angular';
 
 import { ShareService } from '../providers/shareService';
@@ -26,8 +27,8 @@ import { Utente } from '../classes/utente';
 // pagina iniziale
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  Image:String = "../assets/imgs/avatar.png"
-  rootPage:any = WelcomePage;
+  Image:String = "assets/imgs/avatar.png"
+  rootPage:any = LoginPage;
 //  pages: Array<{title: string, component: any, icon: string}>;
 
   pages: any;
@@ -40,7 +41,7 @@ export class MyApp {
 
     this.events.subscribe('image', (img) => {
       this.Image = img;
-  console.log('Welcome', img);
+//  console.log('Welcome', pages);
 });
     this.initializeApp();
 
@@ -71,7 +72,7 @@ export class MyApp {
 
         ]},
     ];
-
+console.log('Welcome', this.pages);
   }
     initializeApp()
     {
