@@ -108,7 +108,12 @@ onChange(v){
     document.getElementById("competenze").style.display="none";
     document.getElementById("cf").style.display="none";
   }
+  if(v=="utente"){
+    document.getElementById("cognome").style.display="block";
+    document.getElementById("cf").style.display="block";
+  }
 
   console.log(v);
 }
+
 }
