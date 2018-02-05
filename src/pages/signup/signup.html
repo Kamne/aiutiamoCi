@@ -6,17 +6,14 @@
 </ion-header>
 
 <ion-content padding id="signup">
-    <div (click)="chargeImage()" id="logo" >
-    <ion-img  width="250" height="170" src="assets/imgs/my_logo.png">
-<!--assets/imgs/my_logo.png !-->
-    </ion-img>
-   <div style="text-align: center;">
 
-        <ion-img  width="250" height="170" [src]="base64Image">
-    <!--assets/imgs/my_logo.png !-->
-        </ion-img>
+    <ion-img id="logo" width="250" height="170" src="assets/imgs/my_logo.png" >
+          <input type="file" #img/>
+    </ion-img>
+    <div style="text-align: center;">
+        <i class="fa fa-user-circle-o fa-5x" aria-hidden="true" id="avatar-anonymous"></i>
+
     </div>
-  </div>
     <br/>
 
 
@@ -53,7 +50,7 @@
         </div>
 
         <div class="inputWithIcon" id="descr" style="display: none">
-     <textarea rows="5" cols="22" placeholder="Descrivi l'associazione"  #descr></textarea>
+     <textarea rows="5" cols="26" placeholder="Descrivi l'associazione"  #descr></textarea>
 </div>
 
 
@@ -64,7 +61,7 @@
         </div>
 
         <div class="inputWithIcon" style="display: none" id="competenze">
-            <textarea rows="5" cols="20" placeholder="Elencare le competenze separate da una virgola"  #competenze></textarea>
+            <input type="text" value="" placeholder="Competenze"  #competenze/>
             <i class="fa fa-cogs" aria-hidden="true"></i>
         </div>
 
@@ -86,20 +83,19 @@
         </div>
 
             <div class="inputWithIcon flexContainer" style="text-align: left">
-                <input type="text" [value]="indirizzo" placeholder="Indirizzo" class="inputField" style="padding-left: 10px; "/>
+                <input type="text" value="" placeholder="Indirizzo" class="inputField" style="padding-left: 10px; " #indirizzo/>
                 <!--    <button><i class="fa fa-map-marker" aria-hidden="true" style=" cursor: pointer; "></i></button>-->
                 <button style="width: 35px; height: 45px; padding: 0; margin-top: 10px; " (click) = "geolocalization()"><ion-icon class="fa fa-map-marker" style=" "></ion-icon></button>
 
             </div>
 
         <div class="inputWithIcon">
-            <input type="text" [value]="citta" placeholder="Città"  />
+            <input type="text" value="" placeholder="Città"  #citta/>
             <i class="fa fa-globe" aria-hidden="true"></i>
         </div>
 
         <div class="inputWithIcon">
-      <!--      <input type="text" [(ngModel)]="provincia" placeholder="Provincia"  #provincia/> -->
-        <input type="text" [value]="provincia" placeholder="Provincia"/>
+            <input type="text" value="" placeholder="Provincia"  #provincia/>
             <i class="fa fa-bandcamp" aria-hidden="true"></i>
         </div>
 
@@ -115,6 +111,6 @@
         </div>
 
     </div>
-    <button block  (click)="registrazione(nome,cognome,username,password,tipologia,data,competenze,titolo,cf,email,tel,iva,descr)"><b>Conferma</b></button>
+    <button block  (click)="registrazione(nome,cognome,username,password,tipologia,data,competenze,titolo,cf,indirizzo,citta,provincia,email,tel,iva,descr)"><b>Conferma</b></button>
 
     </ion-content>

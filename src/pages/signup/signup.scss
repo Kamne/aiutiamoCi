@@ -11,7 +11,7 @@ page-signup {
         text-align: center;
     }
     #logo {
-    //    background-color: color($colors, lightgrey_);
+        background-color: color($colors, lightgrey_);
 
         margin-left: 25px;
     }
@@ -65,10 +65,10 @@ page-signup {
     }
 
 
-/*    input[type="date"]:not(.has-value):before{
+    input[type="date"]:not(.has-value):before{
   color: gray;
   content: attr(placeholder);
-}*/
+}
 
 
 

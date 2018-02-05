@@ -9,14 +9,15 @@
   <ion-navbar>
     <ion-title>Map</ion-title>
   </ion-navbar>
+  <ion-toolbar color="primary">
+    <google-places-autocomplete placeholder = "inserisci indirizzo" (callback)="detail($event[0])" key="AIzaSyDnABBrD1OOrXzWaR37mCW3MObuj9HDIPI"></google-places-autocomplete>
+  </ion-toolbar>
 </ion-header>
 
 
-<ion-content id="content" padding>
-  <div  style="height:10%;" class ="top" text-center>
-    <button ion-button (click)="conferma()" class ="conferma">Conferma</button>
-    <button ion-button (click)="modifica()" class = "modifica">Modifica</button>
+<ion-content padding>
+  <div class = "map" #map style="height:100%;">
+    <button (click) = "conferma()" value = "conferma" class ="salve"></button>
   </div>
-  <div class = "map" #map style="height:90%;"></div> 
-
+  <button (click) = "conferma()" value = "conferma" class ="salve"></button>
 </ion-content>

@@ -1,6 +1,5 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
@@ -21,7 +20,8 @@ import {EventCreaPage} from '../pages/event-crea/event-crea';
 import {InserisciPage} from '../pages/inserisci/inserisci';
 import { MapPage } from '../pages/map/map';
 import {ProfiloPage} from '../pages/profilo/profilo';
-import {BachecaPage} from '../pages/bacheca/bacheca';
+import { BachecaPage } from '../pages/bacheca/bacheca';
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -31,8 +31,7 @@ import { Dialogs } from '@ionic-native/dialogs';
 import { ShareService } from '../providers/shareService';
 import { Utente } from '../classes/utente';
 import { Camera } from '@ionic-native/camera'
-
-import { GoogleMaps, Spherical} from '@ionic-native/google-maps';
+import { GoogleMaps} from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
 import { GooglePlacesAutocompleteComponentModule } from 'ionic2-google-places-autocomplete';
@@ -46,7 +45,6 @@ import { GooglePlacesAutocompleteComponentModule } from 'ionic2-google-places-au
     WelcomePage,
     LoginPage,
     SignupPage,
-    BachecaPage,
     MapPage,
     ContactPage,
     HomePage,
@@ -78,7 +76,6 @@ import { GooglePlacesAutocompleteComponentModule } from 'ionic2-google-places-au
     SignupPage,
     AboutPage,
     ContactPage,
-    BachecaPage,
     HomePage,
     TabsPage,
     RubricaPage,
@@ -93,7 +90,6 @@ import { GooglePlacesAutocompleteComponentModule } from 'ionic2-google-places-au
   providers: [
     StatusBar,
     SplashScreen,
-    Spherical,
     Dialogs,
     Camera,
     GoogleMaps,
