@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+import {HttpClientModule} from '@angular/common/http';
 
 import {WelcomePage} from '../pages/welcome/welcome';
 import {LoginPage} from '../pages/login/login';
@@ -26,6 +27,7 @@ import { HttpModule } from "@angular/http";
 import { SpeechRecognition } from '@ionic-native/speech-recognition';
 import { Dialogs } from '@ionic-native/dialogs';
 import { ShareService } from '../providers/shareService';
+import { Utente } from '../classes/utente';
 import { Camera } from '@ionic-native/camera'
 
 import { GoogleMaps, Spherical} from '@ionic-native/google-maps';
@@ -52,12 +54,13 @@ import { GooglePlacesAutocompleteComponentModule } from 'ionic2-google-places-au
     EventPage,
     EventCreaPage,
     InserisciPage,
-    ProfiloPage
+    ProfiloPage,
+    BachecaPage
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    FormsModule,
+    HttpClientModule,
     GooglePlacesAutocompleteComponentModule,
     IonicModule.forRoot(MyApp,
         {scrollAssist: false,
@@ -80,7 +83,8 @@ import { GooglePlacesAutocompleteComponentModule } from 'ionic2-google-places-au
     EventPage,
     EventCreaPage,
     InserisciPage,
-    ProfiloPage
+    ProfiloPage,
+    BachecaPage
   ],
   providers: [
     StatusBar,
@@ -93,8 +97,11 @@ import { GooglePlacesAutocompleteComponentModule } from 'ionic2-google-places-au
     NativeGeocoder,
     ShareService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    SpeechRecognition
+    SpeechRecognition,
+    Utente
 
   ]
 })
-export class AppModule {}
+export class AppModule {
+
+}

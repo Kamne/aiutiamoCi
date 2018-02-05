@@ -8,6 +8,7 @@ import { WelcomePage } from '../pages/welcome/welcome';
 import { HomePage } from '../pages/home/home';
 import { RubricaPage } from '../pages/rubrica/rubrica';
 import { RicercaPage } from '../pages/ricerca/ricerca';
+import { BachecaPage } from '../pages/bacheca/bacheca';
 import {EventPage} from '../pages/event/event';
 import {InserisciPage} from '../pages/inserisci/inserisci';
 import {LoginPage} from '../pages/login/login';
@@ -16,6 +17,8 @@ import {ProfiloPage} from '../pages/profilo/profilo';
 import {BachecaPage} from '../pages/bacheca/bacheca';
 import { Events } from 'ionic-angular';
 
+import { ShareService } from '../providers/shareService';
+import { Utente } from '../classes/utente';
 
 @Component({
 
@@ -33,7 +36,8 @@ export class MyApp {
               public menu: MenuController,
               public statusBar: StatusBar,
               public splashScreen: SplashScreen,
-              public events:Events) {
+              public events:Events,
+              public shareService: ShareService) {
 
     this.events.subscribe('image', (img) => {
       this.Image = img;
