@@ -31,7 +31,7 @@ import { Dialogs } from '@ionic-native/dialogs';
 import { ShareService } from '../providers/shareService';
 import { Utente } from '../classes/utente';
 import { Camera } from '@ionic-native/camera'
-import { GoogleMaps} from '@ionic-native/google-maps';
+import { GoogleMaps, Spherical} from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
 import { GooglePlacesAutocompleteComponentModule } from 'ionic2-google-places-autocomplete';
@@ -92,6 +92,7 @@ import { GooglePlacesAutocompleteComponentModule } from 'ionic2-google-places-au
     SplashScreen,
     Dialogs,
     Camera,
+    Spherical,
     GoogleMaps,
     Geolocation,
     NativeGeocoder,
