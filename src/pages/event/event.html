@@ -11,20 +11,26 @@
   </ion-navbar>
 </ion-header>
 
-
 <ion-content padding class="content">
-    <button (click)="creaEvento()" >Crea Evento</button>
+
 
   <ion-list class="list" *ngFor="let e of events">
     <ion-card class="card_">
       <img src="{{e.image}}" />
       <ion-card-title class="card-title">{{e.title}}</ion-card-title>
+
       <p class="card-description">
+        <span><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;{{e.location}}</span><br />
+        <span><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;{{e.datestart}}</span><br /><br />
         {{e.description}}
       </p>
 
     </ion-card>
   </ion-list>
+ <!--   <button (click)="creaEvento()" >Crea Evento</button><br />-->
+  <ion-fab right bottom>
+    <button ion-fab color="bordeaux_"  (click)="creaEvento()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
 </ion-content>
 
 <!--
