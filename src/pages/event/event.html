@@ -13,18 +13,23 @@
 
 
 <ion-content padding class="content">
-    <button (click)="creaEvento()" >Crea Evento</button>
 
   <ion-list class="list" *ngFor="let e of events">
     <ion-card class="card_">
       <img src="{{e.image}}" />
       <ion-card-title class="card-title">{{e.title}}</ion-card-title>
+      <span><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;{{e.location}}<br/></span>
+      <span><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;{{e.datestart}}<br/></span>
       <p class="card-description">
         {{e.description}}
       </p>
 
     </ion-card>
   </ion-list>
+
+  <ion-fab right bottom>
+    <button ion-fab color="bordeaux_"  (click)="creaEvento()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
 </ion-content>
 
 <!--
