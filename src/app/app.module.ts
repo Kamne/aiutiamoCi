@@ -23,6 +23,7 @@ import {ProfiloPage} from '../pages/profilo/profilo';
 import { BachecaPage } from '../pages/bacheca/bacheca';
 
 
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule } from "@angular/http";
