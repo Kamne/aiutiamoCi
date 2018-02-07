@@ -1,5 +1,9 @@
 page-home {
 
+  label{
+    font-size: 17pt;
+    font-weight: bold;
+  }
   #pulsanti_home div{
     width:50%;
     height:50%;
@@ -30,7 +34,7 @@ page-home {
 
   .logo {
     display: block;
-
+    padding-top: 20px;
     margin:0 auto;
     width: 250px;
     height: 170px;
