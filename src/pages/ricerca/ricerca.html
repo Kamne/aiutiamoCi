@@ -53,10 +53,8 @@
         </ion-fab>
       </div>
       <br><br><br><br>
-    <select (change)="onChange(tipologia.value)"  #competenza>
-      <option value="0"  >Tutte le competenze</option>
-      <option value="oss">O.S.S</option>
-    </select>
+    <button (click)="listaCompetenze()"></button>
+
     <div class="checkbox">
       <label>
         <input type="checkbox" name="automunito" value="automunito" #automunito>

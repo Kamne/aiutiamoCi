@@ -34,18 +34,12 @@ result:Array<string>=[];
 other: LatLng;
 index:number;
 distance:number;
-  constructor(public nativeStorage: NativeStorage, geolocation: Geolocation, public nativeGeocoder: NativeGeocoder,public shareService: ShareService,public http:Http,public spherical: Spherical,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public alertCtrl: AlertController,public nativeStorage: NativeStorage, geolocation: Geolocation, public nativeGeocoder: NativeGeocoder,public shareService: ShareService,public http:Http,public spherical: Spherical,public navCtrl: NavController, public navParams: NavParams) {
     this.nativeStorage.setItem('myitem',true)
-  .then(
-    () => console.log('Stored item!'),
-    error => console.error('Error storing item', error)
-  );
+
 
 this.nativeStorage.getItem('myitem')
-  .then(
-    data => console.log("storage",data),
-    error => console.error(error)
-  );
+
   }
 
   ionViewDidLoad() {
@@ -56,7 +50,9 @@ this.nativeStorage.getItem('myitem')
     this.http.post('http://aiutiamoc.altervista.org/ricercaUtenti.php',options).map(res => res.json()).subscribe(   data => {
 
       this.competenze = data.competenze;
-      console.log("competenze",data.competenze[0])
+      for(let data of this.competenze) {
+          this.nativeStorage.setItem(data,true)
+}
       this.indirizzi = data.indirizzi;
 
 
@@ -144,6 +140,36 @@ vaccini(res){
   headers.append('Content-Type', 'application/x-www-form-urlencoded' );
   let options = new RequestOptions({ headers: headers });
 
+}
+
+listaCompetenze(){
+  let alert = this.alertCtrl.create({
+    title: 'Immagine del profilo',
+    cssClass:"alert",
+    inputs: [
+      {
+        name: 'foto',
+        type: 'radio',
+        value:'camera',
+        label:'Fotocamera'
+      },
+      {
+        name: 'foto',
+        type: 'radio',
+        value:'gallery',
+        label:'Galleria'
+      }
+    ],
+
+    buttons: ['Annulla' ,
+    {
+      text: 'Conferma',
+      handler: data => {
+//          this.takeImg(data)
+      }
+    }]
+  });
+  alert.present();
 }
 
 }
