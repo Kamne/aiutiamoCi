@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {WelcomePage} from '../pages/welcome/welcome';
 import {LoginPage} from '../pages/login/login';
 import {SignupPage} from '../pages/signup/signup';
+import {AnnunciPage} from '../pages/annunci/annunci';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
@@ -24,6 +25,7 @@ import { BachecaPage } from '../pages/bacheca/bacheca';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
+import { NativeStorage } from '@ionic-native/native-storage';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule } from "@angular/http";
 import { SpeechRecognition } from '@ionic-native/speech-recognition';
@@ -52,6 +54,7 @@ import { GooglePlacesAutocompleteComponentModule } from 'ionic2-google-places-au
     RubricaPage,
     RicercaPage,
     EventPage,
+    AnnunciPage,
     EventCreaPage,
     InserisciPage,
     ProfiloPage,
@@ -73,6 +76,7 @@ import { GooglePlacesAutocompleteComponentModule } from 'ionic2-google-places-au
     MyApp,
     WelcomePage,
     LoginPage,
+    AnnunciPage,
     SignupPage,
     AboutPage,
     ContactPage,
@@ -91,6 +95,7 @@ import { GooglePlacesAutocompleteComponentModule } from 'ionic2-google-places-au
     StatusBar,
     SplashScreen,
     Dialogs,
+    NativeStorage,
     Camera,
     Spherical,
     GoogleMaps,
