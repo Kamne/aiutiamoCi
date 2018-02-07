@@ -7,6 +7,7 @@ import {
 } from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation';
 import { ShareService } from '../../providers/shareService';
+import { NativeStorage } from '@ionic-native/native-storage';
 import { AlertController } from 'ionic-angular';
 import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult } from '@ionic-native/native-geocoder';
 /**
@@ -26,13 +27,25 @@ import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResul
 })
 export class RicercaPage {
 indirizzi:Array<any>=[];
+competenze:Array<any>=[];
 result:Array<string>=[];
   singleValue:number;
   my: LatLng;
 other: LatLng;
 index:number;
 distance:number;
-  constructor(geolocation: Geolocation, public nativeGeocoder: NativeGeocoder,public shareService: ShareService,public http:Http,public spherical: Spherical,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public nativeStorage: NativeStorage, geolocation: Geolocation, public nativeGeocoder: NativeGeocoder,public shareService: ShareService,public http:Http,public spherical: Spherical,public navCtrl: NavController, public navParams: NavParams) {
+    this.nativeStorage.setItem('myitem',true)
+  .then(
+    () => console.log('Stored item!'),
+    error => console.error('Error storing item', error)
+  );
+
+this.nativeStorage.getItem('myitem')
+  .then(
+    data => console.log("storage",data),
+    error => console.error(error)
+  );
   }
 
   ionViewDidLoad() {
@@ -42,9 +55,10 @@ distance:number;
     let options = new RequestOptions({ headers: headers });
     this.http.post('http://aiutiamoc.altervista.org/ricercaUtenti.php',options).map(res => res.json()).subscribe(   data => {
 
-//     for(var i = 0; i <data.indirizzi.length;i++){
+      this.competenze = data.competenze;
+      console.log("competenze",data.competenze[0])
       this.indirizzi = data.indirizzi;
-  //    console.log(JSON.parse(data.indirizzi[i]).Citta)
+
 
       this.nativeGeocoder.forwardGeocode(this.shareService.getUser().getIndirizzo()+","+this.shareService.getUser().getCitta())
         .then((coordinates: NativeGeocoderForwardResult) =>{
@@ -96,7 +110,6 @@ aiutatm(index){
     .then((coordinates: NativeGeocoderForwardResult) =>{
       var lat = Number(coordinates.latitude);
       var lng = Number(coordinates.longitude);
-      //console.log(JSON.parse(this.indirizzi[this.index]).Indirizzo+","+JSON.parse(this.indirizzi[this.index]).Citta + " vs " + this.shareService.getUser().getIndirizzo()+","+this.shareService.getUser().getCitta());
 
       this.other = new LatLng(lat,lng);
       this.distance = Spherical.computeDistanceBetween(this.my,this.other)
@@ -130,15 +143,7 @@ vaccini(res){
   var headers = new Headers();
   headers.append('Content-Type', 'application/x-www-form-urlencoded' );
   let options = new RequestOptions({ headers: headers });
-  /*var mydata = "{\"risultati\":"+res+"}"
-  console.log("res",mydata)
-  var myData = JSON.stringify({risultati:this});
 
-  console.log(myData);
-  this.http.post('http://aiutiamoc.altervista.org/risultatiRicercaUtenti.php',myData,options).map(res => res.json()).subscribe(   data => {
-  console.log("data");
-
-})*/
 }
 
 }

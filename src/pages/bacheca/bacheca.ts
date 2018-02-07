@@ -39,7 +39,7 @@ export class BachecaPage {
     });
   }
 
-  nuovo_msg(){
+/*  nuovo_msg(){
     let dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
       width: '250px',
       data: { name: this.name, animal: this.animal }
@@ -50,7 +50,7 @@ export class BachecaPage {
       this.animal = result;
     });
 
-  }
+  }*/
   ionViewDidLoad() {
     console.log('ionViewDidLoad BachecaPage');
   }
@@ -62,7 +62,7 @@ export class BachecaPage {
   }
 }
 
-@Component({
+/*@Component({
   selector: 'dialog-overview-example-dialog',
   templateUrl: 'dialog-overview-example-dialog.html',
 })
@@ -76,4 +76,4 @@ export class DialogOverviewExampleDialog {
     this.dialogRef.close();
   }
 
-}
+}*/
