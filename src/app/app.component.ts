@@ -40,7 +40,7 @@ export class MyApp {
 
     this.events.subscribe('image', (img) => {
       this.Image = img;
-  console.log('Welcome', img);
+ // console.log('Welcome', img);
 });
     this.initializeApp();
 
@@ -49,22 +49,22 @@ export class MyApp {
                             { title: 'Home', component: HomePage, icon: 'home' },
                             { title: 'Inserisci Annuncio', component: InserisciPage, icon: 'create'  },
                             { title: 'Bacheca', component: BachecaPage, icon: 'paper' },
-                            { title: 'Rubrica', component: RubricaPage, icon: 'bookmarks' },
-                            { title: 'Cerca Assistente', component: WelcomePage, icon: 'search' },
+                         //   { title: 'Rubrica', component: RubricaPage, icon: 'bookmarks' },
+                         //   { title: 'Cerca Assistente', component: WelcomePage, icon: 'search' },
                             { title: 'Eventi', component: EventPage, icon: 'people' },
                       ]},
       {label:'utente',items:[
                             { title: 'Profilo', component: ProfiloPage, icon: 'contact' },
-                            { title: 'Info - FAQ', component: WelcomePage, icon: 'information-circle' },
+                        //    { title: 'Info - FAQ', component: WelcomePage, icon: 'information-circle' },
                             ]},
 
       {label:'setting',items:[
-                            { title: 'Opzioni Amministratore', component: WelcomePage, icon: 'construct' }
+                      //      { title: 'Opzioni Amministratore', component: WelcomePage, icon: 'construct' }
                             ]},
       {label:'',items:[
                             { title: 'Login', component: LoginPage, icon: 'log-in' },
                             { title: 'Registrati', component: SignupPage, icon: 'log-in' },
-                            { title: 'Logout', component: WelcomePage, icon: 'log-out' }
+                      //      { title: 'Logout', component: WelcomePage, icon: 'log-out' }
       ]},
         {label:'ricerca',items:[
             { title: 'Ricerca', component: RicercaPage, icon: 'search' }
@@ -79,7 +79,7 @@ export class MyApp {
         // Okay, so the platform is ready and our plugins are available.
         // Here you can do any higher level native things you might need.
         this.statusBar.styleDefault();
-        this.splashScreen.hide();
+     //   this.splashScreen.hide();
       });
     }
   openPage(page)

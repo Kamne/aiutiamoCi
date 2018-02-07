@@ -57,6 +57,7 @@ page-login {
     #usignup {
         text-align: center;
         margin-top: 10%;
+
         button{
             background-color: color($colors, lightblack_2);
             text-align: center;
@@ -64,7 +65,7 @@ page-login {
             width: 100%;
             padding: 5%;
             border: 0;
-
+            font-size: 1.1em;
         }
 
         /*

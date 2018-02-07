@@ -17,15 +17,20 @@
 <div *ngFor="let post of posts">
     <div id="post" >
       <div id="nome-contatti">
-        <b>{{post.username}}</b>
-        <div style="float:right;" >
+        <h2>
+          {{post.username}}
+        </h2>
+        <div style="float: left; " >
 
           <i id="pulsante" class="fa fa-envelope-square  fa-2x" aria-hidden="true"></i>
           <i id="pulsante" class="fa fa-phone-square  fa-2x" aria-hidden="true"></i>
+
         </div>
 
       </div>
       <div id="testo">
+        <br />
+        <br />
         {{post.testo}}
       </div>
       <div id="data">

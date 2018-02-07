@@ -33,10 +33,9 @@ export class ProfiloPage {
               public navParams: NavParams,
               public events:Events,
               public shareService: ShareService) {
-    this.events.subscribe('image', (img) => {
-      this.Image = img;
-      console.log('Welcome', img);
-    });
+    console.log('Welcome', shareService.getUser().getImg());
+    this.Image =  shareService.getUser().getImg();
+
   }
 
   ionViewDidLoad() {

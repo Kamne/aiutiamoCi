@@ -5,11 +5,14 @@ import {
  GoogleMap,
  GoogleMapsEvent,
  LatLng,
+ Spherical,
  MarkerOptions,
  Marker
 } from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation';
+import { AlertController } from 'ionic-angular';
 import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult } from '@ionic-native/native-geocoder';
+import { Events } from 'ionic-angular';
 /**
  * Generated class for the MapPage page.
  *
@@ -28,16 +31,24 @@ import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResul
 export class MapPage {
   lat:number
   lng:number
-  street: string
+  street:string
   map:any
+
+/*  nyc: LatLng = new LatLng(40.8563100,14.2464100);
+london: LatLng = new LatLng(45.4642700,9.1895100);*/
 
   @ViewChild('map') element;
 
-  constructor(public googleMaps: GoogleMaps, public plt: Platform, public nav: NavController, geolocation: Geolocation, public nativeGeocoder: NativeGeocoder) {
+  constructor(public event:Events,public googleMaps: GoogleMaps, public alertCtrl: AlertController, public plt: Platform, public nav: NavController, geolocation: Geolocation, public nativeGeocoder: NativeGeocoder) {
     plt.ready().then(() => {
+      console.log("piattaforma pronta");
+      //this.googleMaps.spherical().computeDistanceBetween(a, b)
+    //  console.log(this.spherical.computeDistanceBetween(this.nyc, this.london))
       geolocation.getCurrentPosition().then((location) => {
+
             this.lat = location.coords.latitude
             this.lng = location.coords.longitude
+            console.log("lat:"+this.lat,"lng:"+this.lng)
             this.initMap()
   console.log(location);
 
@@ -49,41 +60,21 @@ export class MapPage {
 });
   }
 
-  detail(event) {
-this.map.clear()
-console.log(event)
-this.nativeGeocoder.forwardGeocode(event.description)
-  .then((coordinates: NativeGeocoderForwardResult) =>{
-    let coordinate: LatLng = new LatLng(Number(coordinates.latitude),Number(coordinates.longitude));
-    let position = {
-      target: coordinate,
-      zoom: 17
-    };
-    this.map.animateCamera(position);
-      this.createMarker(coordinate,this.map,event.description)
-     console.log('The coordinates are latitude=' + coordinates.latitude + ' and longitude=' + coordinates.longitude)
-     console.log("position value :"+position)
 
-   })
-
-
-  .catch((error: any) => console.log("OMG "+error));
-
- }
 
  initMap() {
-
-  let map: GoogleMap = this.googleMaps.create(this.element.nativeElement);
+   console.log("sto creando la mappa");
+  let map: GoogleMap = GoogleMaps.create(this.element.nativeElement);
   this.map = map
   map.one(GoogleMapsEvent.MAP_READY).then((data: any) => {
-
-
-
     let coordinates: LatLng = new LatLng(this.lat, this.lng);
     this.nativeGeocoder.reverseGeocode(this.lat, this.lng).then((result: NativeGeocoderReverseResult) => {
-      this.street = result.thoroughfare+","+result.locality
+      if(result.subThoroughfare != undefined)
+        this.street = result.thoroughfare+" "+result.subThoroughfare+","+result.locality+","+result.subAdministrativeArea.split("-")[0].split(" ")[result.subAdministrativeArea.split("-")[0].split(" ").length-1]
+      else
+        this.street = result.thoroughfare+","+result.locality+","+result.subAdministrativeArea.split(" ")[result.subAdministrativeArea.split(" ").length-1]
       this.createMarker(coordinates,map,this.street)
-  console.log(result);
+  console.log(result.subAdministrativeArea.split("-")[0]);
   console.log(result.countryName);
 })
     console.log("coords:"+this.lat +" " + this.lng)
@@ -91,7 +82,7 @@ this.nativeGeocoder.forwardGeocode(event.description)
       target: coordinates,
       zoom: 17
     };
-
+    console.log("aiutatm")
     map.animateCamera(position);
 
 
@@ -101,16 +92,92 @@ this.nativeGeocoder.forwardGeocode(event.description)
   ionViewDidLoad() {
     console.log('ionViewDidLoad MapPage');
   }
+
+
 createMarker(coordinates,map,street){
+  console.log("create marker "+coordinates)
   let markerOptions: MarkerOptions = {
     position: coordinates,
     icon: "assets/images/icons8-Marker-64.png",
     title: street
   };
-
+  map.clear();
   const marker = map.addMarker(markerOptions)
     .then((marker: Marker) => {
       marker.showInfoWindow();
   });
+
+  let position = {
+    target: coordinates,
+    zoom: 17
+  };
+
+  map.animateCamera(position);
+
 }
+
+  conferma(){
+    this.event.publish('maps', this.street.split(","));
+    this.nav.pop();
+  }
+
+  modifica() {
+    let alert = this.alertCtrl.create({
+      title: 'Modifica indirizzo',
+      cssClass:"alert",
+      inputs: [
+        {
+          name: 'indirizzo',
+          placeholder: 'Indirizzo'
+        },
+        {
+          name: 'citta',
+          placeholder: 'citta'
+        }
+      ],
+
+      buttons: ['Annulla' ,
+      {
+        text: 'Conferma',
+        handler: data => {
+            this.findMarker(data.indirizzo,data.citta,this.map);
+        }
+      }]
+    });
+    alert.present();
+  }
+
+  findMarker(findPosition,citta,map) {
+    console.log(""+findPosition)
+    this.nativeGeocoder.forwardGeocode(findPosition+","+citta)
+      .then((coordinates: NativeGeocoderForwardResult) =>{
+        console.log("sto qua")
+        var lat = Number(coordinates.latitude);
+        var lng = Number(coordinates.longitude);
+        console.log(""+lat);
+        let coordinate: LatLng = new LatLng(lat,lng);
+        console.log('The coordinates are latitude=' + coordinates.latitude + ' and longitude=' + coordinates.longitude)
+        this.street = ""
+        this.nativeGeocoder.reverseGeocode(lat,lng).then((result: NativeGeocoderReverseResult) => {
+          if(result.thoroughfare != undefined)
+            this.street = this.street + result.thoroughfare;
+          if(result.subThoroughfare != undefined)
+            this.street = this.street+" "+result.subThoroughfare
+            if(result.locality != undefined)
+              this.street = this.street + ","+ result.locality;
+              if(result.subAdministrativeArea != undefined)
+                this.street = this.street + ","+ result.subAdministrativeArea.split(" ")[result.subAdministrativeArea.split(" ").length-1];
+
+          this.createMarker(coordinate,map,this.street)
+      console.log(result);
+      console.log(result.countryName);
+    })
+
+
+      })
+      .catch((error: any) => console.log(error));
+  }
+
+
+
 }

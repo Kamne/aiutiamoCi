@@ -40,6 +40,7 @@ export class BachecaPage {
   }
 
   nuovo_msg(){
+    /*
     let dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
       width: '250px',
       data: { name: this.name, animal: this.animal }
@@ -49,7 +50,7 @@ export class BachecaPage {
       console.log('The dialog was closed');
       this.animal = result;
     });
-
+    */
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad BachecaPage');
@@ -61,7 +62,7 @@ export class BachecaPage {
     return this.http.get(this.configUrl);
   }
 }
-
+/*
 @Component({
   selector: 'dialog-overview-example-dialog',
   templateUrl: 'dialog-overview-example-dialog.html',
@@ -77,3 +78,4 @@ export class DialogOverviewExampleDialog {
   }
 
 }
+*/
