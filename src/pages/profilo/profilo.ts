@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {AnnunciPage} from '../annunci/annunci';
+
 import { ShareService } from '../../providers/shareService';
 import { Utente } from '../../classes/utente';
 import { Events } from 'ionic-angular';
