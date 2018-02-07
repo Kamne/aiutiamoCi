@@ -2,7 +2,9 @@ import { Component, Inject } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from "@angular/http";
 import { Dialogs } from '@ionic-native/dialogs';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { InserisciPage } from '../inserisci/inserisci';
+
+
 
 /**
  * Generated class for the BachecaPage page.
@@ -25,8 +27,7 @@ export class BachecaPage {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public http: Http,
-              public dialogs: Dialogs,
-              public dialog: MatDialog) {
+              public dialogs: Dialogs) {
 
     this.getConfig().map(res => res.json()).subscribe(   data => {
       console.log(data);
@@ -40,15 +41,7 @@ export class BachecaPage {
   }
 
   nuovo_msg(){
-    let dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      width: '250px',
-      data: { name: this.name, animal: this.animal }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.animal = result;
-    });
+    this.navCtrl.push(InserisciPage);
 
   }
   ionViewDidLoad() {
@@ -60,20 +53,4 @@ export class BachecaPage {
   getConfig() {
     return this.http.get(this.configUrl);
   }
-}
-
-@Component({
-  selector: 'dialog-overview-example-dialog',
-  templateUrl: 'dialog-overview-example-dialog.html',
-})
-export class DialogOverviewExampleDialog {
-
-  constructor(
-      public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-      @Inject(MAT_DIALOG_DATA) public data: any) { }
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
 }
