@@ -3,7 +3,9 @@ page-bacheca {
     background: color($colors, lightgrey_);
 
   }
-
+  #username{
+    font-size: 12pt;
+  }
   #post{
     background: color($colors, white);
     padding: 10px;
@@ -18,6 +20,7 @@ page-bacheca {
     padding-top: 15px;
     padding-bottom: 15px;
     font-size: 1.2em;
+
   }
   #nome-contatti{
     padding-top: 5px;

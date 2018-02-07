@@ -39,7 +39,12 @@ export class BachecaPage {
     });
   }
 
+<<<<<<< HEAD
 /*  nuovo_msg(){
+=======
+  nuovo_msg(){
+    /*
+>>>>>>> bf9ace7917485c8e8e79ddaab3c3d7cef6eb038a
     let dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
       width: '250px',
       data: { name: this.name, animal: this.animal }
@@ -49,8 +54,13 @@ export class BachecaPage {
       console.log('The dialog was closed');
       this.animal = result;
     });
+<<<<<<< HEAD
 
   }*/
+=======
+    */
+  }
+>>>>>>> bf9ace7917485c8e8e79ddaab3c3d7cef6eb038a
   ionViewDidLoad() {
     console.log('ionViewDidLoad BachecaPage');
   }
@@ -61,8 +71,13 @@ export class BachecaPage {
     return this.http.get(this.configUrl);
   }
 }
+<<<<<<< HEAD
 
 /*@Component({
+=======
+/*
+@Component({
+>>>>>>> bf9ace7917485c8e8e79ddaab3c3d7cef6eb038a
   selector: 'dialog-overview-example-dialog',
   templateUrl: 'dialog-overview-example-dialog.html',
 })
@@ -76,4 +91,9 @@ export class DialogOverviewExampleDialog {
     this.dialogRef.close();
   }
 
+<<<<<<< HEAD
 }*/
+=======
+}
+*/
+>>>>>>> bf9ace7917485c8e8e79ddaab3c3d7cef6eb038a
