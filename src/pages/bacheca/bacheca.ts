@@ -37,30 +37,11 @@ export class BachecaPage {
         this.dialogs.alert("Valori errati")
       }
     });
+  
+
+
   }
 
-<<<<<<< HEAD
-/*  nuovo_msg(){
-=======
-  nuovo_msg(){
-    /*
->>>>>>> bf9ace7917485c8e8e79ddaab3c3d7cef6eb038a
-    let dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      width: '250px',
-      data: { name: this.name, animal: this.animal }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.animal = result;
-    });
-<<<<<<< HEAD
-
-  }*/
-=======
-    */
-  }
->>>>>>> bf9ace7917485c8e8e79ddaab3c3d7cef6eb038a
   ionViewDidLoad() {
     console.log('ionViewDidLoad BachecaPage');
   }
@@ -71,29 +52,3 @@ export class BachecaPage {
     return this.http.get(this.configUrl);
   }
 }
-<<<<<<< HEAD
-
-/*@Component({
-=======
-/*
-@Component({
->>>>>>> bf9ace7917485c8e8e79ddaab3c3d7cef6eb038a
-  selector: 'dialog-overview-example-dialog',
-  templateUrl: 'dialog-overview-example-dialog.html',
-})
-export class DialogOverviewExampleDialog {
-
-  constructor(
-      public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-      @Inject(MAT_DIALOG_DATA) public data: any) { }
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
-<<<<<<< HEAD
-}*/
-=======
-}
-*/
->>>>>>> bf9ace7917485c8e8e79ddaab3c3d7cef6eb038a
