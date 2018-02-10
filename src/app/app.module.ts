@@ -22,6 +22,7 @@ import {InserisciPage} from '../pages/inserisci/inserisci';
 import { MapPage } from '../pages/map/map';
 import {ProfiloPage} from '../pages/profilo/profilo';
 import { BachecaPage } from '../pages/bacheca/bacheca';
+import { ListaCompetenzePage } from '../pages/lista-competenze/lista-competenze';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -47,6 +48,7 @@ import { GooglePlacesAutocompleteComponentModule } from 'ionic2-google-places-au
     WelcomePage,
     LoginPage,
     SignupPage,
+    ListaCompetenzePage,
     MapPage,
     ContactPage,
     HomePage,
@@ -82,6 +84,7 @@ import { GooglePlacesAutocompleteComponentModule } from 'ionic2-google-places-au
     ContactPage,
     HomePage,
     TabsPage,
+    ListaCompetenzePage,
     RubricaPage,
     RicercaPage,
     MapPage,
