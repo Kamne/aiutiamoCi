@@ -9,20 +9,6 @@
     <ion-title>Ricerca</ion-title>
   </ion-navbar>
 </ion-header>
-<!--
-<ion-header>
-  <ion-navbar>
-
-    <button ion-button clear large navPop>
-      <ion-icon name="arrow-dropleft"></ion-icon>
-    </button>
-
-    <ion-title>
-      ....
-    </ion-title>
-  </ion-navbar>
-</ion-header>
--->
 
 <ion-content padding class="content">
   <br />
@@ -53,7 +39,7 @@
         </ion-fab>
       </div>
       <br><br><br><br>
-    <button (click)="listaCompetenze()"></button>
+    <button ion-button block (click)="openModal()">Open Modal</button>
 
     <div class="checkbox">
       <label>
@@ -99,10 +85,8 @@
       </ion-fab>
     </div>
     <br><br><br>
-    <select (change)="onChange(tipologia.value)"  #competenza>
-      <option value="0"  >Tutte le competenze</option>
-      <option value="oss">O.S.S</option>
-    </select>
+<button ion-button block (click)="openModal()">Open Modal</button>
+
     <div class="checkbox">
       <label>
         <input type="checkbox" name="automunito" value="automunito" #automunito>

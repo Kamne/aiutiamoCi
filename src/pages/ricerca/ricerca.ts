@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from "@angular/http";
 import {
  LatLng,
@@ -10,15 +10,7 @@ import { ShareService } from '../../providers/shareService';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { AlertController } from 'ionic-angular';
 import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult } from '@ionic-native/native-geocoder';
-/**
- * Generated class for the RicercaPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
-
-
+import { ListaCompetenzePage } from '../lista-competenze/lista-competenze';
 
 @IonicPage()
 @Component({
@@ -27,6 +19,7 @@ import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResul
 })
 export class RicercaPage {
 indirizzi:Array<any>=[];
+compSelected:Array<boolean>=[];
 competenze:Array<any>=[];
 result:Array<string>=[];
   singleValue:number;
@@ -34,7 +27,7 @@ result:Array<string>=[];
 other: LatLng;
 index:number;
 distance:number;
-  constructor(public alertCtrl: AlertController,public nativeStorage: NativeStorage, geolocation: Geolocation, public nativeGeocoder: NativeGeocoder,public shareService: ShareService,public http:Http,public spherical: Spherical,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public modalCtrl: ModalController,public alertCtrl: AlertController,public nativeStorage: NativeStorage, geolocation: Geolocation, public nativeGeocoder: NativeGeocoder,public shareService: ShareService,public http:Http,public spherical: Spherical,public navCtrl: NavController, public navParams: NavParams) {
     this.nativeStorage.setItem('myitem',true)
 
 
@@ -50,9 +43,8 @@ this.nativeStorage.getItem('myitem')
     this.http.post('http://aiutiamoc.altervista.org/ricercaUtenti.php',options).map(res => res.json()).subscribe(   data => {
 
       this.competenze = data.competenze;
-      for(let data of this.competenze) {
-          this.nativeStorage.setItem(data,true)
-}
+
+
       this.indirizzi = data.indirizzi;
 
 
@@ -142,34 +134,19 @@ vaccini(res){
 
 }
 
-listaCompetenze(){
-  let alert = this.alertCtrl.create({
-    title: 'Immagine del profilo',
-    cssClass:"alert",
-    inputs: [
-      {
-        name: 'foto',
-        type: 'radio',
-        value:'camera',
-        label:'Fotocamera'
-      },
-      {
-        name: 'foto',
-        type: 'radio',
-        value:'gallery',
-        label:'Galleria'
-      }
-    ],
+userName: string;
 
-    buttons: ['Annulla' ,
-    {
-      text: 'Conferma',
-      handler: data => {
-//          this.takeImg(data)
-      }
-    }]
+openModal() {
+  let obj = {comp: this.competenze, select: this.compSelected};
+  let myModal = this.modalCtrl.create(ListaCompetenzePage,obj);
+  myModal.present();
+
+  myModal.onDidDismiss(data => {
+
+    this.compSelected = data;
+    console.log("ho ricevuto dal modal",this.compSelected)
   });
-  alert.present();
+
 }
 
 }
