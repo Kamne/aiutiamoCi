@@ -26,6 +26,10 @@ import { ListaCompetenzePage } from '../pages/lista-competenze/lista-competenze'
 
 
 import { StatusBar } from '@ionic-native/status-bar';
+import {FaqPage} from "../pages/faq/faq";
+import {FaqAdminPage} from "../pages/faq-admin/faq-admin";
+
+import {DiventaAssistentePage} from '../pages/diventa-assistente/diventa-assistente';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule } from "@angular/http";
@@ -60,7 +64,10 @@ import { GooglePlacesAutocompleteComponentModule } from 'ionic2-google-places-au
     EventCreaPage,
     InserisciPage,
     ProfiloPage,
-    BachecaPage
+    BachecaPage,
+    FaqAdminPage,
+    FaqPage,
+    DiventaAssistentePage
   ],
   imports: [
     BrowserModule,
@@ -92,7 +99,10 @@ import { GooglePlacesAutocompleteComponentModule } from 'ionic2-google-places-au
     EventCreaPage,
     InserisciPage,
     ProfiloPage,
-    BachecaPage
+    BachecaPage,
+    FaqAdminPage,
+    FaqPage,
+    DiventaAssistentePage
   ],
   providers: [
     StatusBar,
@@ -108,7 +118,6 @@ import { GooglePlacesAutocompleteComponentModule } from 'ionic2-google-places-au
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SpeechRecognition,
     Utente
-
   ]
 })
 export class AppModule {
