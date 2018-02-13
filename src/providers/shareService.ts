@@ -6,13 +6,15 @@ export class ShareService {
     user : any;
     firstName: string;
     lastName: string;
+    myCompetenze:Array<string>
+    allCompetenze:Array<string>
 
     constructor() {
 
     }
 
     getUser() {
-      
+
         return this.user;
     }
 
@@ -20,4 +22,22 @@ export class ShareService {
         console.log(user)
         this.user = user;
     }
+
+    getMyCompetenze(){
+      return this.myCompetenze;
+    }
+
+    setMyCompetenze(competenze){
+       this.myCompetenze = competenze;
+    }
+
+    getAllCompetenze(){
+      return this.allCompetenze;
+    }
+
+    setAllCompetenze(competenze){
+       this.allCompetenze = competenze;
+    }
+
+
 }
