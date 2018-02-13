@@ -15,11 +15,12 @@
 
 <ion-content padding>
 <div class="dio">
-    <ion-list *ngFor="let post of competenze" >
-      <ion-item>
-        <ion-checkbox checked = "{{comp[post]}}" (ionChange)="selected(post)"></ion-checkbox>
+  <b>Clicca per selezionare le competenze</b>
+    <ion-list>
+      <ion-item   *ngFor="let post of shareService.getAllCompetenze()"  (click)="selected(post)">
+        <ion-label>{{post}}</ion-label>
     </ion-item>
-      <b class = "barone">{{post}} </b>
+
     </ion-list>
 </div>
 <div>

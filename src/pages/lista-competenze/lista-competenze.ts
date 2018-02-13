@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ViewController } from 'ionic-angular';
 import { NativeStorage } from '@ionic-native/native-storage';
+import { ShareService } from '../../providers/shareService';
 
 @IonicPage()
 @Component({
@@ -10,21 +11,12 @@ import { NativeStorage } from '@ionic-native/native-storage';
 })
 export class ListaCompetenzePage {
 comp: Array<boolean> = [];
-competenze: Array<string> = this.navParams.get('comp');
-compselected: Array<string> = this.navParams.get('select');
-  constructor(public  nativeStorage:NativeStorage,public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
-    console.log("compSelected",this.compselected)
-    console.log("competenze",this.competenze)
-    for(let data of this.competenze) {
-      if(this.compselected.indexOf(data) <0)
-          this.comp[data] = false;
-      else
-        this.comp[data] = true;
-    }
-    console.log("ciccio",this.comp)
-
-
-console.log("",this.comp)
+allCompetenze: Array<string> = this.shareService.getAllCompetenze() ;
+myCompetenze: Array<string> = this.shareService.getMyCompetenze() ;
+  constructor(public shareService: ShareService,public  nativeStorage:NativeStorage,public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
+    console.log("compSelected",this.myCompetenze)
+    console.log("competenze",this.allCompetenze)
+    console.log(navParams.get("id"));
   }
 
   ionViewDidLoad() {
@@ -32,20 +24,15 @@ console.log("",this.comp)
   }
 
   closeModal() {
-    this.viewCtrl.dismiss(this.compselected);
+    this.viewCtrl.dismiss(this.myCompetenze);
   }
 
   selected(name:string){
-    console.log(this.comp[name] )
-    this.comp[name] = !this.comp[name];
-    console.log(this.comp[name] )
-    if(this.comp[name]){
-      this.compselected.push(name)
-    }
-    else{
-      var idx = this.compselected.indexOf(name);
-      this.compselected.splice(idx, 1);
-  }
-  console.log(this.compselected)
+      var idx = this.allCompetenze.indexOf(name);
+      this.allCompetenze.splice(idx, 1);
+      this.shareService.setAllCompetenze(this.allCompetenze);
+      this.myCompetenze.push(name);
+      this.shareService.setMyCompetenze(this.myCompetenze);
+    //  this.shareService.setAllCompetenze(this.allCompetenze);
 }
 }
