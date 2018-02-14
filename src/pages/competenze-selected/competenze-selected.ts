@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ShareService } from '../../providers/shareService';
+import { Events } from 'ionic-angular';
+
 /**
  * Generated class for the CompetenzeSelectedPage page.
  *
@@ -16,11 +18,11 @@ import { ShareService } from '../../providers/shareService';
 export class CompetenzeSelectedPage {
 
   comp: Array<boolean> = [];
-  allCompetenze: Array<string> = this.shareService.getAllCompetenze() ;
+  allCompetenze: Array<string> = this.shareService.getOtherCompetenze() ;
   myCompetenze: Array<string> = this.shareService.getMyCompetenze() ;
 
 
-  constructor(public shareService: ShareService,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public events: Events,public shareService: ShareService,public navCtrl: NavController, public navParams: NavParams) {
     console.log("compSelected",this.myCompetenze)
     console.log("competenze",this.allCompetenze)
     console.log(navParams.get("id"));
@@ -35,8 +37,13 @@ export class CompetenzeSelectedPage {
       this.myCompetenze.splice(idx, 1);
       this.shareService.setMyCompetenze(this.myCompetenze);
       this.allCompetenze.push(name);
-      this.shareService.setAllCompetenze(this.allCompetenze);
+      this.shareService.setOtherCompetenze(this.allCompetenze);
     //  this.shareService.setAllCompetenze(this.allCompetenze);
+}
+
+closeModal() {
+  this.events.publish('closeModal', this.myCompetenze);
+  //this.viewCtrl.dismiss(this.myCompetenze);
 }
 
 }
