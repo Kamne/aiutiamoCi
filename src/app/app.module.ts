@@ -40,7 +40,6 @@ import { Camera } from '@ionic-native/camera'
 import { GoogleMaps, Spherical} from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
-import { GooglePlacesAutocompleteComponentModule } from 'ionic2-google-places-autocomplete';
 
 
 
@@ -74,7 +73,6 @@ import { GooglePlacesAutocompleteComponentModule } from 'ionic2-google-places-au
     MatDialogModule,
     HttpModule,
     HttpClientModule,
-    GooglePlacesAutocompleteComponentModule,
     IonicModule.forRoot(MyApp,
         {scrollAssist: false,
         autoFocusAssist: false})
