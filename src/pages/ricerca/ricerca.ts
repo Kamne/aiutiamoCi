@@ -10,7 +10,7 @@ import { ShareService } from '../../providers/shareService';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { AlertController } from 'ionic-angular';
 import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult } from '@ionic-native/native-geocoder';
-import { ListaCompetenzePage } from '../lista-competenze/lista-competenze';
+import { TabsPage } from '../tabs/tabs';
 
 @IonicPage()
 @Component({
@@ -19,11 +19,11 @@ import { ListaCompetenzePage } from '../lista-competenze/lista-competenze';
 })
 export class RicercaPage {
 indirizzi:Array<any>=[];
-compSelected:Array<boolean>=[];
-competenze:Array<any>=[];
+searchCompetenze:Array<string>=[];
+allCompetenze:Array<any>=[];
 result:Array<string>=[];
-  singleValue:number;
-  my: LatLng;
+singleValue:number;
+my: LatLng;
 other: LatLng;
 index:number;
 distance:number;
@@ -41,13 +41,8 @@ this.nativeStorage.getItem('myitem')
     headers.append('Content-Type', 'application/x-www-form-urlencoded' );
     let options = new RequestOptions({ headers: headers });
     this.http.post('http://aiutiamoc.altervista.org/ricercaUtenti.php',options).map(res => res.json()).subscribe(   data => {
-
-      this.competenze = data.competenze;
-
-
+      this.allCompetenze = data.competenze;
       this.indirizzi = data.indirizzi;
-
-
       this.nativeGeocoder.forwardGeocode(this.shareService.getUser().getIndirizzo()+","+this.shareService.getUser().getCitta())
         .then((coordinates: NativeGeocoderForwardResult) =>{
           var lat = Number(coordinates.latitude);
@@ -86,10 +81,8 @@ this.index = 0;
 for( this.index = 0; this.index <this.indirizzi.length;this.index++){
       this.aiutatm(this.index);
 }
-console.log("ho finito il for",this.result);
-
 this.vaccini(this.result);
-console.log("end vaccini");
+
 }
 
 
@@ -105,7 +98,7 @@ aiutatm(index){
         this.result.push(JSON.parse(this.indirizzi[index]).Username)
         console.log("username",JSON.parse(this.indirizzi[index]).Username)
     }
-    var myData = JSON.stringify({risultati:this.result});
+    var myData = JSON.stringify({risultati:this.result,competenze:this.searchCompetenze});
 
     if(index == (this.indirizzi.length-1)){
       var headers = new Headers();
@@ -137,14 +130,20 @@ vaccini(res){
 userName: string;
 
 openModal() {
-  let obj = {comp: this.competenze, select: this.compSelected};
-  let myModal = this.modalCtrl.create(ListaCompetenzePage,obj);
+
+  this.shareService.setMyCompetenze(this.searchCompetenze)
+  this.shareService.setOtherCompetenze(this.allCompetenze)
+  let obj = {page: false};
+  let myModal = this.modalCtrl.create(TabsPage,obj);
   myModal.present();
-
   myModal.onDidDismiss(data => {
+    if(data != undefined){
+      this.searchCompetenze = data;
+      this.allCompetenze= this.shareService.getOtherCompetenze();
 
-    this.compSelected = data;
-    console.log("ho ricevuto dal modal",this.compSelected)
+      this.shareService.setOtherCompetenze(this.allCompetenze)
+    }
+
   });
 
 }
