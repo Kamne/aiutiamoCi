@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {SignupPage} from '../signup/signup';
+import {RegistrazionePage} from '../registrazione/registrazione';
 import {HomePage} from '../home/home';
 import { ShareService } from '../../providers/shareService';
 import { Utente } from '../../classes/utente';
+import { Associazione } from '../../classes/associazione';
 import { Dialogs } from '@ionic-native/dialogs';
 
 import { Http, Headers, RequestOptions } from "@angular/http";
@@ -39,13 +40,21 @@ export class LoginPage {
   this.http.post('http://aiutiamoc.altervista.org/login.php',myData).map(res => res.json()).subscribe(   data => {
   console.log(data);
   if(data.success){
+    if(data.user.Tipologia == "Associazione"){
+      this.shareService.setUser(new Associazione(data.user.Nome,data.user.Username,data.user.Immagine,
+                                           data.user.Descr,data.user.Fondata,data.user.PartitaIVA,
+                                           data.user.Citta,data.user.Provincia,data.user.Indirizzo,
+                                           data.user.Email,data.user.NumTelefono,data.user.Tipologia))
+      this.event.publish('image', data.user.Immagine);
+    }
+    else{
     var competenze = data.user.Competenze.split(",")
-    console.log(competenze)
+
     this.shareService.setUser(new Utente(data.user.Nome,data.user.Cognome,data.user.Username,data.user.Immagine,
                                          data.user.Nato,competenze,data.user.TitoloStudio,data.user.CF,
                                          data.user.Citta,data.user.Provincia,data.user.Indirizzo,
                                          data.user.Email,data.user.NumTelefono,data.user.Tipologia))
-    this.event.publish('image', data.user.Immagine);
+    this.event.publish('image', data.user.Immagine);}
     this.navCtrl.setRoot(HomePage)
   }
 
@@ -57,7 +66,7 @@ export class LoginPage {
 }
 
 signup() {
-  this.navCtrl.push(SignupPage);
+  this.navCtrl.push(RegistrazionePage);
 }
 
 }
