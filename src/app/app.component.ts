@@ -15,9 +15,14 @@ import {LoginPage} from '../pages/login/login';
 import {SignupPage} from '../pages/signup/signup';
 import {ProfiloPage} from '../pages/profilo/profilo';
 import { Events } from 'ionic-angular';
+import {FaqPage} from "../pages/faq/faq";
+import {FaqAdminPage} from "../pages/faq-admin/faq-admin";
 
+import {DiventaAssistentePage} from '../pages/diventa-assistente/diventa-assistente';
 import { ShareService } from '../providers/shareService';
 import { Utente } from '../classes/utente';
+
+
 
 @Component({
 

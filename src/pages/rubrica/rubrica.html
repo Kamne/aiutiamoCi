@@ -16,10 +16,31 @@
     </ion-searchbar>
   </div>
 
-  <div class="menu">
+ <!-- <div class="menu">
     <ul >
       <li><a (click)="openPage(item)">Utente</a></li>
       <li><a (click)="loadPage('annunci')">Associazione</a></li>
     </ul>
+  </div> -->
+
+  <div id="div_segment">
+    <ion-segment [ngModel]="relationship" color="primary">
+        <ion-segment-button value="assistenti" (ionSelect)="getAssistenti()">
+          Assistente
+        </ion-segment-button>
+        <ion-segment-button value="associazioni" (ionSelect)="getAssociazioni()">
+          Associazione
+        </ion-segment-button>
+    </ion-segment>
   </div>
+  <div id="div_listSegment"[ngSwitch]="relationship">
+    <ion-list>
+     <ion-item *ngFor="let src of data.response">
+       {{src}}
+       <ion-icon name="mail" id="mail"></ion-icon>
+       <ion-icon name="call" id="call"></ion-icon>
+      </ion-item>
+    </ion-list>
+  </div>
+
 </ion-content>
