@@ -31,11 +31,11 @@ export class ShareService {
        this.myCompetenze = competenze;
     }
 
-    getAllCompetenze(){
+    getOtherCompetenze(){
       return this.allCompetenze;
     }
 
-    setAllCompetenze(competenze){
+    setOtherCompetenze(competenze){
        this.allCompetenze = competenze;
     }
 

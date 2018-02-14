@@ -36,14 +36,14 @@
               <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
           </div>
 
-          <div class="inputWithIcon" id="cognome">
+          <div class="inputWithIcon" id="cognome" *ngIf ="!showAssociazione">
               <input type="text" [value]="cognome" placeholder="Cognome" />
               <i class="fa fa-users" aria-hidden="true"></i>
           </div>
 
           <div class="inputWithIcon">
 
-            <select name="tipologia"  #sesso>
+            <select *ngIf ="!showAssociazione" name="tipologia"  #sesso>
                 <option value="" disabled selected hidden >Sesso</option>
                 <option value="Maschile">Maschile</option>
                 <option value="Femminile">Femminile</option>
@@ -63,13 +63,13 @@
 
 
 
-          <div class="inputWithIcon" id="descr" style="display: none">
+          <div *ngIf ="showAssociazione" class="inputWithIcon" id="descr">
               <textarea rows="5" [value]="descr" cols="26" placeholder="Descrivi l'associazione"></textarea>
           </div>
 
 
 
-          <div class="inputWithIcon" style="display: none" id="iva">
+          <div *ngIf ="showAssociazione" class="inputWithIcon"  id="iva">
               <input type="text" [value]="iva" placeholder="Partita Iva" />
               <i class="fa fa-cogs" aria-hidden="true"></i>
           </div>
@@ -78,7 +78,7 @@
 
 
 
-          <div class="inputWithIcon" id="cf">
+          <div *ngIf ="!showAssociazione" class="inputWithIcon" id="cf">
               <input type="text" [value]="codFis" placeholder="Codice Fiscale" />
               <i class="fa fa-address-card" aria-hidden="true"></i>
           </div>
@@ -94,12 +94,12 @@
     <!--  <ion-img id="logo" width="250" height="170" src="assets/imgs/my_logo.png" >
             <input type="file" #img/>
       </ion-img> -->
-  <div style="text-align: center;" (click)="chargeImage()">
+<!--  <div style="text-align: center;" (click)="chargeImage()">
 
-    <!-- <ion-img  width="250" height="170" [src]="base64Image">
+     <ion-img  width="250" height="170" [src]="base64Image">
 
-     </ion-img> -->
-  </div>
+     </ion-img>
+  </div> -->
       <br/>
 
 
@@ -129,19 +129,19 @@
 
 <!--    <ion-slide *ngIf="tipologia == 'Utente'"> -->
 
-<ion-slide>
+<ion-slide *ngIf ="showAssistente">
 <h1>Cosa sai fare?</h1>
           <div id="styleForm">
 
 
 
-              <div class="inputWithIcon" style="display: none" id="competenze">
+              <div class="inputWithIcon" id="competenze">
 <!--                  <input type="text" [value]="competenze" placeholder="Competenze"/>
                   <i class="fa fa-cogs" aria-hidden="true"></i> -->
                     <button block (click) = "competenze()" class="ade"><b>Competenze</b></button>
               </div>
 
-              <div class="inputWithIcon"  style="display: none" id="titolo">
+              <div class="inputWithIcon"  id="titolo">
                   <input type="text" [value]="titStudio" placeholder="Titolo di studio" />
                   <i class="fa fa-graduation-cap" aria-hidden="true"></i>
               </div>

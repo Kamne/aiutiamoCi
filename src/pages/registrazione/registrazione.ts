@@ -34,6 +34,8 @@ username:String = ""
 password:String = ""
 codFis:String = ""
 data:String = ""
+showAssociazione:boolean=false
+showAssistente:boolean=false
 
 descr:String = ""
 iva:String = ""
@@ -46,8 +48,9 @@ tel:String = ""
 email:String = ""
 
 myCompetenze:Array<string> =[]
+otherCompetenze:Array<string> =[]
 titStudio:String = "";
-allCompetenze:Array<string> =[]
+
 
   constructor(public shareService: ShareService,public modalCtrl: ModalController,public events: Events,public camera: Camera,public navCtrl: NavController,public alertCtrl: AlertController, public navParams: NavParams, public http: Http, public dialogs: Dialogs, public formBuilder: FormBuilder) {
     events.subscribe('maps', (maps) => {
@@ -61,13 +64,7 @@ allCompetenze:Array<string> =[]
 
 
   ionViewDidLoad() {
-    var headers = new Headers();
-    headers.append('Content-Type', 'application/x-www-form-urlencoded' );
-    let options = new RequestOptions({ headers: headers });
-    this.http.post('http://aiutiamoc.altervista.org/ricercaUtenti.php',options).map(res => res.json()).subscribe(   data => {
-      console.log(data)
-      this.allCompetenze = data.competenze;
-   })
+
   }
 
   registrazione(tipologia: HTMLInputElement, sesso: HTMLInputElement): void {
@@ -127,55 +124,56 @@ allCompetenze:Array<string> =[]
   }
   onChange(v){
     if(v=="associazione"){
-      document.getElementById("iva").style.display="block";
-      document.getElementById("descr").style.display="block";
-    }else{
-      document.getElementById("iva").style.display="none";
-      document.getElementById("descr").style.display="none";
+        this.showAssociazione =true;
+          this.showAssistente = false;
     }
     if(v=="assistente" || v=="amministratore"){
-      document.getElementById("cognome").style.display="block";
-      document.getElementById("titolo").style.display="block";
-      document.getElementById("competenze").style.display="block";
-      document.getElementById("cf").style.display="block";
-    }else{
-      document.getElementById("cognome").style.display="none";
-      document.getElementById("titolo").style.display="none";
-      document.getElementById("competenze").style.display="none";
-      document.getElementById("cf").style.display="none";
+      if(this.otherCompetenze.length == 0){
+      var headers = new Headers();
+      headers.append('Content-Type', 'application/x-www-form-urlencoded' );
+      let options = new RequestOptions({ headers: headers });
+      this.http.post('http://aiutiamoc.altervista.org/ricercaUtenti.php',options).map(res => res.json()).subscribe(   data => { //usato per prendere le competenze xD
+        console.log(data)
+        console.log("all",this.otherCompetenze)
+        this.otherCompetenze = data.competenze;
+
+     })
+      this.showAssociazione =false;
+      this.showAssistente = true;
     }
+  }
     if(v=="utente"){
-      document.getElementById("cognome").style.display="block";
-      document.getElementById("cf").style.display="block";
+          this.showAssistente =false;
+          this.showAssociazione =false;
+
     }
 
     console.log(v);
   }
 
 competenze(){
-  console.log("prima",this.allCompetenze)
+
   this.shareService.setMyCompetenze(this.myCompetenze)
-  console.log("dopo",this.shareService.getMyCompetenze())
-  this.shareService.setAllCompetenze(this.allCompetenze)
-  let myModal = this.modalCtrl.create(TabsPage);
+
+  this.shareService.setOtherCompetenze(this.otherCompetenze)
+  let obj = {page: true};
+  let myModal = this.modalCtrl.create(TabsPage,obj);
   myModal.present();
 
   myModal.onDidDismiss(data => {
     if(data != undefined){
       this.myCompetenze = data;
-      for(let data of this.myCompetenze) {
-            this.selected(data,this.allCompetenze)
-      }
-
+      this.otherCompetenze = this.shareService.getOtherCompetenze()
     }
-    console.log("ho ricevuto dal modal",this.myCompetenze)
+
 });
 }
 
 selected(name:string,array:Array<string>){
 
     var idx = array.indexOf(name);
-    if(idx != -1)
+    console.log("",idx)
+    if(idx>-1)
     array.splice(idx, 1);
 
 }
