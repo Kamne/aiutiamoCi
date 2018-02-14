@@ -5,6 +5,9 @@ import { ContactPage } from '../contact/contact';
 import { HomePage } from '../home/home';
 import { ListaCompetenzePage } from '../lista-competenze/lista-competenze';
 import { CompetenzeSelectedPage } from '../competenze-selected/competenze-selected';
+import { ViewController } from 'ionic-angular';
+import { Events } from 'ionic-angular';
+
 
 
 @Component({
@@ -16,15 +19,12 @@ export class TabsPage {
   tab1Root = ListaCompetenzePage;
   tab2Root = CompetenzeSelectedPage;
 
-  constructor(public navParams: NavParams) {
-  //  this.params = params;
- // returns NavParams {data: Object}
+  constructor(public events: Events,public navParams: NavParams,public viewCtrl: ViewController) {
+    events.subscribe('closeModal', (competenze) => {
 
-
- // this tells the tabs component which Pages should be each tab's root Page
+      this.viewCtrl.dismiss(competenze);
+    });
 
   }
-  aiuto(){
-    this.params = { id: 42 };
-  }
+
 }
