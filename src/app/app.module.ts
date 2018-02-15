@@ -28,6 +28,7 @@ import { RegistrazionePage } from '../pages/registrazione/registrazione';
 import { CompetenzeSelectedPage } from '../pages/competenze-selected/competenze-selected';
 
 
+
 import { StatusBar } from '@ionic-native/status-bar';
 import {FaqPage} from "../pages/faq/faq";
 import {FaqAdminPage} from "../pages/faq-admin/faq-admin";
