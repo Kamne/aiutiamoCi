@@ -7,7 +7,8 @@ import { Dialogs } from '@ionic-native/dialogs';
 import { Http, Headers, RequestOptions } from "@angular/http";
 import 'rxjs/add/operator/map';
 import { ShareService } from '../../providers/shareService';
-
+import { DatePipe } from '@angular/common';
+import * as moment from "moment";
 /**
  * Generated class for the InserisciPage page.
  *
@@ -23,6 +24,7 @@ import { ShareService } from '../../providers/shareService';
 export class InserisciPage {
   matches: String[];
   isRecording = false;
+  //myDate = new Date();
   value:string[];
   richiesta:any
   constructor(public navCtrl: NavController, public navParams: NavParams, private speechRecognition: SpeechRecognition, private cd: ChangeDetectorRef,public http: Http,public dialogs: Dialogs, public shareService : ShareService) {
@@ -35,8 +37,9 @@ export class InserisciPage {
   indietro(testo: HTMLInputElement,patente: HTMLInputElement,automunito: HTMLInputElement,urgenza: HTMLInputElement){
     console.log("prova"+Number(automunito.checked))
     var headers = new Headers();
-
-
+    console.log("date ",Date.now())
+    var responseDate = moment(Date.now()).format('DD/MM/YYYY');
+    console.log("date ",responseDate)
   //  console.log(descr.value)
     headers.append('Content-Type', 'application/x-www-form-urlencoded' );
     let options = new RequestOptions({ headers: headers });
@@ -45,11 +48,11 @@ export class InserisciPage {
         patente : Number(patente.checked),
         urgenza : Number(urgenza.checked),
         testo : testo.value,
-        tipologia : this.richiesta.value,
+        tipologia : this.shareService.getUser().getTipologia(),
         username : this.shareService.getUser().getUsername(),
         tel : this.shareService.getUser().getTel(),
         email : this.shareService.getUser().getEmail(),
-        data : "13/3/2015",
+        data : responseDate,
         competenze : this.shareService.getUser().getToStringCompetenze()
     });
     console.log(myData)
