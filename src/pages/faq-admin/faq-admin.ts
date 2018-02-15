@@ -79,11 +79,12 @@ export class FaqAdminPage {
         h1.appendChild(domText);
         node.appendChild(h1);
        
-        // creare il bottone e la relativa funzionalità
+        
         var btn = document.createElement("BUTTON");
         btn.setAttribute("value",parse.domanda);
         var t = document.createTextNode("RISPONDI");
         btn.appendChild(t);
+        //implementare la funzionalità del bottone che mi permette di rispondere una determinata domanda posta da un utente
         node.appendChild(btn);
         var br = document.createElement("BR");
         node.appendChild(br);
