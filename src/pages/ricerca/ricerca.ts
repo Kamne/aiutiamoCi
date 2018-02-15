@@ -22,7 +22,8 @@ indirizzi:Array<any>=[];
 searchCompetenze:Array<string>=[];
 allCompetenze:Array<any>=[];
 result:Array<string>=[];
-singleValue:number;
+firstValue:number;
+secondValue:number;
 my: LatLng;
 other: LatLng;
 index:number;
@@ -138,7 +139,7 @@ openModal() {
   myModal.present();
   myModal.onDidDismiss(data => {
     if(data != undefined){
-      this.searchCompetenze = data;
+      this.searchCompetenze = this.shareService.getMyCompetenze();
       this.allCompetenze= this.shareService.getOtherCompetenze();
 
       this.shareService.setOtherCompetenze(this.allCompetenze)

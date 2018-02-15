@@ -26,21 +26,28 @@
 
       <div style="text-align: center">
         <h2>Richiesta Assistenza</h2>
-          <textarea rows="6" cols="30"  #testo>
+    <!--      <textarea rows="6" cols="30"  #testo>
             {{textareaValue}}
-          </textarea>
+          </textarea> -->
       </div>
       <br>
-      <div  class="microfono">
+    <!--  <div  class="microfono">
         <ion-fab>
           <button  ion-fab (click)="startListening()">
             <ion-icon name="microphone"></ion-icon>
           </button>
         </ion-fab>
-      </div>
-      <br><br><br><br>
-    <button ion-button block (click)="openModal()">Open Modal</button>
+      </div> -->
+      <br><br>
+    <button ion-button block (click)="openModal()">Competenze richieste</button>
 
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="patente" value="patente" #patente>
+        <i class="helper"></i>
+        <b>Patente</b>
+      </label>
+    </div>
     <div class="checkbox">
       <label>
         <input type="checkbox" name="automunito" value="automunito" #automunito>
@@ -48,16 +55,16 @@
         <b >Automunito</b>
       </label>
     </div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="urgenza" value="urgenza" #urgenza>
 
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" name="patente" value="patente" #patente>
-          <i class="helper"></i>
-          <b>Patente di guida</b>
-        </label>
-      </div>
+        <i class="helper"></i>
+        <b>Disponibilità alle urgenze</b>
+      </label>
+    </div>
 
-    <ion-range min="0" max="100" [(ngModel)]="singleValue" color="bordeaux_" pin="true">
+    <ion-range min="0" max="100" [(ngModel)]="firstValue" color="bordeaux_" pin="true">
       <ion-label range-left>0km</ion-label>
       <ion-label range-right>100km</ion-label>
     </ion-range>
@@ -72,39 +79,50 @@
   <div id="assistenti" style="display: none">
       <div style="text-align: center">
         <h2>Offro Assistenza</h2>
-          <textarea rows="6" cols="30"  #testo>
+  <!--        <textarea rows="6" cols="30"  #testo>
             {{textareaValue}}
-          </textarea>
+          </textarea> -->
       </div>
     <br>
-    <div  class="microfono">
+  <!--  <div  class="microfono">
       <ion-fab>
         <button  ion-fab (click)="startListening()">
           <ion-icon name="microphone"></ion-icon>
         </button>
       </ion-fab>
+    </div> -->
+    <br><br>
+<button ion-button block (click)="openModal()">Competenze offerte</button>
+
+<div>
+
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" name="patente" value="patente" #patente>
+      <i class="helper"></i>
+      <b>Patente</b>
+    </label>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" name="automunito" value="automunito" #automunito>
+      <i class="helper"></i>
+      <b >Automunito</b>
+    </label>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" name="urgenza" value="urgenza" #urgenza>
+
+      <i class="helper"></i>
+      <b>Disponibilità alle urgenze</b>
+    </label>
+  </div>
+
     </div>
-    <br><br><br>
-<button ion-button block (click)="openModal()">Open Modal</button>
-
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" name="automunito" value="automunito" #automunito>
-        <i class="helper"></i>
-        <b >Automunito</b>
-      </label>
-    </div>
-
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" name="patente" value="patente" #patente>
-        <i class="helper"></i>
-        <b>Patente di guida</b>
-      </label>
-    </div>
 
 
-    <ion-range min="0" max="100" [(ngModel)]="singleValue" color="bordeaux_" pin="true" value="50">
+    <ion-range min="0" max="100" [(ngModel)]="secondValue" color="bordeaux_" pin="true">
       <ion-label range-left>0km</ion-label>
       <ion-label range-right>100km</ion-label>
     </ion-range>
