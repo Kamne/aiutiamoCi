@@ -25,39 +25,169 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content class="evento-crea">
+<ion-content class="evento-crea" *ngIf="show">
+    <!--
+    *ngIf="shareService.getUser()!=undefined &&
+                    shareService.getUser().getTipologia()=='associazione'"
+    -->
     <br />
+
     <ion-list no-lines>
+    <!--
         <div>
             <input type="file" placeholder="Immagine evento" name="img_evento" #img />
         </div>
+-->
+        <form #f="ngForm" (ngSubmit)="onSubmit(f.value)" novalidate>
 
+        <div style="text-align: center;" (click)="chargeImage()">
+
+            <ion-img id="logo" width="250" height="170" [src]="base64Image" >
+                <input type="file"  [src]="base64Image" name="img" /><!-- [(ngModel)
+                ]="src"
+                #img="ngModel"  ngModel #img="ngModel"
+                 -->
+                <input type="hidden" [ngModel]="base64Image" name="img_evento" #img_evento="ngModel" />
+            </ion-img>
+<!--
+            <ion-img  width="250" height="170" [src]="base64Image" >
+                <i id="pulsante_camera" class="fa fa-camera  fa-2x" aria-hidden="true" class="imgCameraPosition"></i>
+                <ion-icon ios="ios-camera" md="md-camera" class="imgCameraPosition"></ion-icon>
+            </ion-img>
+            -->
+           <!--     <ion-icon ios="ios-camera" md="md-camera" class="imgCameraPosition"></ion-icon> -->
+
+        </div>
+            <div *ngIf="show">
+                <input type="hidden" [ngModel]="tipologia_" name="tipologia" ngModel
+                       #tipologia="ngModel" />
+            </div>
+
+            <div>
+                <input type="text" placeholder="Nome Evento" name="nome" ngModel required #nome="ngModel"
+                       minlength="2" />
+            </div>
+            <!-- Errors nome -->
+            <div *ngIf="nome.errors?.required && nome.touched" class="error">
+                Il nome è richiesto.
+            </div>
+            <div *ngIf="nome.errors?.minlength && nome.touched" class="error">
+                Minimo 2 caratteri.
+            </div>
+            <!-- -->
+
+            <div>
+                <select  name="categoria" ngModel required #categoria="ngModel">
+                    <option value="{{categoria.nome}}"  *ngFor="let categoria of categorie">
+                        {{categoria.nome}}
+                    </option>
+                </select>
+            </div>
+            <!-- Errors categoria -->
+            <div *ngIf="categoria.errors?.required && categoria.touched" class="error">
+                La categoria è richiesta.
+            </div>
+            <!-- -->
+
+            <div>
+                <input type="text" placeholder="Luogo" name="luogo"  ngModel required  #luogo="ngModel"/>
+            </div>
+            <!-- Errors luogo -->
+            <div *ngIf="luogo.errors?.required && luogo.touched" class="error">
+                Il luogo è richiesto.
+            </div>
+            <div *ngIf="luogo.errors?.minlength && luogo.touched" class="error">
+                Minimo 2 caratteri.
+            </div>
+            <!-- -->
+
+            <div id="data-ora">
+                <input type="date" name="data" ngModel required #data="ngModel"/>
+            </div>
+            <!-- Errors data-ora -->
+            <div *ngIf="data.errors?.required && data.touched" class="error">
+                La data è richiesta.
+            </div>
+            <!-- -->
+            <!--
+            <div id="data-ora">
+                <input type="date" name="data_fine" ngModel required #data="ngModel"/>
+            </div>
+            -->
+            <div id="data-ora" >
+                <input type="time" name="ora" value="--:--" #ora ngModel required #ora="ngModel"/>
+            </div>
+            <!-- Errors ora -->
+            <div *ngIf="ora.errors?.required && ora.touched" class="error">
+                L'ora è richiesta.
+            </div>
+            <!-- -->
+
+            <div>
+                <textarea cols="20" rows="5" placeholder="Descrizione" name="descrizione" #descrizione="ngModel"
+                          ngModel
+                          required></textarea>
+            </div>
+            <!-- Errors descrizione -->
+            <div *ngIf="descrizione.errors?.required && descrizione.touched" class="error">
+                La descrizione è richiesta.
+            </div>
+            <!-- -->
+
+            <div>
+                <input type="text" name="hashtag" placeholder="Hashtag" #hashtag="ngModel" ngModel required/>
+            </div>
+            <!-- Errors hashtag -->
+            <div *ngIf="hashtag.errors?.required && hashtag.touched" class="error">
+                L'hashtag è richiesta.
+            </div>
+            <!-- -->
+
+            <div>
+                <button ion-button id="invia"  [disabled]="f.invalid">Invia</button>
+       <!--
         <div>
-            <input type="text" placeholder="Nome Evento" name="nome_evento" #nome/>
+            <input type="text" placeholder="Nome Evento" formControlName="nome" />
         </div>
 
         <div>
-            <input type="text" placeholder="Luogo" name="luogo" #luogo/>
+            <select (change)="onChange(categoria.value)" #categoria name="categoria" >
+                <option value="{{categoria.nome}}"  *ngFor="let categoria of categorie"
+                        ngModel>{{categoria
+                    .nome}}</option>
+            </select>
+        </div>
+
+        <div>
+            <input type="text" placeholder="Luogo" name="luogo" #luogo ngModel required />
         </div>
 
         <div id="data-ora">
-            <input type="date" #date />
+            <input type="date" #date ngModel required />
         </div>
-        <div id="data-ora">
-            <input type="time" name="ora" value="--:--" #ora/>
-        </div>
-
-        <div>
-            <textarea cols="20" rows="5" placeholder="Descrizione" name="descrizione" #descrizione></textarea>
+        <div id="data-ora" >
+            <input type="time" name="ora" value="--:--" #ora ngModel required/>
         </div>
 
         <div>
-            <input type="text" name="hashtag" placeholder="Hashtag" #hashtag/>
+            <textarea cols="20" rows="5" placeholder="Descrizione" name="descrizione" #descrizione ngModel required></textarea>
         </div>
 
         <div>
-            <button ion-button id="invia" (click) = "creaEvento(img,nome,luogo.date,ora,descrizione,hashtag)">Invia</button>
+            <input type="text" name="hashtag" placeholder="Hashtag" #hashtag ngModel required/>
         </div>
+
+        <div>
+            <button ion-button id="invia" [disabled]="!form.valid">Invia</button><!-- (click) = "creaEvento(img,nome,
+            luogo.date,ora,
+            descrizione,hashtag)"-->
+        </div>
+
+        </form>
+        <p>First name value: {{ nome.value }}</p>
+        <p>First name valid: {{ nome.valid }}</p>
+        <p>Form value: {{ f.value | json }}</p>
+        <p>Form valid: {{ f.valid }}</p>
     </ion-list>
 
 </ion-content>
