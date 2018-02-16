@@ -2,7 +2,6 @@ import { Component, Inject } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from "@angular/http";
 import { Dialogs } from '@ionic-native/dialogs';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {InserisciPage} from '../inserisci/inserisci';
 import { CallNumber } from '@ionic-native/call-number';
 
@@ -73,8 +72,5 @@ export class BachecaPage {
     return this.http.get(this.configUrl);
   }
 
-nuovo_msg(){
-  this.navCtrl.push(InserisciPage)
-}
 
 }
