@@ -44,7 +44,7 @@ import { Camera } from '@ionic-native/camera'
 import { GoogleMaps, Spherical} from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
-
+import { CallNumber } from '@ionic-native/call-number';
 
 
 @NgModule({
@@ -124,7 +124,8 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder';
     ShareService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SpeechRecognition,
-    Utente
+    Utente,
+    CallNumber
   ]
 })
 export class AppModule {
