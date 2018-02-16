@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from "@angular/http";
 import { Dialogs } from '@ionic-native/dialogs';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {InserisciPage} from '../inserisci/inserisci';
+import { CallNumber } from '@ionic-native/call-number';
 
 /**
  * Generated class for the BachecaPage page.
@@ -19,14 +21,14 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 export class BachecaPage {
 
   posts: any;
-
   configUrl = 'http://aiutiamoc.altervista.org/getDatiBacheca.php';
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public http: Http,
               public dialogs: Dialogs,
-              public dialog: MatDialog) {
+              public dialog: MatDialog,
+              private callNumber: CallNumber) {
 
     this.getConfig().map(res => res.json()).subscribe(   data => {
       console.log(data);
@@ -42,12 +44,30 @@ export class BachecaPage {
 
   }
 
+  nuovo_msg(){
+    this.navCtrl.push(InserisciPage);
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad BachecaPage');
   }
 
+  getCompetenze(competenze){
+    var comp = competenze.split(",");
+    var msg = "";
+    if(comp.length>0){
+      for(let entry of comp){
+        msg += entry+"\n";
+      }
+    }
+    this.dialogs.alert(msg,"Elenco competenze");
+  }
 
-
+  callNumTelephone(n: string){
+    this.callNumber.callNumber(n, true)
+        .then(() => console.log('Launched dialer!'))
+        .catch(() => console.log('Error launching dialer'));
+  }
   getConfig() {
     return this.http.get(this.configUrl);
   }
