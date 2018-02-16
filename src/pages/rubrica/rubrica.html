@@ -39,8 +39,8 @@
         <div class="one" id="div_assistenti" *ngFor="let a of assistenti">
           <ion-item>
             {{a}}
-            <ion-icon name="mail" id="mail"></ion-icon>
-            <ion-icon name="call" id="call"></ion-icon>
+            <ion-icon name="mail" id="mail" (click)="mail()"></ion-icon>
+            <ion-icon name="call" id="call" (click)="call()"></ion-icon>
         </ion-item>  
         </div>      
     </div>

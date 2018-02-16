@@ -73,5 +73,14 @@ export class RubricaPage {
         return (topic.toLowerCase().indexOf(serVal.toLowerCase()) > -1);
       })
     }
-}
+  }
+
+  mail() {
+    
+  }
+
+  call() {
+
+  }
+
 }
