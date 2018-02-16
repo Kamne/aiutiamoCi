@@ -4,10 +4,8 @@ import { Http, Headers, RequestOptions } from "@angular/http";
 import { Dialogs } from '@ionic-native/dialogs';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {InserisciPage} from '../inserisci/inserisci';
-<<<<<<< HEAD
 import { CallNumber } from '@ionic-native/call-number';
-=======
->>>>>>> e29b81208c7f05aca14aba700147b43ff8bc737d
+
 
 /**
  * Generated class for the BachecaPage page.
