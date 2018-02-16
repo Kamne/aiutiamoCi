@@ -43,8 +43,11 @@
                     <img [src]="Image">
                 </ion-avatar>
                 <br />
-                <h2 *ngIf="shareService.getUser()!=undefined">
+                <h2 *ngIf="shareService.getUser()!=undefined && shareService.getUser().getTipologia() != 'associazione'">
                     {{shareService.getUser().getCognome()}}
+                    {{shareService.getUser().getNome()}}
+                </h2><!--  -->
+                <h2 *ngIf="shareService.getUser()!=undefined && shareService.getUser().getTipologia() == 'associazione'">
                     {{shareService.getUser().getNome()}}
                 </h2><!--  -->
                 <button>

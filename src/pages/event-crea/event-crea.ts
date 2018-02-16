@@ -26,6 +26,7 @@ export class EventCreaPage{
   categorie: any;
   show: boolean = false;
   tipologia_ : string = "";
+  partitaIVA: string = "";
   base64Image:string = "assets/imgs/evento_img.jpg";
   configUrl_1 = 'http://aiutiamoc.altervista.org/getCategorie.php';
   configUrl_2 = 'http://aiutiamoc.altervista.org/Insert_Evento.php';
@@ -41,14 +42,18 @@ export class EventCreaPage{
   ) {
     console.log("");
 
+    //accesso solo per le associazioni
     if(shareService.getUser()!=undefined){
 
       this.tipologia_ = shareService.getUser().getTipologia();
       if(this.tipologia_=="associazione"){
+        this.partitaIVA = shareService.getUser().getPartivaIVA();
+
         this.show = true;
       }
     }
 
+    //aggiunge le categorie nel modulo
     var myData = JSON.stringify({tipo: '1'});
     this.getConfig(this.configUrl_1, myData).map(res => res.json()).subscribe(   data => {
       console.log(data);

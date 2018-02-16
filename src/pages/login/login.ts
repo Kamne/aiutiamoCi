@@ -40,9 +40,9 @@ export class LoginPage {
   this.http.post('http://aiutiamoc.altervista.org/login.php',myData).map(res => res.json()).subscribe(   data => {
   console.log(data);
   if(data.success){
-    if(data.user.Tipologia == "Associazione"){
+    if(data.user.Tipologia == "associazione"){
       this.shareService.setUser(new Associazione(data.user.Nome,data.user.Username,data.user.Immagine,
-                                           data.user.Descr,data.user.Fondata,data.user.PartitaIVA,
+                                           data.user.Descrizione,data.user.Fondata,data.user.PartitaIVA,
                                            data.user.Citta,data.user.Provincia,data.user.Indirizzo,
                                            data.user.Email,data.user.NumTelefono,data.user.Tipologia))
       this.event.publish('image', data.user.Immagine);
@@ -56,6 +56,7 @@ export class LoginPage {
                                          data.user.Email,data.user.NumTelefono,data.user.Tipologia))
     this.event.publish('image', data.user.Immagine);}
     this.navCtrl.setRoot(HomePage)
+    console.log(this.shareService.getUser())
   }
 
   else{

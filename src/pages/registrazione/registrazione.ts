@@ -34,8 +34,8 @@ username:String = ""
 password:String = ""
 codFis:String = ""
 data:String = ""
-showAssociazione:boolean=false
-showAssistente:boolean=false
+showAssociazione:boolean=false;
+showAssistente:boolean=false;
 
 descr:String = ""
 iva:String = ""
@@ -61,15 +61,13 @@ titStudio:String = "";
     });
   }
 
-
-
   ionViewDidLoad() {
-
-  }
+      console.log('ionViewDidLoad MapPage');
+}
 
   registrazione(tipologia: HTMLInputElement, sesso: HTMLInputElement): void {
     var headers = new Headers();
-    console.log(this.competenze)
+    console.log("",this.myCompetenze)
     headers.append('Content-Type', 'application/x-www-form-urlencoded' );
    let options = new RequestOptions({ headers: headers });
    var myData = JSON.stringify({
@@ -80,7 +78,7 @@ titStudio:String = "";
      tipologia:tipologia.value,
      nato:this.data,
      sesso:sesso.value,
-     competenze:this.competenze,
+     competenze:this.myCompetenze.toString(),
      titolo:this.titStudio,
      cf:this.codFis,
      indirizzo:this.indirizzo,
@@ -92,6 +90,7 @@ titStudio:String = "";
      descr: this.descr,
      img:this.base64Image
    });
+   console.log(myData);
  this.http.post('http://aiutiamoc.altervista.org/registrazioneUtente.php',myData,options).map(res => res.json()).subscribe(   data => {
   console.log(data.success);
   if(data.success){
@@ -133,8 +132,8 @@ titStudio:String = "";
       headers.append('Content-Type', 'application/x-www-form-urlencoded' );
       let options = new RequestOptions({ headers: headers });
       this.http.post('http://aiutiamoc.altervista.org/ricercaUtenti.php',options).map(res => res.json()).subscribe(   data => { //usato per prendere le competenze xD
-        console.log(data)
-        console.log("all",this.otherCompetenze)
+        console.log(data);
+
         this.otherCompetenze = data.competenze;
 
      })
@@ -161,10 +160,10 @@ competenze(){
   myModal.present();
 
   myModal.onDidDismiss(data => {
-    if(data != undefined){
-      this.myCompetenze = data;
+
+      this.myCompetenze = this.shareService.getMyCompetenze();
       this.otherCompetenze = this.shareService.getOtherCompetenze()
-    }
+
 
 });
 }

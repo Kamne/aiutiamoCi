@@ -11,7 +11,7 @@ export class Associazione {
 
   constructor(public nome:String,public username:String,public img:String,public descr:String,public nato:String,
               public partitaIVA:String,public citta:String,public provincia:String,public indirizzo:String,public email:String,
-              public tel:String,public tipologia:String,) {
+              public tel:String,public tipologia:String) {
     console.log('Hello User');
 
   }

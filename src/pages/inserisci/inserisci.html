@@ -33,7 +33,18 @@
   <div style="background-color: white">
 
       <div class="radio_assistenza">
-
+  <ion-grid>
+    <ion-row>
+        <ion-col id = "richiesta">
+          <input type="radio" name = "assistenza" value = "richiesta"  />
+        <b>  <label for="richiesta">Richiesta </label> </b>
+        </ion-col>
+        <ion-col id = "offerta">
+          <input type="radio" name = "assistenza" value = "offerta" />
+        <b>  <label for="offerta">Offerta </label> </b>
+        </ion-col>
+    </ion-row>
+  </ion-grid>
     <!--    <p>
           <input type="radio" name = "assistenza" value = "richiesta" id = "richiesta" />
           <label for="richiesta">Richiesta assistenza</label>
@@ -43,7 +54,7 @@
           <label for="offerta">Offerta assistenza</label>
         </p> !-->
 
-  <ion-list radio-group [(ngModel)]="richiesta">
+<!--  <ion-list radio-group [(ngModel)]="richiesta">
   <ion-item>
     <ion-label>Richiesta assistenza</ion-label>
     <ion-radio value="Richiesta" checked></ion-radio>
@@ -53,27 +64,19 @@
     <ion-radio value="Offerta"></ion-radio>
   </ion-item>
 
-</ion-list>
+</ion-list> -->
 
         <!--
       <input type="radio" name = "assistenza" value = "richiesta" class = "richiesta"/><b class = "richiesta">richiesta ass.</b>
       <input type="radio" name = "assistenza" value = "offerta" class = "offerta"/><b class = "offerta">offerta ass.</b>
     -->
       </div>
-
-      <ion-card>
-        <ion-card-header>
-          This is what I understood...
-        </ion-card-header>
-        <ion-card-content>
-          <ion-list>
-            <ion-item *ngFor="let match of matches">
-              {{ match }}
-            </ion-item>
-          </ion-list>
-        </ion-card-content>
-      </ion-card>
       <br>
+
+
+      <!--      <ion-item *ngFor="let match of matches">
+              {{ match }}
+            </ion-item> -->
 
       <ion-item>
         <div style="text-align: center">
@@ -117,13 +120,7 @@
       <b>Disponibilità alle urgenze</b>
     </label>
   </div>
-  <!--
-    <input type="checkbox" name="urgenza" class= "urgenza"><b class= "urgenza" style = "font-size:120%;">Patente</b>
 
-      <input type="checkbox" name="automunito" class= "automunito"><b class= "automunito" style = "font-size:120%;">Automunito</b>
-    <br>
-    <input type="checkbox" name="patente" class= "patente"><b class= "patente" style = "font-size:120%;">Disp. alle urgenze</b>
-  -->
     </div>
 
       <br />
