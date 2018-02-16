@@ -26,10 +26,6 @@ interface Domanda
 
 export class FaqPage {
 
-  public data: any = {};
-  domande: Domanda;
-
-
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public dialogs: Dialogs, public formBuilder: FormBuilder) {
     this.faqList();
   }
@@ -42,32 +38,25 @@ export class FaqPage {
     var headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded' );
     let options = new RequestOptions({ headers: headers });
-    this.http.post('http://aiutiamoc.altervista.org/getDomande.php',options).subscribe(    data => {
-      this.data.response=data["_body"].split("|");
-      this.data.response.pop();
+    this.http.post('http://aiutiamoc.altervista.org/getDomande.php',options).map(res => res.json()).subscribe(    data => {
 
-      var node = document.getElementById("domande");
-      
-      var elements = data["_body"].split("|").length - 1;
-    
-      for(var i = 0 ;i<elements;i++) { 
-        // inserire le decorazioni!
-        var h1 = document.createElement("H1");  
-        var textnode = document.createTextNode(this.data.response[0]);
-        h1.appendChild(textnode);
+      var node = document.getElementById("domanda");
+      var elements = data.Risposte.length;
+
+      for (var i=0; i<elements; i++) {
+        console.log("myjson"+i,JSON.parse(data.Risposte[i]));
+        var parse = JSON.parse(data.Risposte[i]);
+        var h1 = document.createElement("H1");
+        var domText = document.createTextNode(parse.domanda);
+        h1.appendChild(domText);
         node.appendChild(h1);
-        this.data.response.shift();
-        elements--;
-        var h2 = document.createElement("H2"); 
-        var risp = document.createTextNode(this.data.response[0]);
-        node.appendChild(risp);
+        var h3 = document.createElement("H3");
+        var domRisp = document.createTextNode(parse.risposta);
+        h3.appendChild(domRisp);
+        node.appendChild(h3);
         var br = document.createElement("BR");
-        this.data.response.shift();
-        elements--;
-        alert(elements);  
         node.appendChild(br);
-     }
-      
+      }      
     });
   } 
 }
