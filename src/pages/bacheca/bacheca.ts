@@ -27,7 +27,6 @@ export class BachecaPage {
               public navParams: NavParams,
               public http: Http,
               public dialogs: Dialogs,
-              public dialog: MatDialog,
               private callNumber: CallNumber) {
 
     this.getConfig().map(res => res.json()).subscribe(   data => {
