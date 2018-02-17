@@ -34,13 +34,18 @@ export class InserisciPage {
     console.log('ionViewDidLoad InserisciPage');
   }
 
-  indietro(testo: HTMLInputElement,patente: HTMLInputElement,automunito: HTMLInputElement,urgenza: HTMLInputElement){
-    console.log("prova"+Number(automunito.checked))
+  indietro(testo: HTMLInputElement,patente: HTMLInputElement,automunito: HTMLInputElement,urgenza: HTMLInputElement,richiesta: HTMLInputElement,offerta: HTMLInputElement){
+
+    var annuncio:string = "";
+    if(richiesta.checked)
+      annuncio = "richiesta";
+    if(offerta.checked)
+      annuncio = "Offerta";
     var headers = new Headers();
     console.log("date ",Date.now())
     var responseDate = moment(Date.now()).format('DD/MM/YYYY');
     console.log("date ",responseDate)
-  //  console.log(descr.value)
+
     headers.append('Content-Type', 'application/x-www-form-urlencoded' );
     let options = new RequestOptions({ headers: headers });
     var myData = JSON.stringify({
@@ -48,7 +53,7 @@ export class InserisciPage {
         patente : Number(patente.checked),
         urgenza : Number(urgenza.checked),
         testo : testo.value,
-        tipologia : this.shareService.getUser().getTipologia(),
+        tipologia : annuncio,
         username : this.shareService.getUser().getUsername(),
         tel : this.shareService.getUser().getTel(),
         email : this.shareService.getUser().getEmail(),
