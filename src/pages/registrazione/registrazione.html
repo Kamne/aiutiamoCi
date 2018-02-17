@@ -16,10 +16,10 @@
 <ion-content padding id="signup">
   <ion-slides>
     <ion-slide>
-      <h1> Chi sei? </h1>
-
+      <br/>
+<h1> Chi sei </h1>
       <div id="styleForm">
-
+        
         <div class="inputWithIcon">
           <select name="tipologia" (change)="onChange(tipologia.value)"  #tipologia>
               <option value="" disabled selected hidden >Scegli la tipologia</option>
@@ -78,20 +78,13 @@
               <input type="text" [(ngModel)]="iva" placeholder="Partita Iva" />
               <i class="fa fa-cogs" aria-hidden="true"></i>
           </div>
-
-
-
-
-
           <div *ngIf ="!showAssociazione" class="inputWithIcon" id="cf">
               <input type="text" [(ngModel)]="codFis" placeholder="Codice Fiscale" />
               <i class="fa fa-address-card" aria-hidden="true"></i>
           </div>
 
-      <button block class="zeus" (click) = "indietrissimo()"><b>indietro</b></button>  <button block class="zeus" (click)="avanti()"><b>avanti</b></button>
-
-
-          </div>
+      <button block  class="zeus" (click) = "indietrissimo()"><b>indietro</b></button>  <button block  class="zeus" (click)="avanti()"><b>avanti</b></button>
+      </div>
     </ion-slide>
     <ion-slide>
 

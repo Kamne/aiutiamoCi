@@ -78,7 +78,7 @@ titStudio:String = "";
      tipologia:tipologia.value,
      nato:this.data,
      sesso:sesso.value,
-     competenze:this.myCompetenze.toString(),
+     competenze:","+this.myCompetenze.toString()+",,",
      titolo:this.titStudio,
      cf:this.codFis,
      indirizzo:this.indirizzo,
