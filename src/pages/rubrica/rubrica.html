@@ -23,24 +23,38 @@
     </ul>
   </div> -->
 
-  <div id="div_segment">
-    <ion-segment [ngModel]="relationship" color="primary">
-        <ion-segment-button value="assistenti" (ionSelect)="getAssistenti()">
-          Assistente
-        </ion-segment-button>
-        <ion-segment-button value="associazioni" (ionSelect)="getAssociazioni()">
-          Associazione
-        </ion-segment-button>
+  <div padding>
+    <ion-segment [(ngModel)]="scelta">
+      <ion-segment-button value="assistenti" (ionSelect)="getAssistenti()">
+        Assistenti
+      </ion-segment-button>
+      <ion-segment-button value="associazioni" (ionSelect)="getAssociazioni()">
+        Associazioni
+      </ion-segment-button>
     </ion-segment>
   </div>
-  <div id="div_listSegment"[ngSwitch]="relationship">
-    <ion-list>
-     <ion-item *ngFor="let src of data.response">
-       {{src}}
-       <ion-icon name="mail" id="mail"></ion-icon>
-       <ion-icon name="call" id="call"></ion-icon>
-      </ion-item>
-    </ion-list>
+  <div [ngSwitch]="scelta">
+    <div *ngSwitchCase="'assistenti'">
+        <h1>Assistenti</h1>
+        <div class="one" id="div_assistenti" *ngFor="let a of assistenti">
+          <ion-item>
+            {{a}}
+            <ion-icon name="mail" id="mail" (click)="mail()"></ion-icon>
+            <ion-icon name="call" id="call" (click)="call()"></ion-icon>
+        </ion-item>  
+        </div>      
+    </div>
+  
+    <div *ngSwitchCase="'associazioni'">
+      <h1>Associazioni</h1>
+      <div class="one" id="div_associazioni" *ngFor="let a of associazioni">
+        <ion-item>
+          {{a}}
+          <ion-icon name="mail" id="mail"></ion-icon>
+          <ion-icon name="call" id="call"></ion-icon>
+        </ion-item>
+      </div>
+    </div>
   </div>
 
 </ion-content>

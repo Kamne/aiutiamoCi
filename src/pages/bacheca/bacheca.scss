@@ -13,8 +13,13 @@ page-bacheca {
     -moz-border-radius: 20px;
     border-radius: 20px;
   }
+  #competenze{
+    font-size: 12pt;
+    padding: 2px;
+  }
   #pulsante{
     color: color($colors, bordeaux_);
+    cursor: pointer;
   }
   #testo{
     padding-top: 15px;
