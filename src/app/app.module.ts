@@ -16,7 +16,9 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { RubricaPage } from '../pages/rubrica/rubrica';
-import { RicercaPage } from '../pages/ricerca/ricerca';
+import { RicercaRichiestePage } from '../pages/ricerca-richieste/ricerca';
+import { RicercaOffertePage } from '../pages/ricerca-offerte/ricerca-offerte';
+import { RicercaEventiPage } from '../pages/ricerca-eventi/ricerca-eventi';
 import {EventPage} from '../pages/event/event';
 import {EventCreaPage} from '../pages/event-crea/event-crea';
 import {InserisciPage} from '../pages/inserisci/inserisci';
@@ -26,8 +28,7 @@ import { BachecaPage } from '../pages/bacheca/bacheca';
 import { ListaCompetenzePage } from '../pages/lista-competenze/lista-competenze';
 import { RegistrazionePage } from '../pages/registrazione/registrazione';
 import { CompetenzeSelectedPage } from '../pages/competenze-selected/competenze-selected';
-
-
+import { TabsRicercaPage } from '../pages/tabs-ricerca/tabs-ricerca';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import {FaqPage} from "../pages/faq/faq";
@@ -61,10 +62,12 @@ import { CallNumber } from '@ionic-native/call-number';
     ContactPage,
     HomePage,
     TabsPage,
+    RicercaOffertePage,
     RegistrazionePage,
     RubricaPage,
-    RicercaPage,
-
+    RicercaRichiestePage,
+    RicercaEventiPage,
+    TabsRicercaPage,
     EventPage,
     AnnunciPage,
     EventCreaPage,
@@ -95,13 +98,15 @@ import { CallNumber } from '@ionic-native/call-number';
     AboutPage,
     ContactPage,
     HomePage,
-
+    TabsRicercaPage,
+    RicercaOffertePage,
     CompetenzeSelectedPage,
+    RicercaEventiPage,
     TabsPage,
     RegistrazionePage,
     ListaCompetenzePage,
     RubricaPage,
-    RicercaPage,
+    RicercaRichiestePage,
     MapPage,
     EventPage,
     EventCreaPage,

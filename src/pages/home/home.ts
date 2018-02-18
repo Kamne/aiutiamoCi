@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {InserisciPage} from '../inserisci/inserisci';
 import { ShareService } from '../../providers/shareService';
 
-import {RicercaPage} from '../ricerca/ricerca';
+import {TabsRicercaPage} from '../tabs-ricerca/tabs-ricerca';
 import {RubricaPage} from '../rubrica/rubrica';
 import {BachecaPage} from '../bacheca/bacheca';
 import {EventPage} from '../event/event';
@@ -36,16 +36,16 @@ insert(){
 }
 
   cerca(){
-    this.navCtrl.push(RicercaPage);
+    this.navCtrl.setRoot(TabsRicercaPage);
   }
   bacheca(){
-    this.navCtrl.push(BachecaPage);
+    this.navCtrl.setRoot(BachecaPage);
   }
   eventi(){
-    this.navCtrl.push(EventPage);
+    this.navCtrl.setRoot(EventPage);
   }
   rubrica(){
-    this.navCtrl.push(RubricaPage);
+    this.navCtrl.setRoot(RubricaPage);
   }
 
 }

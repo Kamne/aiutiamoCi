@@ -1,4 +1,4 @@
-///<reference path="../pages/ricerca/ricerca.ts"/>
+//<reference path="../pages/ricerca/ricerca.ts"/>
 import { Component, ViewChild } from '@angular/core';
 import { Platform, MenuController, Nav  } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -7,7 +7,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { HomePage } from '../pages/home/home';
 import { RubricaPage } from '../pages/rubrica/rubrica';
-import { RicercaPage } from '../pages/ricerca/ricerca';
+import { TabsRicercaPage } from '../pages/tabs-ricerca/tabs-ricerca';
 import { BachecaPage } from '../pages/bacheca/bacheca';
 import {EventPage} from '../pages/event/event';
 import {InserisciPage} from '../pages/inserisci/inserisci';
@@ -19,6 +19,7 @@ import {FaqPage} from "../pages/faq/faq";
 import {FaqAdminPage} from "../pages/faq-admin/faq-admin";
 
 import {DiventaAssistentePage} from '../pages/diventa-assistente/diventa-assistente';
+import {RicercaRichiestePage} from '../pages/ricerca-richieste/ricerca';
 import { ShareService } from '../providers/shareService';
 import { Utente } from '../classes/utente';
 
@@ -33,7 +34,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
   Image:String = "../assets/imgs/avatar.png"
   rootPage:any = WelcomePage;
-//  pages: Array<{title: string, component: any, icon: string}>;
+
 
   pages: any;
   constructor(public platform: Platform,
@@ -72,7 +73,7 @@ export class MyApp {
                       //      { title: 'Logout', component: WelcomePage, icon: 'log-out' }
       ]},
         {label:'ricerca',items:[
-            { title: 'Ricerca', component: RicercaPage, icon: 'search' }
+            { title: 'Ricerca', component: TabsRicercaPage, icon: 'search' }
 
         ]},
     ];
@@ -93,11 +94,11 @@ export class MyApp {
     this.menu.close();
     // navigate to the new page if it is not the current page
    // this.nav.setRoot(page.component);
-     this.nav.push(page.component);
+     this.nav.setRoot(page.component);
     }
     openResearch(){
         this.menu.close();
-        this.nav.push(RicercaPage);
+        this.nav.setRoot(TabsRicercaPage);
 
     }
 

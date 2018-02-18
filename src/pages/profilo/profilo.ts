@@ -33,8 +33,11 @@ export class ProfiloPage {
               public navParams: NavParams,
               public events:Events,
               public shareService: ShareService) {
-    console.log('Welcome', shareService.getUser().getImg());
-    this.Image =  shareService.getUser().getImg();
+    console.log('Welcome');
+    if(shareService.getUser()!=undefined){
+      this.Image =  shareService.getUser().getImg();
+    }
+
 
   }
 
