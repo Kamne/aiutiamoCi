@@ -1,5 +1,4 @@
 page-ricerca-eventi {
-
   .content{
     background-color: color($colors, lightblack_3);
     text-align: center;
@@ -7,9 +6,12 @@ page-ricerca-eventi {
   #ricerca-div{
     padding: 10px;
     width: 100%;
+    height: 87%;
     background-color: color($colors, lightgrey_);
   }
   #richieste,#assistenti{
+    position: relative;
+    top: 10%;
     background-color: color($colors, lightgrey_);
   }
   .menu{
@@ -29,4 +31,9 @@ page-ricerca-eventi {
     border: 0;
   }
 
+  .odino{
+    position: relative;
+    top: 18%;
+    //background-color: color($colors, lightgrey_);
+  }
 }
