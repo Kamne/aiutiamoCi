@@ -5,26 +5,23 @@
 </ion-header>
 
 <ion-content padding id="signup">
+  <h1 text-center>Cosa sai fare</h1>
+            <div id="styleForm">
 
-  <ion-img id="logo" width="250" height="170" src="assets/imgs/my_logo.png" >
-        <input type="file" #img/>
-  </ion-img>
-  <br/>
-  <div id="styleForm">
 
-      <div class="inputWithIcon" id="competenze">
-          <input type="text" value="" placeholder="Competenze"  #competenze/>
-          <i class="fa fa-cogs" aria-hidden="true"></i>
-      </div>
 
-      <div class="inputWithIcon" id="titolo">
-          <input type="text" value="" placeholder="Titolo di studio"  #titolo/>
-          <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-      </div>
-  </div>
-  <div id="id_conferma" >
-    <button block><b>Conferma</b></button>
-  </div>
+                <div class="inputWithIcon" id="competenze">
+  <!--                  <input type="text" [(ngModel)]="competenze" placeholder="Competenze"/>
+                    <i class="fa fa-cogs" aria-hidden="true"></i> -->
+                      <button block (click) = "competenze()" class="ade"><b>Competenze</b></button>
+                </div>
+
+                <div class="inputWithIcon"  id="titolo">
+                    <input type="text" [(ngModel)]="titStudio" placeholder="Titolo di studio" />
+                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                </div>
+                <button block (click) = "indietro()" class="zeus"><b>indietro</b></button>  <button block class="zeus" (click)="diventaAssistente()"><b>Conferma</b></button>
+
+
+            </div>
   </ion-content>
-
-
