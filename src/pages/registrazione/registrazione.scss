@@ -18,6 +18,18 @@ page-registrazione {
   //    margin-left: 25px;
   }
 
+  .error{
+    width: 80%;
+    font-size: 18px;
+    color: color($colors, white);
+    background: color($colors, lightblack_);
+    border-radius: 3px;
+    padding: 25px;
+
+    margin: -16px auto 15px;
+
+  }
+
   #signup {
       font-size: 1.6em;
       background: color($colors, lightgrey_);
