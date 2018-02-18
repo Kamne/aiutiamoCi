@@ -50,7 +50,6 @@ export class RubricaPage {
         console.log("myLogAssistente",JSON.parse(data.associazioni[i]));
         var parse = JSON.parse(data.associazioni[i]);
         this.associazioni[i] = parse;
-       // inserire l'if
        
        }
     }, error => {
