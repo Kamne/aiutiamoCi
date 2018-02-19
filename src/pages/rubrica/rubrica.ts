@@ -74,12 +74,4 @@ export class RubricaPage {
 
   }
 
-  mail() {
-    
-  }
-
-  call() {
-
-  }
-
 }
