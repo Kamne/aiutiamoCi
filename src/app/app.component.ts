@@ -19,6 +19,7 @@ import {FaqPage} from "../pages/faq/faq";
 import {FaqAdminPage} from "../pages/faq-admin/faq-admin";
 
 import {DiventaAssistentePage} from '../pages/diventa-assistente/diventa-assistente';
+import {PasswordDimenticataPage} from '../pages/password-dimenticata/password-dimenticata';
 import {RicercaRichiestePage} from '../pages/ricerca-richieste/ricerca';
 import { ShareService } from '../providers/shareService';
 import { Utente } from '../classes/utente';
@@ -49,7 +50,8 @@ export class MyApp {
  // console.log('Welcome', img);
 });
     this.initializeApp();
-
+  //  if(this.shareService.getUser() != undefined){
+//    if(this.shareService.getUser().getTipologia() == "assistente")
     this.pages = [
       {label:'Home',items:[
                             { title: 'Home', component: HomePage, icon: 'home' },
@@ -61,23 +63,25 @@ export class MyApp {
                       ]},
       {label:'utente',items:[
                             { title: 'Profilo', component: ProfiloPage, icon: 'contact' },
-                        //    { title: 'Info - FAQ', component: WelcomePage, icon: 'information-circle' },
+                            { title: 'Info - FAQ', component: WelcomePage, icon: 'information-circle' },
                             ]},
 
       {label:'setting',items:[
                       //      { title: 'Opzioni Amministratore', component: WelcomePage, icon: 'construct' }
                             ]},
-      {label:'',items:[
-                            { title: 'Login', component: LoginPage, icon: 'log-in' },
-                            { title: 'Registrati', component: SignupPage, icon: 'log-in' },
-                      //      { title: 'Logout', component: WelcomePage, icon: 'log-out' }
-      ]},
         {label:'ricerca',items:[
             { title: 'Ricerca', component: TabsRicercaPage, icon: 'search' }
 
         ]},
-    ];
 
+        {label:'',items:[
+                          //    { title: 'Login', component: LoginPage, icon: 'log-in' },
+                        //      { title: 'Registrati', component: SignupPage, icon: 'log-in' },
+                             { title: 'Logout', component: WelcomePage, icon: 'log-out' }
+        ]},
+
+    ];
+this.shareService.setPages(this.pages)
   }
     initializeApp()
     {
@@ -90,10 +94,9 @@ export class MyApp {
     }
   openPage(page)
     {
-    // close the menu when clicking a link from the menu
+
     this.menu.close();
-    // navigate to the new page if it is not the current page
-   // this.nav.setRoot(page.component);
+
      this.nav.setRoot(page.component);
     }
     openResearch(){

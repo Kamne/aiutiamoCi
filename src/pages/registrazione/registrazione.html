@@ -14,8 +14,26 @@
 
 
 <ion-content padding id="signup">
+
     <form #f="ngForm" novalidate>
-    <ion-slides>
+
+  <ion-slides>
+      <!--
+    <ion-slide>
+      <br/>
+<h1> Chi sei </h1>
+      <div id="styleForm">
+
+        <div class="inputWithIcon">
+          <select name="tipologia" (change)="onChange(tipologia.value)"  #tipologia>
+              <option value="" disabled selected hidden >Scegli la tipologia</option>
+              <option value="assistente">Assistente</option>
+              <option value="associazione">Associazione</option>
+              <option value="amministratore">Amministratore</option>
+              <option value="utente">Utente</option>
+          </select>
+            <i class="fa fa-male  fa-fw" aria-hidden="true"></i>
+        </div>-->
         <ion-slide>
             <br/>
             <h1> Chi sei </h1>
@@ -149,11 +167,14 @@
                 <button block  class="zeus" (click)="avanti()"><b>avanti</b></button>
             </div>
         </ion-slide>
+
         <ion-slide>
 
+      <br/>
             <h1>Dove ti trovi?</h1>
 
             <br/>
+
             <div id="styleForm">
 
                 <div class="inputWithIcon flexContainer" style="text-align: left">
@@ -202,8 +223,12 @@
 
 
         </ion-slide>
+<!--
+<ion-slide *ngIf ="showAssistente">
+<h1>Cosa sai fare</h1>
 
-
+          <div id="styleForm">
+-->
         <ion-slide *ngIf ="showAssistente">
             <h1>Cosa sai fare?</h1>
             <div id="styleForm">
@@ -267,5 +292,6 @@
         </ion-slide>
 
     </ion-slides>
+
         </form>
 </ion-content>

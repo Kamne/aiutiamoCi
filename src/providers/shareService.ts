@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 export class ShareService {
 
     user : any;
+    pages : any = [];
     firstName: string;
     lastName: string;
     myCompetenze:Array<string>
@@ -21,6 +22,16 @@ export class ShareService {
     setUser(user) {
         console.log(user)
         this.user = user;
+    }
+
+    getPages() {
+
+        return this.pages;
+    }
+
+    setPages(user) {
+        console.log(user)
+        this.pages = user;
     }
 
     getMyCompetenze(){

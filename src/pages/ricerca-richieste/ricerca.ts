@@ -43,7 +43,7 @@ checkUrgenze:boolean=false;
     headers.append('Content-Type', 'application/x-www-form-urlencoded' );
     let options = new RequestOptions({ headers: headers });
     this.http.post('http://aiutiamoc.altervista.org/ricercaUtenti.php',options).map(res => res.json()).subscribe(   data => {
-      console.log("data",data)
+      console.log("ridata",data)
       this.allCompetenze = data.competenze;
       this.indirizzi = data.indirizzi;
       this.nativeGeocoder.forwardGeocode(this.shareService.getUser().getIndirizzo()+","+this.shareService.getUser().getCitta())
@@ -85,6 +85,11 @@ aiutatm(index,patentato,urgenza,automunito){
         this.result.push(JSON.parse(this.indirizzi[index]).Username)
         console.log("username",JSON.parse(this.indirizzi[index]).Username,this.distance/1000)
     }
+
+    if(this.result.length == 0){
+      return;
+    }
+    console.log("ciccio")
     var myData = JSON.stringify({tipologia:"Richiesta",risultati:this.result,competenze:this.searchCompetenze.toString(),patentato:Number(this.checkPatentato),urgenza:Number(this.checkUrgenze),automunito:Number(this.checkAutomunito)});
 
     if(index == (this.indirizzi.length-1)){
