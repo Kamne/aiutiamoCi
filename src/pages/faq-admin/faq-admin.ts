@@ -24,7 +24,6 @@ export class FaqAdminPage {
   public domande:any = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public dialogs: Dialogs, public formBuilder: FormBuilder) {
-    //this.faqList();
   }
 
   ionViewDidLoad() {
@@ -36,7 +35,6 @@ export class FaqAdminPage {
     headers.append('Content-Type', 'application/x-www-form-urlencoded' );
     let options = new RequestOptions({ headers: headers });
     this.http.post('http://aiutiamoc.altervista.org/getDomande.php',options).map(res => res.json()).subscribe(    data => {
-      //console.log("myjson",JSON.parse(data.nonRisposte[1]));
 
       var node = document.getElementById("domanda");
       var elements = data.Risposte.length;
@@ -55,9 +53,6 @@ export class FaqAdminPage {
         var br = document.createElement("BR");
         node.appendChild(br);
       }
-      // iterazione di JSON.parse(data.Risposte[i]) 
-      // andare nella console del browser (ISPEZIONA ELEMENTO)
-      
       
     });
   } 
@@ -69,7 +64,6 @@ export class FaqAdminPage {
     this.http.post('http://aiutiamoc.altervista.org/getDomande.php',options).map(res => res.json()).subscribe(    data => {
       var node = document.getElementById("rispondi");      
       var numElem = data.nonRisposte.length;
-      alert(numElem);
       for(var i = 0 ;i<numElem;i++) {
 
         console.log("myjson"+i,JSON.parse(data.nonRisposte[i]));
