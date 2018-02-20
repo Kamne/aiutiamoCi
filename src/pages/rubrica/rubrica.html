@@ -37,7 +37,7 @@
     <div *ngSwitchCase="'assistenti'">
         <h1>Assistenti</h1>
         <div class="one" id="div_assistenti" *ngFor="let a of assistenti">
-          <ion-item>
+          <ion-item (click)="informazioniUtente(a)">
             {{a}}
         </ion-item>  
         </div>      
@@ -46,7 +46,7 @@
     <div *ngSwitchCase="'associazioni'">
       <h1>Associazioni</h1>
       <div class="one" id="div_associazioni" *ngFor="let a of associazioni">
-        <ion-item>
+        <ion-item (click)="informazioniAssociazione(a)">
           {{a}}
         </ion-item>
       </div>
