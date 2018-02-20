@@ -3,6 +3,11 @@ page-ricerca-eventi {
     background-color: color($colors, lightblack_3);
     text-align: center;
   }
+
+  h2{
+      color: color($colors, bordeaux_);
+    }
+
   #ricerca-div{
     padding: 10px;
     width: 100%;
@@ -23,9 +28,11 @@ page-ricerca-eventi {
     text-align: center;
   }
   button{
+
     background-color: color($colors, bordeaux_);
     text-align: center;
     color: color($colors, white);
+
     width: 100%;
     padding: 5%;
     border: 0;
@@ -33,7 +40,8 @@ page-ricerca-eventi {
 
   .odino{
     position: relative;
-    top: 18%;
+
+    top:60px;
     //background-color: color($colors, lightgrey_);
   }
 }
