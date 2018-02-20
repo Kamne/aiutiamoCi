@@ -13,12 +13,17 @@ import {Associazione} from '../../classes/associazione';
 
 export class RubricaPage {
 
-  public assistenti: any = [];
-  public associazioni: any = [];
+  public assistenti: Array <string>;
+  public associazioni: Array <string>;
   public searchQuery: string = '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http,public shareService: ShareService) {
+    this.inizialize();
+  }
 
+  inizialize() {
+    this.assistenti=[];
+    this.associazioni=[];
   }
 
   ionViewDidLoad() {
@@ -53,7 +58,6 @@ export class RubricaPage {
         console.log("myLogAssistente",JSON.parse(data.associazioni[i]));
         var parse = JSON.parse(data.associazioni[i]);
         this.associazioni[i] = parse;
-       
        }
     }, error => {
       alert("Oooops!");
@@ -103,20 +107,18 @@ export class RubricaPage {
   }
 
   getItems(ev: any) {
-
+    this.inizialize();
     let val = ev.target.value;
 
     if (val && val.trim() != '') {
       this.associazioni = this.associazioni.filter((a) => {
         return (a.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
-    }
-    if (val && val.trim() != '') {
       this.assistenti = this.assistenti.filter((a) => {
         return (a.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
-
+    
   }
 
 }
