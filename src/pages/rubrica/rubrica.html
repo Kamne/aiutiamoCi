@@ -5,9 +5,6 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding id="rubrica">
-  <ion-img id="logo" width="50" height="70" src="/assets/imgs/my_logo.png" style="background: white;"></ion-img>
-  <h1>Rubrica
-  </h1>
   <div id="div_search">
     <ion-searchbar [(ngModel)]="myInput"
       [showCancelButton]="shouldShowCancel"
@@ -37,10 +34,8 @@
     <div *ngSwitchCase="'assistenti'">
         <h1>Assistenti</h1>
         <div class="one" id="div_assistenti" *ngFor="let a of assistenti">
-          <ion-item>
+          <ion-item (click)="informazioniUtente(a)">
             {{a}}
-            <ion-icon name="mail" id="mail" (click)="mail()"></ion-icon>
-            <ion-icon name="call" id="call" (click)="call()"></ion-icon>
         </ion-item>  
         </div>      
     </div>
@@ -48,10 +43,8 @@
     <div *ngSwitchCase="'associazioni'">
       <h1>Associazioni</h1>
       <div class="one" id="div_associazioni" *ngFor="let a of associazioni">
-        <ion-item>
+        <ion-item (click)="informazioniAssociazione(a)">
           {{a}}
-          <ion-icon name="mail" id="mail"></ion-icon>
-          <ion-icon name="call" id="call"></ion-icon>
         </ion-item>
       </div>
     </div>
