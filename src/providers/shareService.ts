@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 export class ShareService {
 
     user : any;
+    otherUser : any;
     pages : any = [];
     firstName: string;
     lastName: string;
@@ -17,6 +18,16 @@ export class ShareService {
     getUser() {
 
         return this.user;
+    }
+
+    getOtherUser() {
+
+        return this.otherUser;
+    }
+
+    setOtherUser(user) {
+        console.log(user)
+        this.otherUser = user;
     }
 
     setUser(user) {

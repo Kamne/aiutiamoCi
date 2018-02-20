@@ -4,11 +4,7 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
-  <ion-navbar>
-    <ion-title *ngIf="shareService.getUser()!=undefined">{{shareService.getUser().getNome()}} Profilo</ion-title>
-  </ion-navbar>
-</ion-header>
+
 
 <ion-content >
   <div class="content">
@@ -21,7 +17,8 @@
     </ion-item>
 
     <ion-item id="profilo-nome"  no-lines>
-      <label style="color: white;" *ngIf="shareService.getUser()!=undefined">{{shareService.getUser().getNome()}}</label>
+      <label style="color: white;" *ngIf="navParams.get('other')">{{shareService.getOtherUser().getNome()}}</label>
+      <label style="color: white;" *ngIf="navParams.get('other') == undefined">{{shareService.getUser().getNome()}}</label>
       <button>
         <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
       </button>
@@ -29,31 +26,52 @@
     <br/>
     <div id="profilo-info">
 
-      <div class="menu">
+    <!--  <div class="menu">
         <ul >
           <li><a (click)="openPage(item)">Info</a></li>
           <li><a (click)="loadPage('annunci')">Annunci</a></li>
           <li><a (click)="openPage(item)">Preferiti</a></li>
         </ul>
-      </div>
+      </div> -->
 
-      <div class="profilo-testo" *ngIf="shareService.getUser()!=undefined" ><!--    -->
-        <label>Cognome:</label>&nbsp;<span>{{shareService.getUser().getCognome()}}</span> <br />
+       <div class="profilo-testo" *ngIf="shareService.getUser()!=undefined && navParams.get('other') == undefined" >
+       <label>Cognome:</label>&nbsp;<span>{{shareService.getUser().getCognome()}}</span> <br />
         <label>Nome:</label>&nbsp;<span>{{shareService.getUser().getNome()}}</span><br />
+        <label>Sesso:</label>&nbsp;<span>{{shareService.getUser().getSesso()}}</span><br />
         <label>Username:</label>&nbsp;<span>{{shareService.getUser().getUsername()}}</span><br />
-        <label>Data di nascita:</label>&nbsp;<span>{{shareService.getUser().getNato()}}</span><br />
-        <label>Competenze:</label>&nbsp;<span>{{shareService.getUser().getCompetenze()}}</span><br />
+        <label >Data di nascita:</label>&nbsp;<span>{{shareService.getUser().getNato()}}</span><br />
+        <label *ngIf="showAssistente">Competenze:</label>&nbsp;<span *ngIf="showAssistente" (click)="competenze()">clicca qui</span><br />
+        <label *ngIf="showAssistente">Titolo di studio:</label>&nbsp;<span *ngIf="showAssistente">{{shareService.getUser().getTitolo()}}</span><br />
         <label>Codice fiscale:</label>&nbsp;<span>{{shareService.getUser().getCF()}}</span><br />
         <label>Città:</label>&nbsp;<span>{{shareService.getUser().getCitta()}}</span><br />
         <label>Provincia:</label>&nbsp;<span>{{shareService.getUser().getProvincia()}}</span><br />
         <label>Indirizzo:</label>&nbsp;<span>{{shareService.getUser().getIndirizzo()}}</span><br />
         <label>Email:</label>&nbsp;<span>{{shareService.getUser().getEmail()}}</span><br />
         <label>Telefono:</label>&nbsp;<span>{{shareService.getUser().getTel()}}</span><br />
-        <label>Tipologia:</label>&nbsp;<span>{{shareService.getUser().getTipologia()}}</span><br /><br />
+        <label>Iscritto come:</label>&nbsp;<span>{{shareService.getUser().getTipologia()}}</span><br /><br />
+       <label>Email:</label>&nbsp;<span>{{shareService.getUser().getToStringCompetenze()}}</span><br />
 
+     </div>
+
+      <div class="profilo-testo" *ngIf=" navParams.get('other')" ><!--    -->
+        <label>Cognome:</label>&nbsp;<span>{{shareService.getOtherUser().getCognome()}}</span> <br />
+        <label>Nome:</label>&nbsp;<span>{{shareService.getOtherUser().getNome()}}</span><br />
+        <label>Sesso:</label>&nbsp;<span>{{shareService.getOtherUser().getSesso()}}</span><br />
+        <label>Username:</label>&nbsp;<span>{{shareService.getOtherUser().getUsername()}}</span><br />
+        <label >Data di nascita:</label>&nbsp;<span>{{shareService.getOtherUser().getNato()}}</span><br />
+        <label *ngIf="showAssistente">Competenze:</label>&nbsp;<a (click)="competenze()">clicca qui</a><br />
+        <label *ngIf="showAssistente">Titolo di studio:</label>&nbsp;<span>{{shareService.getOtherUser().getTitolo()}}</span><br />
+        <label>Codice fiscale:</label>&nbsp;<span>{{shareService.getOtherUser().getCF()}}</span><br />
+        <label>Città:</label>&nbsp;<span>{{shareService.getOtherUser().getCitta()}}</span><br />
+        <label>Provincia:</label>&nbsp;<span>{{shareService.getOtherUser().getProvincia()}}</span><br />
+        <label>Indirizzo:</label>&nbsp;<span>{{shareService.getOtherUser().getIndirizzo()}}</span><br />
+        <label>Email:</label>&nbsp;<span>{{shareService.getOtherUser().getEmail()}}</span><br />
+        <label>Telefono:</label>&nbsp;<span>{{shareService.getOtherUser().getTel()}}</span><br />
+        <label>Iscritto come:</label>&nbsp;<span>{{shareService.getOtherUser().getTipologia()}}</span><br /><br />
      <!--   <label>Email:</label>&nbsp;<span>{{shareService.getUser().getToStringCompetenze()}}</span><br />-->
 
       </div>
+
       <div [innerHtml]="myTemplate"></div>
     </div>
   </div>

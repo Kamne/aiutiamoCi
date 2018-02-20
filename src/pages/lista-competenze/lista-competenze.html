@@ -18,7 +18,7 @@
 
 <ion-content padding>
 <div class="dio">
-  <b>Clicca per selezionare le competenze</b>
+  <b *ngIf="visible == undefined">Clicca per selezionare le competenze</b>
     <ion-list>
       <ion-item   *ngFor="let post of shareService.getOtherCompetenze()"  (click)="selected(post)">
         <ion-label>{{post}}</ion-label>

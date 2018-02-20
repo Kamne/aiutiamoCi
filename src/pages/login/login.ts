@@ -14,7 +14,9 @@ import { WelcomePage } from '../welcome/welcome';
 import { HomePage } from '../home/home';
 import { RubricaPage } from '../rubrica/rubrica';
 import { TabsRicercaPage } from '../tabs-ricerca/tabs-ricerca';
+import { TabsProfiloUtentePage } from '../tabs-profilo-utente/tabs-profilo-utente';
 import { BachecaPage } from '../bacheca/bacheca';
+import { MembriPage } from '../membri/membri';
 import {EventPage} from '../event/event';
 import {InserisciPage} from '../inserisci/inserisci';
 import {ProfiloPage} from '../profilo/profilo';
@@ -33,7 +35,7 @@ import { Utente } from '../../classes/utente';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-
+membri:Array<string> = []
   constructor(public event:Events,public navCtrl: NavController, public navParams: NavParams, public http: Http, public dialogs: Dialogs,public shareService: ShareService) {
   }
     pages: any;
@@ -52,19 +54,22 @@ export class LoginPage {
   console.log(data);
   if(data.success){
     if(data.user.Tipologia == "associazione"){
+      this.membri = data.membri
       this.shareService.setUser(new Associazione(data.user.Nome,data.user.Username,data.user.Immagine,
                                            data.user.Descrizione,data.user.Fondata,data.user.PartitaIVA,
                                            data.user.Citta,data.user.Provincia,data.user.Indirizzo,
-                                           data.user.Email,data.user.NumTelefono,data.user.Tipologia))
+                                           data.user.Email,data.user.NumTelefono,data.user.Tipologia,this.membri))
       this.event.publish('image', data.user.Immagine);
     }
     else{
     var competenze = data.user.Competenze.split(",")
+    while(competenze[competenze.length-1] == "")
+      competenze.pop();
 
     this.shareService.setUser(new Utente(data.user.Nome,data.user.Cognome,data.user.Username,data.user.Immagine,
                                          data.user.Nato,competenze,data.user.TitoloStudio,data.user.CF,
                                          data.user.Citta,data.user.Provincia,data.user.Indirizzo,
-                                         data.user.Email,data.user.NumTelefono,data.user.Tipologia))
+                                         data.user.Email,data.user.NumTelefono,data.user.Tipologia,data.user.Sesso))
     this.event.publish('image', data.user.Immagine);}
     this.aggiornaPages(this.shareService.getUser().getTipologia())
     this.navCtrl.setRoot(HomePage)
@@ -104,7 +109,7 @@ aggiornaPages(tipologia){
                             { title: 'Eventi', component: EventPage, icon: 'people' },
                       ]},
       {label:'utente',items:[
-                            { title: 'Profilo', component: ProfiloPage, icon: 'contact' },
+                            { title: 'Profilo', component: TabsProfiloUtentePage, icon: 'contact' },
                             { title: 'Info - FAQ', component: WelcomePage, icon: 'information-circle' },
                             ]},
 
@@ -176,6 +181,38 @@ aggiornaPages(tipologia){
 
       {label:'setting',items:[
                             { title: 'Opzioni Amministratore', component: WelcomePage, icon: 'construct' }
+                            ]},
+
+        {label:'ricerca',items:[
+            { title: 'Ricerca', component: TabsRicercaPage, icon: 'search' }
+
+        ]},
+
+        {label:'',items:[
+                        //      { title: 'Login', component: LoginPage, icon: 'log-in' },
+                        //      { title: 'Registrati', component: SignupPage, icon: 'log-in' },
+                              { title: 'Logout', component: WelcomePage, icon: 'log-out' }
+        ]},
+
+    ];
+  }
+  if(tipologia == "associazione"){
+    this.pages = [
+      {label:'Home',items:[
+                            { title: 'Home', component: HomePage, icon: 'home' },
+                          //  { title: 'Inserisci Annuncio', component: InserisciPage, icon: 'create'  },
+                            { title: 'Bacheca', component: BachecaPage, icon: 'paper' },
+                         //   { title: 'Rubrica', component: RubricaPage, icon: 'bookmarks' },
+                         //   { title: 'Cerca Assistente', component: WelcomePage, icon: 'search' },
+                            { title: 'Eventi', component: EventPage, icon: 'people' },
+                      ]},
+      {label:'utente',items:[
+                            { title: 'Profilo', component: ProfiloPage, icon: 'contact' },
+                            { title: 'Info - FAQ', component: WelcomePage, icon: 'information-circle' },
+                            ]},
+
+      {label:'setting',items:[
+                            { title: 'Membri', component: MembriPage, icon: 'construct' }
                             ]},
 
         {label:'ricerca',items:[
