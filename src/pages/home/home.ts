@@ -32,20 +32,20 @@ export class HomePage {
   }
   */
 insert(){
-  this.navCtrl.setRoot(InserisciPage);
+  this.navCtrl.push(InserisciPage);
 }
 
   cerca(){
-    this.navCtrl.setRoot(TabsRicercaPage);
+    this.navCtrl.push(TabsRicercaPage);
   }
   bacheca(){
-    this.navCtrl.setRoot(BachecaPage);
+    this.navCtrl.push(BachecaPage);
   }
   eventi(){
-    this.navCtrl.setRoot(EventPage);
+    this.navCtrl.push(EventPage);
   }
   rubrica(){
-    this.navCtrl.setRoot(RubricaPage);
+    this.navCtrl.push(RubricaPage);
   }
 
 }

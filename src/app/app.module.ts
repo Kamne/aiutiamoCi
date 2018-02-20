@@ -9,6 +9,9 @@ import { PasswordDimenticataPage } from '../pages/password-dimenticata/password-
 
 
 import {WelcomePage} from '../pages/welcome/welcome';
+import {MembriPage} from '../pages/membri/membri';
+import {ProfiloAnnunciPage} from '../pages/profilo-annunci/profilo-annunci';
+import {ProfiloPreferitiPage} from '../pages/profilo-preferiti/profilo-preferiti';
 import {LoginPage} from '../pages/login/login';
 import {SignupPage} from '../pages/signup/signup';
 import {AnnunciPage} from '../pages/annunci/annunci';
@@ -16,6 +19,9 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+import { TabsProfiloUtentePage } from '../pages/tabs-profilo-utente/tabs-profilo-utente';
+
+
 
 import { RubricaPage } from '../pages/rubrica/rubrica';
 import { RicercaRichiestePage } from '../pages/ricerca-richieste/ricerca';
@@ -60,15 +66,19 @@ import { SMS } from '@ionic-native/sms';
     WelcomePage,
     LoginPage,
     CompetenzeSelectedPage,
+    ProfiloPreferitiPage,
     SignupPage,
     ListaCompetenzePage,
     MapPage,
+    MembriPage,
     ContactPage,
+    TabsProfiloUtentePage,
     HomePage,
     TabsPage,
     RicercaOffertePage,
     RegistrazionePage,
     RubricaPage,
+    ProfiloAnnunciPage,
     RicercaRichiestePage,
     RicercaEventiPage,
     TabsRicercaPage,
@@ -99,12 +109,16 @@ import { SMS } from '@ionic-native/sms';
     WelcomePage,
     LoginPage,
     AnnunciPage,
+    MembriPage,
     SignupPage,
     PasswordDimenticataPage,
     AboutPage,
     ContactPage,
+    TabsProfiloUtentePage,
+    ProfiloPreferitiPage,
     HomePage,
     TabsRicercaPage,
+    ProfiloAnnunciPage,
     RicercaOffertePage,
     CompetenzeSelectedPage,
     RicercaEventiPage,
