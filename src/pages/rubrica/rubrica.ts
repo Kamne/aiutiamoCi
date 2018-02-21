@@ -77,7 +77,7 @@ export class RubricaPage {
         this.shareService.setUser(new Utente(data.user.Nome,data.user.Cognome,data.user.Username,data.user.Immagine,
                                             data.user.Nato,competenze,data.user.TitoloStudio,data.user.CF,
                                             data.user.Citta,data.user.Provincia,data.user.Indirizzo,
-                                            data.user.Email,data.user.NumTelefono,data.user.Tipologia));
+                                            data.user.Email,data.user.NumTelefono,data.user.Tipologia,data.user.Sesso));
         console.log(username,data.user);
       }
       else {
@@ -97,7 +97,7 @@ export class RubricaPage {
       this.shareService.setUser(new Associazione(data.associazione.Nome,data.associazione.Username,data.associazione.Immagine,
                                            data.associazione.Descrizione,data.associazione.Fondata,data.associazione.PartitaIVA,
                                            data.associazione.Citta,data.associazione.Provincia,data.associazione.Indirizzo,
-                                           data.associazione.Email,data.associazione.NumTelefono,data.associazione.Tipologia));
+                                           data.associazione.Email,data.associazione.NumTelefono,data.associazione.Tipologia,data.membri));
       console.log(username,data.associazione);                        
       }
       else {
