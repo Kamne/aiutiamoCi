@@ -57,11 +57,12 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
 import { CallNumber } from '@ionic-native/call-number';
 import { SMS } from '@ionic-native/sms';
-
+import {ProfiloAssociazionePage} from "../pages/profilo-associazione/profilo-associazione";
 
 @NgModule({
   declarations: [
     MyApp,
+    ProfiloAssociazionePage,
     AboutPage,
     WelcomePage,
     LoginPage,
@@ -116,6 +117,7 @@ import { SMS } from '@ionic-native/sms';
     ContactPage,
     TabsProfiloUtentePage,
     ProfiloPreferitiPage,
+    ProfiloAssociazionePage,
     HomePage,
     TabsRicercaPage,
     ProfiloAnnunciPage,
