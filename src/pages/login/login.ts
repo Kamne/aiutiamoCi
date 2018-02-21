@@ -9,7 +9,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Platform, MenuController, Nav  } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
+import {ProfiloAssociazionePage} from "../profilo-associazione/profilo-associazione";
 import { WelcomePage } from '../welcome/welcome';
 import { HomePage } from '../home/home';
 import { RubricaPage } from '../rubrica/rubrica';
@@ -207,7 +207,7 @@ aggiornaPages(tipologia){
                             { title: 'Eventi', component: EventPage, icon: 'people' },
                       ]},
       {label:'utente',items:[
-                            { title: 'Profilo', component: ProfiloPage, icon: 'contact' },
+                            { title: 'Profilo', component: ProfiloAssociazionePage, icon: 'contact' },
                             { title: 'Info - FAQ', component: WelcomePage, icon: 'information-circle' },
                             ]},
 
