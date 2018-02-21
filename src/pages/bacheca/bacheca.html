@@ -1,0 +1,71 @@
+<!--
+  Generated template for the BachecaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Bacheca</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="bacheca">
+<div *ngFor="let post of posts">
+    <div id="post" >
+      <div id="nome-contatti">
+        <h2>
+          {{post.username}}
+        </h2>
+        <div style="float: left; " >
+
+          <i id="pulsante" class="fa fa-envelope-square  fa-2x" aria-hidden="true"></i>
+          <i id="pulsante" class="fa fa-phone-square  fa-2x" aria-hidden="true" (click)="callNumTelephone(post.telefono)"></i>
+
+        </div>
+
+      </div>
+      <div id="testo">
+        <br />
+        <br />
+        {{post.testo}}
+      </div>
+      <div id="automunito" *ngIf="post.automunito" >
+        Automunito
+      </div>
+
+      <div id="patente" *ngIf="post.patente" style="float:right" >
+        Patentato
+      </div>
+
+      <div id="urgenza" *ngIf="post.urgenza" style="position: center">
+        Urgenza
+      </div>
+
+      <div id="competenze" *ngIf="post.competenze!=''" (click)="getCompetenze(post.competenze)" >
+        <i>Competenze</i>
+      </div>
+
+      <div id="data">
+        {{post.data}}
+      </div>
+
+    </div>
+  <br />
+
+</div>
+  <br />
+  <br />
+  <br />
+  <!--
+  <button  (click)="nuovo_msg()">
+    Nuovo
+  </button>
+  -->
+  <ion-fab right bottom>
+    <button ion-fab color="bordeaux_"  (click)="nuovo_msg()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+</ion-content>

@@ -1,0 +1,43 @@
+page-profilo {
+
+ .content{
+    background-color: color($colors, lightblack_3);
+    text-align: center;
+  }
+  #profilo-nome,#profilo-avatar{
+
+    width: 100%;
+    background-color: color($colors, lightblack_3);
+    text-align: center;
+
+  }
+  #profilo-nome button{
+    background-color: color($colors, lightblack_3);
+    color: color($colors, white);
+  }
+  #profilo-avatar img{
+    width: 40%;
+    height: 40%;
+    margin: auto;
+  }
+
+  #profilo-info{
+    margin: auto;
+    width: 99%;
+    background-color: color($colors, lightgrey_);
+  }
+
+  .profilo-testo{
+    padding: 10px;
+    text-align: left;
+  }
+  .profilo-testo label{
+    font-size: 1.4em;
+    color: color($colors, bordeaux_);
+  }
+  .profilo-testo span{
+    font-size: 1.4em;
+    color: color($colors, lightblack_2);
+  }
+
+}

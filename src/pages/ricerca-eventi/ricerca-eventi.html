@@ -1,0 +1,31 @@
+
+
+
+<ion-content padding class="content">
+  <br />
+  <div id="ricerca-div">
+
+
+  <br />
+      <h2  color=bordeaux_>Ricerca Eventi</h2>
+  <div id="richieste">
+    <input type="text" placeholder="nome evento" [(ngModel)] = "nome"/>
+      <div style="text-align: center">
+      </div>
+      <br>
+
+      <br><br>
+    <button  (click)="openModal()">Associazioni</button>
+
+    <ion-range min="0" max="100" [(ngModel)]="firstValue" color="bordeaux_" pin="true">
+      <ion-label range-left>0km</ion-label>
+      <ion-label range-right>100km</ion-label>
+    </ion-range>
+
+  </div>
+
+      <button class="odino"   (click)="ricerca()">
+        Cerca
+      </button>
+</div>
+</ion-content>

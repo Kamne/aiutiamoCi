@@ -1,0 +1,16 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Ricerca</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-tabs #myTabs color=bordeaux_>
+    <ion-tab [root]="tab1Root"  [rootParams]="navParams" tabTitle="Annunci Richiesta" ></ion-tab>
+    <ion-tab [root]="tab2Root"  [rootParams]="navParams" tabTitle="Annunci Offerta"></ion-tab>
+    <ion-tab [root]="tab3Root"  [rootParams]="navParams" tabTitle="Eventi"></ion-tab>
+  </ion-tabs>
+</ion-content>

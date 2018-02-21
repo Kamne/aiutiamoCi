@@ -1,7 +1,29 @@
 page-event-crea {
 
+  .imgCameraPosition {
+    position: absolute;
+    z-index: 5;
+
+    top: 20%;
+    left: 80%;
+
+  }
+
+  .error{
+    width: 80%;
+    font-size: 18px;
+    color: color($colors, white);
+    background: color($colors, lightblack_);
+    border-radius: 3px;
+    padding: 15px;
+    margin: -16px auto 15px;
+
+  }
   .evento-crea{
-    background-color: color($colors, lightblack_);
+    
+
+
+    background-color: color($colors, darkgrey_);
     text-align: center;
   }
   div{

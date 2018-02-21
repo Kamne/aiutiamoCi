@@ -5,9 +5,6 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding id="rubrica">
-  <ion-img id="logo" width="50" height="70" src="/assets/imgs/my_logo.png" style="background: white;"></ion-img>
-  <h1>Rubrica
-  </h1>
   <div id="div_search">
     <ion-searchbar [(ngModel)]="myInput"
       [showCancelButton]="shouldShowCancel"
@@ -15,4 +12,42 @@
       (ionCancel)="onCancel($event)">
     </ion-searchbar>
   </div>
+
+ <!-- <div class="menu">
+    <ul >
+      <li><a (click)="openPage(item)">Utente</a></li>
+      <li><a (click)="loadPage('annunci')">Associazione</a></li>
+    </ul>
+  </div> -->
+
+  <div padding>
+    <ion-segment [(ngModel)]="scelta">
+      <ion-segment-button value="assistenti" (ionSelect)="getAssistenti()">
+        Assistenti
+      </ion-segment-button>
+      <ion-segment-button value="associazioni" (ionSelect)="getAssociazioni()">
+        Associazioni
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+  <div [ngSwitch]="scelta">
+    <div *ngSwitchCase="'assistenti'">
+        <h1>Assistenti</h1>
+        <div class="one" id="div_assistenti" *ngFor="let a of assistenti">
+          <ion-item (click)="informazioniUtente(a)">
+            {{a}}
+        </ion-item>  
+        </div>      
+    </div>
+  
+    <div *ngSwitchCase="'associazioni'">
+      <h1>Associazioni</h1>
+      <div class="one" id="div_associazioni" *ngFor="let a of associazioni">
+        <ion-item (click)="informazioniAssociazione(a)">
+          {{a}}
+        </ion-item>
+      </div>
+    </div>
+  </div>
+
 </ion-content>

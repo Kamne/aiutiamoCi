@@ -1,0 +1,44 @@
+<ion-header>  
+  <ion-navbar>
+    <ion-title>INFO - FAQ </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+    <ion-img id="logo" width="250" height="170" src="assets/imgs/my_logo.png" ></ion-img>
+
+  <div padding>
+  <ion-segment [(ngModel)]="scelta">
+    <ion-segment-button value="domande" (ionSelect)="faqList()">
+      Domande
+    </ion-segment-button>
+    <ion-segment-button value="rispondi" (ionSelect)="rispondiDomande()">
+      Rispondi
+    </ion-segment-button>
+  </ion-segment>
+</div>
+
+<div [ngSwitch]="scelta">
+  <div *ngSwitchCase="'domande'">
+      <h1>DOMANDE RISPOSTE</h1>
+      <div  id="domanda">
+      
+      </div>
+      
+  </div>
+
+  <div *ngSwitchCase="'rispondi'">
+    <h1>RISPONDI LE SEGUENTI DOMANDE</h1>
+    <br>
+    <div class="one" id="rispondi">
+
+    </div>
+  </div>
+</div>
+
+
+  
+  
+ 
+</ion-content>

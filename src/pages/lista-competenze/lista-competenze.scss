@@ -1,0 +1,54 @@
+page-lista-competenze {
+ .ciccio{
+   position: fixed;
+
+   bottom: 3%;
+   text-align: center;
+ }
+
+button{
+//    background: none;
+}
+
+ .main{
+     // width: 5%;
+     height: 100%;
+ }
+ .dio{
+
+
+   overflow-y: scroll;
+ }
+
+.barone{
+
+  position: relative;
+  bottom: 44%;
+}
+
+b{
+  font-size: 1.2em;
+}
+.apollo{
+  position: fixed;
+  bottom: 10%;
+  right: 3%;
+
+}
+.goback{
+  position: absolute;
+  font-size: 2.5em;
+  margin-left: 2%;
+  bottom: 20%;
+  color: WHITE;
+}
+
+  .thor{
+     position: absolute;
+     left: 25%;
+     bottom: 25%;
+  }
+
+
+
+}

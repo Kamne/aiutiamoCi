@@ -1,0 +1,103 @@
+
+<ion-content padding id="rubrica">
+
+  <ion-slides>
+    <ion-slide>
+      <h1>Richieste</h1>
+      <div *ngFor="let post of richieste">
+          <div id="post" >
+            <div id="nome-contatti">
+              <h2>
+                {{post.username}}
+              </h2>
+              <div style="float: left; " >
+
+                <i id="pulsante" class="fa fa-envelope-square  fa-2x" aria-hidden="true"></i>
+                <i id="pulsante" class="fa fa-phone-square  fa-2x" aria-hidden="true" (click)="callNumTelephone(post.telefono)"></i>
+
+              </div>
+
+            </div>
+            <div id="testo">
+              <br />
+              <br />
+              {{post.testo}}
+            </div>
+            <div id="automunito" *ngIf="post.automunito" >
+              Automunito
+            </div>
+
+            <div id="patente" *ngIf="post.patente" style="float:right" >
+              Patentato
+            </div>
+
+            <div id="urgenza" *ngIf="post.urgenza" style="position: center">
+              Urgenza
+            </div>
+
+            <div id="competenze" *ngIf="post.competenze!=''" (click)="getCompetenze(post.competenze)" >
+              <i>Competenze</i>
+            </div>
+
+            <div id="data">
+              {{post.data}}
+            </div>
+
+          </div>
+        <br />
+
+      </div>
+
+        </ion-slide>
+        <ion-slide>
+            <h1>Offerte</h1>
+          <div *ngFor="let post of offerte">
+              <div id="post" >
+                <div id="nome-contatti">
+                  <h2>
+                    {{post.username}}
+                  </h2>
+                  <div style="float: left; " >
+
+                    <i id="pulsante" class="fa fa-envelope-square  fa-2x" aria-hidden="true"></i>
+                    <i id="pulsante" class="fa fa-phone-square  fa-2x" aria-hidden="true" (click)="callNumTelephone(post.telefono)"></i>
+
+                  </div>
+
+                </div>
+                <div id="testo">
+                  <br />
+                  <br />
+                  {{post.testo}}
+                </div>
+                <div id="automunito" *ngIf="post.automunito" >
+                  Automunito
+                </div>
+
+                <div id="patente" *ngIf="post.patente" style="float:right" >
+                  Patentato
+                </div>
+
+                <div id="urgenza" *ngIf="post.urgenza" style="position: center">
+                  Urgenza
+                </div>
+
+                <div id="competenze" *ngIf="post.competenze!=''" (click)="getCompetenze(post.competenze)" >
+                  <i>Competenze</i>
+                </div>
+
+                <div id="data">
+                  {{post.data}}
+                </div>
+
+              </div>
+            <br />
+
+          </div>
+
+
+        </ion-slide>
+
+    </ion-slides>
+
+</ion-content>

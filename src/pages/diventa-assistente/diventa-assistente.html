@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+      <ion-title>Diventa assistente</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding id="signup">
+  <h1 text-center>Cosa sai fare</h1>
+            <div id="styleForm">
+
+
+
+                <div class="inputWithIcon" id="competenze">
+  <!--                  <input type="text" [(ngModel)]="competenze" placeholder="Competenze"/>
+                    <i class="fa fa-cogs" aria-hidden="true"></i> -->
+                      <button block (click) = "competenze()" class="ade"><b>Competenze</b></button>
+                </div>
+
+                <div class="inputWithIcon"  id="titolo">
+                    <input type="text" [(ngModel)]="titStudio" placeholder="Titolo di studio" />
+                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                </div>
+                <button block (click) = "indietro()" class="zeus"><b>indietro</b></button>  <button block class="zeus" (click)="diventaAssistente()"><b>Conferma</b></button>
+
+
+            </div>
+  </ion-content>

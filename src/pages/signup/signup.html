@@ -7,92 +7,113 @@
 
 <ion-content padding id="signup">
 
-    <ion-img id="logo" width="250" height="170" src="assets/imgs/my_logo.png" ></ion-img>
-    <div style="text-align: center;">
-        <i class="fa fa-user-circle-o fa-5x" aria-hidden="true" id="avatar-anonymous"></i>
+    <ion-img id="logo" width="250" height="170" src="assets/imgs/my_logo.png" >
+          <input type="file" #img/>
+    </ion-img>
+    <div style="text-align: center;" (click)="chargeImage()">
 
-    </div>
+   <ion-img  width="250" height="170" [src]="base64Image">
+<!--assets/imgs/my_logo.png !-->
+   </ion-img>
+</div>
     <br/>
+
+
     <div id="styleForm">
 
+      <div class="inputWithIcon">
+          <select name="tipologia" (change)="onChange(tipologia.value)"  #tipologia>
+              <option value="" disabled selected hidden >Scegli la tipologia</option>
+              <option value="assistente">Assistente</option>
+              <option value="associazione">Associazione</option>
+              <option value="amministratore">Amministratore</option>
+              <option value="utente">Utente</option>
+          </select>
+          <i class="fa fa-male  fa-fw" aria-hidden="true"></i>
+      </div>
+      <form>
         <div class="inputWithIcon">
-            <input type="text" value="" placeholder="Nome"/>
+            <input type="text" value="" placeholder="Nome"  #nome />
             <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
         </div>
 
-        <div class="inputWithIcon">
-            <input type="text" value="" placeholder="Cognome"/>
+        <div class="inputWithIcon" id="cognome">
+            <input type="text" value="" placeholder="Cognome"  #cognome/>
             <i class="fa fa-users" aria-hidden="true"></i>
         </div>
 
         <div class="inputWithIcon">
-            <input type="text" value="" placeholder="Username"/>
+            <input type="text" value="" placeholder="Username"  #username/>
             <i class="fa fa-id-badge" aria-hidden="true"></i>
         </div>
-
+          </form>
         <div class="inputWithIcon">
-            <input type="password" value="" placeholder="Password"/>
+            <input type="password" value="" placeholder="Password"  #password/>
             <i class="fa fa-lock fa-fw" aria-hidden="true"></i>
         </div>
 
-        <div class="inputWithIcon">
-            <select name="tipologia" >
-                <option value="" disabled selected hidden>Scegli la tipologia</option>
-                <option value="assistente">Assistente</option>
-                <option value="associazione">Associazione</option>
-                <option value="amministratore">Amministratore</option>
-            </select>
-            <i class="fa fa-male  fa-fw" aria-hidden="true"></i>
-        </div>
+        <div class="inputWithIcon" id="descr" style="display: none">
+     <textarea rows="5" cols="26" placeholder="Descrivi l'associazione"  #descr></textarea>
+</div>
 
-        <div class="inputWithIcon">
-            <input type="date" value="" placeholder="Data di nascita"/>
-            <i class="fa fa-calendar  fa-lg fa-fw" aria-hidden="true"></i>
-        </div>
 
-        <div class="inputWithIcon">
-            <input type="text" value="" placeholder="Competenze"/>
+        <!-- input nascosti -->
+        <div class="inputWithIcon" style="display: none" id="iva">
+            <input type="text" value="" placeholder="Partita Iva" #iva />
             <i class="fa fa-cogs" aria-hidden="true"></i>
         </div>
 
-        <div class="inputWithIcon">
-            <input type="text" value="" placeholder="Titolo di studio"/>
-            <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+        <div class="inputWithIcon" style="display: none" id="competenze">
+            <input type="text" value="" placeholder="Competenze"  #competenze/>
+            <i class="fa fa-cogs" aria-hidden="true"></i>
         </div>
 
+        <div class="inputWithIcon"  style="display: none" id="titolo">
+            <input type="text" value="" placeholder="Titolo di studio"  #titolo/>
+            <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+        </div>
+        <!-- end input nascosti -->
         <div class="inputWithIcon">
-            <input type="text" value="" placeholder="Codice Fiscale"/>
+            <input type="date" value="" placeholder="Data di nascita"  #data/>
+            <i class="fa fa-calendar  fa-lg fa-fw" aria-hidden="true"></i>
+        </div>
+
+
+
+        <div class="inputWithIcon" id="cf">
+            <input type="text" value="" placeholder="Codice Fiscale"  #cf/>
             <i class="fa fa-address-card" aria-hidden="true"></i>
         </div>
 
             <div class="inputWithIcon flexContainer" style="text-align: left">
-                <input type="text" value="" placeholder="Indirizzo" class="inputField" style="padding-left: 10px; " />
+                <input type="text" [value]="indirizzo" placeholder="Indirizzo" class="inputField" style="padding-left: 10px; "/>
                 <!--    <button><i class="fa fa-map-marker" aria-hidden="true" style=" cursor: pointer; "></i></button>-->
-                <button style="width: 35px; height: 45px; padding: 0; margin-top: 10px; " ><ion-icon class="fa fa-map-marker" style=" "></ion-icon></button>
+                <button style="width: 35px; height: 45px; padding: 0; margin-top: 10px; " (click) = "geolocalization()"><ion-icon class="fa fa-map-marker" style=" "></ion-icon></button>
 
             </div>
 
         <div class="inputWithIcon">
-            <input type="text" value="" placeholder="Città" />
+            <input type="text" [value]="citta" placeholder="Città"/>
             <i class="fa fa-globe" aria-hidden="true"></i>
         </div>
 
         <div class="inputWithIcon">
-            <input type="text" value="" placeholder="Provincia"/>
+            <input type="text" [value]="provincia" placeholder="Provincia"  />
             <i class="fa fa-bandcamp" aria-hidden="true"></i>
         </div>
 
 
         <div class="inputWithIcon">
-            <input type="email" placeholder="Email" value=""/>
+            <input type="email" placeholder="Email" value=""  #email/>
             <i class="fa fa-envelope fa-fw" aria-hidden="true"></i>
         </div>
 
         <div class="inputWithIcon">
-            <input type="text" value="" placeholder="Numero di telefono"/>
+            <input type="text" value="" placeholder="Numero di telefono"  #tel/>
             <i class="fa fa-phone-square" aria-hidden="true"></i>
         </div>
 
     </div>
-    <button block  (click)="login()"><b>Conferma</b></button>
+    <button block  (click)="registrazione(nome,cognome,username,password,tipologia,data,competenze,titolo,cf,email,tel,iva,descr)"><b>Conferma</b></button>
+
     </ion-content>

@@ -5,65 +5,37 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar>
 
+  <ion-navbar>
     <ion-title>Inserisci annuncio</ion-title>
   </ion-navbar>
+
 </ion-header>
 
-<!--
-<ion-header>
-  <ion-navbar hideBackButton>
-    <button class = "bars" ion-button menuToggle>
-
-      <ion-icon name="menu"></ion-icon>
-    </button>
-  <button class = "search">
-   <ion-icon name="search"></ion-icon>
-</button>
-    <ion-title class = "title">Inserisci Annuncio</ion-title>
-  </ion-navbar>
-</ion-header>
-
--->
 <ion-content padding class="content">
 
   <h1> Inserisci annuncio</h1>
 
   <div style="background-color: white">
-    <form>
+
       <div class="radio_assistenza">
-        <p>
-          <input type="radio" name = "assistenza" value = "richiesta" id = "richiesta" />
-          <label for="richiesta">Richiesta assistenza</label>
-        </p>
-        <p>
-          <input type="radio" name = "assistenza" value = "offerta" id = "offerta"/>
-          <label for="offerta">Offerta assistenza</label>
-        </p>
-        <!--
-      <input type="radio" name = "assistenza" value = "richiesta" class = "richiesta"/><b class = "richiesta">richiesta ass.</b>
-      <input type="radio" name = "assistenza" value = "offerta" class = "offerta"/><b class = "offerta">offerta ass.</b>
-    -->
+  <ion-grid>
+    <ion-row>
+        <ion-col id = "richiesta">
+          <input type="radio" name = "assistenza" value = "Richiesta"  #richiesta/>
+        <b>  <label for="richiesta">Richiesta </label> </b>
+        </ion-col>
+        <ion-col id = "offerta">
+          <input type="radio" name = "assistenza" value = "Offerta" #offerta/>
+        <b>  <label for="offerta">Offerta </label> </b>
+        </ion-col>
+    </ion-row>
+  </ion-grid>
       </div>
-      <!--
-      <ion-card>
-        <ion-card-header>
-          This is what I understood...
-        </ion-card-header>
-        <ion-card-content>
-          <ion-list>
-            <ion-item *ngFor="let match of matches">
-              {{ match }}
-            </ion-item>
-          </ion-list>
-        </ion-card-content>
-      </ion-card>
       <br>
-      -->
       <ion-item>
         <div style="text-align: center">
-          <textarea rows="6" cols="25" (change)="doTextareaValueChange($event)">
+          <textarea rows="6" cols="25" (change)="doTextareaValueChange($event)" #testo>
             {{textareaValue}}
           </textarea>
         </div>
@@ -79,38 +51,37 @@
 </ion-fab>
 </div>
 <br><br><br>
+
+
+
+<br>
 <div>
 
   <div class="checkbox">
     <label>
-      <input type="checkbox" name="urgenza" value="urgenza">
+      <input type="checkbox" name="patente" value="patente" #patente>
       <i class="helper"></i>
       <b>Patente</b>
     </label>
   </div>
   <div class="checkbox">
     <label>
-      <input type="checkbox" name="automunito" value="automunito">
+      <input type="checkbox" name="automunito" value="automunito" #automunito>
       <i class="helper"></i>
       <b >Automunito</b>
     </label>
   </div>
   <div class="checkbox">
     <label>
-      <input type="checkbox" name="patente" value="patente">
+      <input type="checkbox" name="urgenza" value="urgenza" #urgenza>
+
       <i class="helper"></i>
       <b>Disponibilità alle urgenze</b>
     </label>
   </div>
-  <!--
-    <input type="checkbox" name="urgenza" class= "urgenza"><b class= "urgenza" style = "font-size:120%;">Patente</b>
 
-      <input type="checkbox" name="automunito" class= "automunito"><b class= "automunito" style = "font-size:120%;">Automunito</b>
-    <br>
-    <input type="checkbox" name="patente" class= "patente"><b class= "patente" style = "font-size:120%;">Disp. alle urgenze</b>
-  -->
     </div>
-      </form>
+
       <br />
    <!--<div text-center class = "conferma">-->
     <!--
@@ -118,7 +89,7 @@
     indietro
   </button>-->
 
-  <button  (click)="indietro()">
+  <button  (click)="indietro(testo,patente,automunito,urgenza,richiesta,offerta)">
     Conferma
   </button>
 <!--</div>-->

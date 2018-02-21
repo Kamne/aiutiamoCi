@@ -23,46 +23,83 @@
 -->
 <ion-header>
   <ion-navbar>
-
-    <ion-title>Aiutiamoci</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title class="title">AiutiamoCi</ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding>
+<ion-content >
+  <div class="logo">
+    <img  src ="assets/imgs/my_logo.png">
+  </div>
 
-  <img class="title" src ="assets/imgs/my_logo.png">
+  <div id="pulsanti_home">
+    <div style="background-color: #eaeaea; text-align: center; height: 100%; " (click)="cerca()">
+      <p id="circle">
+        <i style="color: #4b154d;" class="fa fa-search fa-5x" aria-hidden="true"></i>
+      </p>
+      <label style="color: #4b154d;">Cerca</label>
+      <br />
+    </div>
+    <div style="background-color: #fff; text-align: center; " (click)="bacheca()">
+      <p id="circle">
+        <i  style="color: #154d29;" class="fa fa-newspaper-o fa-5x" aria-hidden="true"></i>
+      </p>
+      <label style="color: #154d29;">Bacheca</label>
+      <br />
+    </div>
+    <div style="background-color: #fff; text-align: center; " (click)="eventi()">
+      <p id="circle">
+        <i  style="color: #4d1515;" class="fa fa-calendar-o fa-5x" aria-hidden="true"></i>
+      </p>
+      <label style="color: #4d1515;">Eventi</label>
+      <br />
+    </div>
+    <div style="background-color: #eaeaea; text-align: center;" (click)="rubrica()">
+      <p id="circle">
+        <i  style="color: #006699;" class="fa fa-book fa-5x" aria-hidden="true"></i>
+      </p>
+      <label style="color: #006699;">Rubrica</label>
+      <br />
+    </div>
+  </div>
+  <!--
 
-<div class="div">
-<img style='vertical-align:middle;' src ="assets/imgs/insert.png" class="insert">
-<div style='vertical-align:middle; display:inline;'>
-<b class="OMG">Inserisci nuovo annuncio</b>
-</div>
-</div>
+  <div class="div" (click)="insert()">
 
-<table border = "0">
-  <tr>
+  <img style='vertical-align:middle;' src ="assets/imgs/insert.png" class="insert">
+  <div style='vertical-align:middle; display:inline;'>
+  <b class="OMG">Inserisci nuovo annuncio</b>
+  </div>
+  </div>
+
+  <table border = "0">
+    <tr>
+        <td text-center>
+          <ion-icon class = "bacheca" name="search" style= "font-size:70px; color: BLACK;"></ion-icon>
+          <br>
+          <b>Cerca</b>
+        </td>
+        <td text-center>
+          <img src ="assets/imgs/bacheca.png" class="bacheca">
+          <br>
+          <b>Bacheca</b>
+        </td>
+    </tr>
+    <tr>
       <td text-center>
-        <ion-icon class = "bacheca" name="search" style= "font-size:70px; color: BLACK;"></ion-icon>
+        <img src ="assets/imgs/Eventi.png" class="bacheca">
         <br>
-        <b>Cerca</b>
+        <b>Eventi</b>
       </td>
       <td text-center>
-        <img src ="assets/imgs/bacheca.png" class="bacheca">
+        <img src ="assets/imgs/rubrica.png" class="rubrica">
         <br>
-        <b>Bacheca</b>
+        <b>Rubrica</b>
       </td>
-  </tr>
-  <tr>
-    <td text-center>
-      <img src ="assets/imgs/Eventi.png" class="bacheca">
-      <br>
-      <b>Eventi</b>
-    </td>
-    <td text-center>
-      <img src ="assets/imgs/rubrica.png" class="rubrica">
-      <br>
-      <b>Rubrica</b>
-    </td>
 
-  </tr>
-</table>
+    </tr>
+  </table>
+  -->
 </ion-content>

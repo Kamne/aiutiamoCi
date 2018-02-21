@@ -1,0 +1,55 @@
+
+
+
+<ion-content padding class="content">
+  <br />
+  <div id="ricerca-div">
+
+
+  <br />
+  <div id="richieste">
+
+      <div style="text-align: center">
+        <h2>Richiesta Assistenza</h2>
+
+      </div>
+      <br>
+
+      <br><br>
+    <button ion-button block (click)="openModal()">Competenze richieste</button>
+
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" [(ngModel)]="checkPatentato" name="patente" value="Patente" #patentato>
+        <i class="helper"></i>
+        <b>Patente</b>
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="automunito" [(ngModel)]="checkAutomunito" value="Automunito" #automunito>
+        <i class="helper"></i>
+        <b >Automunito</b>
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" [(ngModel)]="checkUrgenze" name="urgenza" value="Urgenza" #urgenza>
+
+        <i class="helper"></i>
+        <b>Disponibilità alle urgenze</b>
+      </label>
+    </div>
+
+    <ion-range min="0" max="100" [(ngModel)]="firstValue" color="bordeaux_" pin="true">
+      <ion-label range-left>0km</ion-label>
+      <ion-label range-right>100km</ion-label>
+    </ion-range>
+
+    <button ion-button block (click)="ricerca(patentato,urgenza,automunito)">
+      Cerca
+    </button>
+
+  </div>
+</div>
+</ion-content>

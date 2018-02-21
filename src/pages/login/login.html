@@ -9,14 +9,14 @@
     <ion-img id="logo" width="250" height="170" src="assets/imgs/my_logo.png" ></ion-img>
    <!-- <label>Login</label>-->
     <div id="styleForm">
-
+        <!-- Buon Natale -->
         <!--    <ion-label color="primary">Username</ion-label>-->
         <div class="inputWithIcon">
-            <input placeholder="Username" type="text" />
+            <input placeholder="Username" type="text" #username />
             <i class="fa fa-id-badge" aria-hidden="true"></i>
         </div>
         <div class="inputWithIcon">
-            <input placeholder="Password" type="password" />
+            <input placeholder="Password" type="password" #password />
             <i class="fa fa-lock fa-fw" aria-hidden="true"></i>
         </div>
 
@@ -26,13 +26,13 @@
 
     </div>
     <div id="buttons">
-        <button style="color: #000000; background-color: transparent; text-align: right;"><u>Password dimenticata?</u></button>
+        <button (click)="pass()" style="color: #000000; background-color: transparent; text-align: right;"><u>Password dimenticata?</u></button>
 
-        <button   class="b1">Login</button>
+        <button   class="b1"  (click)="login(username,password)">Login</button>
     </div>
     <div id="usignup">
         <button  (click)="signup()">
-           Non sei registrato? Registrati!
+           Non sei registrato? <br /><br />Registrati!
         </button>
     </div>
   </ion-content>

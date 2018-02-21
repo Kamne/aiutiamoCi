@@ -1,5 +1,10 @@
 page-event {
 
+  .content{
+    background: color($colors, lightgrey_);
+    font-size: 1.2em;
+  }
+
   button{
     background-color: color($colors, bordeaux_);
     text-align: center;
@@ -7,8 +12,17 @@ page-event {
     width: 100%;
     padding: 5%;
     border: 0;
-
+    font-size: 1.2em;
   }
+  img#img-event {
+    width: 50%;
+    height: 50%;
+  }
+
+  #post{
+    background-color: color($colors, white);
+  }
+
   .list{
 
     margin: 0;
