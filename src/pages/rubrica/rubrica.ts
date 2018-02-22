@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from "@angular/http";
+import { ShareService } from '../../providers/shareService';
+import { Utente } from '../../classes/utente';
+import {Associazione} from '../../classes/associazione';
 
 @IonicPage()
 @Component({
@@ -10,12 +13,17 @@ import { Http, Headers, RequestOptions } from "@angular/http";
 
 export class RubricaPage {
 
-  public assistenti: any = [];
-  public associazioni: any = [];
+  public assistenti: Array <string>;
+  public associazioni: Array <string>;
   public searchQuery: string = '';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http,) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http,public shareService: ShareService) {
+    this.inizialize();
+  }
 
+  inizialize() {
+    this.assistenti=[];
+    this.associazioni=[];
   }
 
   ionViewDidLoad() {
@@ -50,36 +58,67 @@ export class RubricaPage {
         console.log("myLogAssistente",JSON.parse(data.associazioni[i]));
         var parse = JSON.parse(data.associazioni[i]);
         this.associazioni[i] = parse;
-       
        }
     }, error => {
       alert("Oooops!");
     });
   }
 
-  getItems(ev: any) {
+  informazioniUtente(username: string) {
+    alert(username);
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded' );
+    let options = new RequestOptions({ headers: headers });
+    var myData = JSON.stringify({username: username});
+    this.http.post('http://aiutiamoc.altervista.org/getUtente.php',myData,options).map(res => res.json()).subscribe(   data => {
+      console.log(data);
+      if(data.success){
+        var competenze = data.user.Competenze.split(",")
+        this.shareService.setUser(new Utente(data.user.Nome,data.user.Cognome,data.user.Username,data.user.Immagine,
+                                            data.user.Nato,competenze,data.user.TitoloStudio,data.user.CF,
+                                            data.user.Citta,data.user.Provincia,data.user.Indirizzo,
+                                            data.user.Email,data.user.NumTelefono,data.user.Tipologia,data.user.Sesso));
+        console.log(username,data.user);
+      }
+      else {
+        alert("Oooops!");
+      }
+    })
+  }
 
+  informazioniAssociazione(username: string) {
+    alert(username);
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded' );
+    let options = new RequestOptions({ headers: headers });
+    var myData = JSON.stringify({username: username});
+    this.http.post('http://aiutiamoc.altervista.org/infoAssociazione.php',myData,options).map(res => res.json()).subscribe(   data => {
+      if(data.success){
+      this.shareService.setUser(new Associazione(data.associazione.Nome,data.associazione.Username,data.associazione.Immagine,
+                                           data.associazione.Descrizione,data.associazione.Fondata,data.associazione.PartitaIVA,
+                                           data.associazione.Citta,data.associazione.Provincia,data.associazione.Indirizzo,
+                                           data.associazione.Email,data.associazione.NumTelefono,data.associazione.Tipologia,data.membri));
+      console.log(username,data.associazione);                        
+      }
+      else {
+        alert("Oooops!");
+      }
+    })
+  }
+
+  getItems(ev: any) {
+    this.inizialize();
     let val = ev.target.value;
 
     if (val && val.trim() != '') {
       this.associazioni = this.associazioni.filter((a) => {
         return (a.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
-    }
-    if (val && val.trim() != '') {
       this.assistenti = this.assistenti.filter((a) => {
         return (a.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
-
-  }
-
-  mail() {
     
-  }
-
-  call() {
-
   }
 
 }

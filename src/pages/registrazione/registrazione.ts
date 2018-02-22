@@ -27,7 +27,7 @@ base64Image:String = "assets/imgs/anonimo.png"
 
 
 tipologia:String = "Scegli una tipologia"
-sesso:String = "Sesso"
+sex:String = "Sesso"
 nome:String = ""
 cognome:String = ""
 username:String = ""
@@ -67,7 +67,7 @@ titStudio:String = "";
 
   registrazione(tipologia: HTMLInputElement, sesso: HTMLInputElement): void {
     var headers = new Headers();
-    console.log("",this.myCompetenze)
+    console.log("sesso",this.sex)
     headers.append('Content-Type', 'application/x-www-form-urlencoded' );
    let options = new RequestOptions({ headers: headers });
    var myData = JSON.stringify({
@@ -77,8 +77,8 @@ titStudio:String = "";
      password: this.password,
      tipologia:tipologia.value,
      nato:this.data,
-     sesso:sesso.value,
-     competenze:","+this.myCompetenze.toString()+",,",
+     sesso:this.sex,
+     competenze:","+this.myCompetenze.toString()+",",
      titolo:this.titStudio,
      cf:this.codFis,
      indirizzo:this.indirizzo,
@@ -92,10 +92,10 @@ titStudio:String = "";
    });
    console.log(myData);
  this.http.post('http://aiutiamoc.altervista.org/registrazioneUtente.php',myData,options).map(res => res.json()).subscribe(   data => {
-  console.log(data.success);
+  console.log(data);
   if(data.success){
       this.navCtrl.setRoot(LoginPage)
-  }
+}
 
   else{
     this.dialogs.alert(data.message)
@@ -127,6 +127,8 @@ titStudio:String = "";
           this.showAssistente = false;
     }
     if(v=="assistente" || v=="amministratore"){
+      this.showAssociazione =false;
+      this.showAssistente = true;
       if(this.otherCompetenze.length == 0){
       var headers = new Headers();
       headers.append('Content-Type', 'application/x-www-form-urlencoded' );
@@ -137,8 +139,7 @@ titStudio:String = "";
         this.otherCompetenze = data.competenze;
 
      })
-      this.showAssociazione =false;
-      this.showAssistente = true;
+
     }
   }
     if(v=="utente"){

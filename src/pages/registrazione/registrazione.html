@@ -7,14 +7,12 @@
 <ion-header>
 
     <ion-navbar>
-        <ion-title>registrazione</ion-title>
+        <ion-title>Registrazione</ion-title>
     </ion-navbar>
 
 </ion-header>
 
-
 <ion-content padding id="signup">
-
     <form #f="ngForm" novalidate>
 
   <ion-slides>
@@ -22,6 +20,7 @@
     <ion-slide>
       <br/>
 <h1> Chi sei </h1>
+
       <div id="styleForm">
 
         <div class="inputWithIcon">
@@ -33,6 +32,7 @@
               <option value="utente">Utente</option>
           </select>
             <i class="fa fa-male  fa-fw" aria-hidden="true"></i>
+<<<<<<< HEAD
         </div>-->
         <ion-slide>
             <br/>
@@ -55,6 +55,7 @@
                     La tipologia è richiesta.
                 </div>
                 <!-- -->
+        </div>
 
                 <div class="inputWithIcon">
                     <input type="text" [(ngModel)]="nome" placeholder="Nome" ngModel  name="nome_"  required
@@ -82,7 +83,10 @@
 
                 <div class="inputWithIcon" *ngIf ="!showAssociazione">
 
-                    <select  name="sesso" ngModel  required #sesso="ngModel">
+            <!--        <select  name="sesso" ngModel  required #sesso="ngModel">-->
+
+                    <select *ngIf ="!showAssociazione" [(ngModel)]="sex" name="sesso"  #sesso>
+
                         <option value="" disabled selected hidden >Sesso</option>
                         <option value="Maschile">Maschile</option>
                         <option value="Femminile">Femminile</option>
@@ -167,15 +171,21 @@
                         style="margin-right: 1px;"><b>indietro</b></button>
                 <button block   (click)="avanti()"><b>avanti</b></button>
             </div>
+
         </ion-slide>
 
-        <ion-slide>
+      <!--
 
-      <br/>
             <h1>Dove ti trovi?</h1>
 
             <br/>
+            -->
+      <ion-slide>
 
+          <br/>
+      <h1>Dove ti trovi?</h1>
+
+      <br/>
             <div id="styleForm">
 
                 <div class="inputWithIcon flexContainer" style="text-align: left">
@@ -224,15 +234,23 @@
 
 
         </ion-slide>
+
 <!--
+=======
+
+        <!--    <ion-slide *ngIf="tipologia == 'Utente'"> -->
+
+      <!--
 <ion-slide *ngIf ="showAssistente">
 <h1>Cosa sai fare</h1>
 
           <div id="styleForm">
--->
+          -->
+
         <ion-slide *ngIf ="showAssistente">
             <h1>Cosa sai fare?</h1>
             <div id="styleForm">
+
 
                 <div class="inputWithIcon" id="competenze">
 

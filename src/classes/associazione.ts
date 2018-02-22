@@ -11,7 +11,7 @@ export class Associazione {
 
   constructor(public nome:String,public username:String,public img:String,public descr:String,public nato:String,
               public partitaIVA:String,public citta:String,public provincia:String,public indirizzo:String,public email:String,
-              public tel:String,public tipologia:String) {
+              public tel:String,public tipologia:String,public membri:Array<String>) {
     console.log('Hello User');
 
   }
@@ -19,6 +19,8 @@ export class Associazione {
 getNome(){
   return this.nome
 }
+
+
 
 getImg(){
   return this.img
@@ -54,6 +56,14 @@ getTipologia(){
 }
 getDescr(){
   return this.descr
+}
+
+getMembri(){
+  return this.membri
+}
+
+setMembri(membri){
+  return this.membri = membri
 }
 
 }

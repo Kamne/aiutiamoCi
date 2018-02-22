@@ -9,12 +9,20 @@ export class Utente {
 
   constructor(public nome:String,public cognome:String,public username:String,public img:String,public nato:String,public competenze:Array<String>,public titolo:String,
               public CF:String,public citta:String,public provincia:String,public indirizzo:String,public email:String,
-              public tel:String,public tipologia:String,) {
+              public tel:String,public tipologia:String,public sesso:String) {
     console.log('Hello User');
 
   }
 getNome(){
   return this.nome
+}
+
+getSesso(){
+  return this.sesso
+}
+
+getTitolo(){
+  return this.titolo
 }
 
 getImg(){

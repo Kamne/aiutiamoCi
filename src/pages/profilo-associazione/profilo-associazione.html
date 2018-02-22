@@ -1,18 +1,55 @@
-<!--
-  Generated template for the ProfiloAssociazionePage page.
+<ion-content >
+  <div class="content">
+    <br />
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
+    <ion-item id="profilo-avatar" no-lines>
+      <ion-avatar  >
+        <img [src]="Image">
+      </ion-avatar>
+    </ion-item>
 
-  <ion-navbar>
-    <ion-title>profilo_associazione</ion-title>
-  </ion-navbar>
+    <ion-item id="profilo-nome"  no-lines>
+      <label style="color: white;" *ngIf="navParams.get('other')">{{shareService.getOtherUser().getNome()}}</label>
+      <label style="color: white;" *ngIf="navParams.get('other') == undefined">{{shareService.getUser().getNome()}}</label>
+      <button>
+        <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+      </button>
+    </ion-item>
+    <br/>
+    <div id="profilo-info">
 
-</ion-header>
+       <div class="profilo-testo" *ngIf="shareService.getUser()!=undefined && navParams.get('other') == undefined" >
+       
+        <label>Nome:</label>&nbsp;<span>{{shareService.getUser().getNome()}}</span><br />
+        <label>Username:</label>&nbsp;<span>{{shareService.getUser().getUsername()}}</span><br />
+        <label >Data di nascita:</label>&nbsp;<span>{{shareService.getUser().getNato()}}</span><br />
+        <label>PartitaIVA:</label>&nbsp;<span>{{shareService.getUser().getPartivaIVA()}}</span><br />
+        <label>Città:</label>&nbsp;<span>{{shareService.getUser().getCitta()}}</span><br />
+        <label>Provincia:</label>&nbsp;<span>{{shareService.getUser().getProvincia()}}</span><br />
+        <label>Indirizzo:</label>&nbsp;<span>{{shareService.getUser().getIndirizzo()}}</span><br />
+        <label>Email:</label>&nbsp;<span>{{shareService.getUser().getEmail()}}</span><br />
+        <label>Telefono:</label>&nbsp;<span>{{shareService.getUser().getTel()}}</span><br />
+        <label>Iscritto come:</label>&nbsp;<span>{{shareService.getUser().getTipologia()}}</span><br /><br />
+        
+     </div>
 
+      <div class="profilo-testo" *ngIf=" navParams.get('other')" >
+        <label>Nome:</label>&nbsp;<span>{{shareService.getOtherUser().getNome()}}</span><br />
+        <label>Username:</label>&nbsp;<span>{{shareService.getOtherUser().getUsername()}}</span><br />
+        <label >Data di nascita:</label>&nbsp;<span>{{shareService.getOtherUser().getNato()}}</span><br />
+        <label>PartitaIVA:</label>&nbsp;<span>{{shareService.getOtherUser().getPartivaIVA()}}</span><br />
+        <label>Città:</label>&nbsp;<span>{{shareService.getOtherUser().getCitta()}}</span><br />
+        <label>Provincia:</label>&nbsp;<span>{{shareService.getOtherUser().getProvincia()}}</span><br />
+        <label>Indirizzo:</label>&nbsp;<span>{{shareService.getOtherUser().getIndirizzo()}}</span><br />
+        <label>Email:</label>&nbsp;<span>{{shareService.getOtherUser().getEmail()}}</span><br />
+        <label>Telefono:</label>&nbsp;<span>{{shareService.getOtherUser().getTel()}}</span><br />
+        <label>Iscritto come:</label>&nbsp;<span>{{shareService.getOtherUser().getTipologia()}}</span><br /><br />
+      </div>
 
-<ion-content padding>
+      <div [innerHtml]="myTemplate"></div>
+      
+    </div>
+  </div>
 
 </ion-content>
+
