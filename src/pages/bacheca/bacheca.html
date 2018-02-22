@@ -26,7 +26,9 @@
           <i id="pulsante" class="fa fa-phone-square  fa-2x" aria-hidden="true" (click)="callNumTelephone(post.telefono)"></i>
 
         </div>
-
+        <div id="competenze" *ngIf="post.competenze!=''" (click)="getCompetenze(post.competenze)" >
+          <i>&nbsp;&nbsp;Competenze</i>
+        </div>
       </div>
       <div id="testo">
         <br />
@@ -37,18 +39,15 @@
         Automunito
       </div>
 
-      <div id="patente" *ngIf="post.patente" style="float:right" >
+      <div id="patente" *ngIf="post.patente" >
         Patentato
       </div>
 
-      <div id="urgenza" *ngIf="post.urgenza" style="position: center">
+      <div id="urgenza" *ngIf="post.urgenza">
         Urgenza
       </div>
-
-      <div id="competenze" *ngIf="post.competenze!=''" (click)="getCompetenze(post.competenze)" >
-        <i>Competenze</i>
-      </div>
-
+      <br>
+      <br>
       <div id="data">
         {{post.data}}
       </div>

@@ -59,16 +59,21 @@ page-registrazione {
       }
 
   }
+
   button{
       background-color: color($colors, bordeaux_);
+
+      border-radius:4px;
       text-align: center;
       color: color($colors, white);
-      width: 100%;
+
       padding: 5%;
       margin-top: 5%;
       border: 0;
-      font-size: 1.6em;
+      font-size: 1.2em;
       font-family: 'Roboto', 'sans-serif';
+     /* display: inline;
+      float: left;*/
   }
   .sesso{
     position: relative;

@@ -97,7 +97,7 @@ this.shareService.setPages(this.pages)
 
     this.menu.close();
 
-     this.nav.setRoot(page.component);
+     this.nav.push(page.component);
     }
     openResearch(){
         this.menu.close();
