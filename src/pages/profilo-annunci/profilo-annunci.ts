@@ -21,26 +21,34 @@ export class ProfiloAnnunciPage {
   selectedSegment: string;
   richieste:any=[];
   offerte:any=[];
+  radioOfferta:boolean=false;
+  radioRichiesta:boolean=true;
 
   constructor(public shareService:ShareService,public http:Http,public navCtrl: NavController, public navParams: NavParams) {
     var headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded' );
     let options = new RequestOptions({ headers: headers });
+    if(navParams.get('other') != undefined)
+    var myData = JSON.stringify({username:this.shareService.getOtherUser().getUsername()});
+    else
     var myData = JSON.stringify({username:this.shareService.getUser().getUsername()});
     console.log("myData",myData);
     this.http.post('http://aiutiamoc.altervista.org/profiloAnnunci.php',myData,options).map(res => res.json()).subscribe(   data => {
-    console.log("post",data.offerte);
+    console.log("post",data);
+    var elem
   //  this.richieste = data.richieste
-    for(var x in data.richieste) {
+    for( elem of data.richieste) {
     //JSON.parse(x)
-    console.log(x);
-  //  this.richieste.push(JSON.parse(x))
+    console.log(elem);
+    this.richieste.push(JSON.parse(elem))
 }
-console.log(this.richieste)
+
+console.log("richieste",this.richieste)
 var i;
     for(i=0;i<data.offerte.length;i++) {
       this.offerte.push(JSON.parse(data.offerte[i]))
   }
+  console.log("offerte",this.offerte)
   })
   }
 
@@ -48,7 +56,18 @@ var i;
     console.log('ionViewDidLoad ProfiloAnnunciPage');
   }
 
+richiesta(){
 
+this.radioRichiesta = true
+this.radioOfferta = false
+}
+
+offerta(){
+
+  this.radioRichiesta = false
+  this.radioOfferta = true
+  console.log(this.radioOfferta,this.radioRichiesta)
+}
 
 
 
