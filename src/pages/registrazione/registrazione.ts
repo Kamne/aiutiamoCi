@@ -161,6 +161,21 @@ competenze(){
   myModal.present();
 
   myModal.onDidDismiss(data => {
+    if(this.shareService.getNewCompetenze().length > 0){
+      console.log("Sto facendo l'if")
+      var headers = new Headers();
+      headers.append('Content-Type', 'application/x-www-form-urlencoded' );
+      let options = new RequestOptions({ headers: headers });
+      var myData = JSON.stringify({
+        competenze:this.shareService.getNewCompetenze()
+      });
+      this.http.post('http://aiutiamoc.altervista.org/insert_competenze.php',myData,options).map(res => res.json()).subscribe(   data => { //usato per prendere le competenze xD
+        console.log(data);
+        this.shareService.setNewCompetenze([]) //re-inizializzo l'array
+
+
+     })
+    }
 
       this.myCompetenze = this.shareService.getMyCompetenze();
       this.otherCompetenze = this.shareService.getOtherCompetenze()

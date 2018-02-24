@@ -59,17 +59,17 @@ page-registrazione {
       }
 
   }
-/*  button{
+  button{
       background-color: color($colors, bordeaux_);
       text-align: center;
       color: color($colors, white);
-      width: 100%;
+//      width: 100%;
       padding: 5%;
       margin-top: 5%;
       border: 0;
       font-size: 1.6em;
       font-family: 'Roboto', 'sans-serif';
-  }*/
+  }
   .sesso{
     position: relative;
     margin-right: 15%;
@@ -96,5 +96,8 @@ page-registrazione {
     border: 0;
     font-size: 1.2em;
     font-family: 'Roboto', 'sans-serif';
+  }
+  .efesto{
+    overflow-y: scroll;
   }
 }
