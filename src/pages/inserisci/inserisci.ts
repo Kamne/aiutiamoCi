@@ -26,6 +26,7 @@ export class InserisciPage {
   isRecording = false;
   //myDate = new Date();
   value:string[];
+  text:string = ""
   richiesta:any
   constructor(public navCtrl: NavController, public navParams: NavParams, private speechRecognition: SpeechRecognition, private cd: ChangeDetectorRef,public http: Http,public dialogs: Dialogs, public shareService : ShareService) {
   }
@@ -94,6 +95,8 @@ export class InserisciPage {
     }
     this.speechRecognition.startListening(options).subscribe(matches => {
       this.matches = matches;
+      console.log(matches)
+      this.text = matches[0]
       this.cd.detectChanges();
     });
     this.isRecording = true;
