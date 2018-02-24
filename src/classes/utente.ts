@@ -9,12 +9,20 @@ export class Utente {
 
   constructor(public nome:String,public cognome:String,public username:String,public img:String,public nato:String,public competenze:Array<String>,public titolo:String,
               public CF:String,public citta:String,public provincia:String,public indirizzo:String,public email:String,
-              public tel:String,public tipologia:String,public sesso:String) {
+              public tel:String,public tipologia:String,public sesso:String,public preferiti:Array<String>) {
     console.log('Hello User');
 
   }
 getNome(){
   return this.nome
+}
+
+getPreferiti(){
+  return this.preferiti
+}
+
+setPreferiti(p){
+  this.preferiti = p;
 }
 
 getSesso(){
