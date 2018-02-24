@@ -4,21 +4,19 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
 
-  <ion-navbar>
-    <ion-title>profilo-preferiti</ion-title>
-  </ion-navbar>
-
-</ion-header>
 
 
 <ion-content padding>
+  <h1 text-center>Preferiti</h1>
   <ion-list>
    <ion-item *ngFor="let utente of preferiti">
-      <button ion-button full (click)='getInfo(utente)'>
+      <button full (click)='getInfo(utente)'>
          {{utente}}
       </button>
    </ion-item>
+   <ion-fab right bottom class= "apollo">
+     <button ion-fab color="bordeaux_"  (click)="alert_preferiti()"><ion-icon name="add"></ion-icon></button>
+   </ion-fab>
 </ion-list>
 </ion-content>
