@@ -52,7 +52,7 @@ itemSelected(membro){
       this.shareService.setOtherUser(new Utente(data.user.Nome,data.user.Cognome,data.user.Username,data.user.Immagine,
                                            data.user.Nato,competenze,data.user.TitoloStudio,data.user.CF,
                                            data.user.Citta,data.user.Provincia,data.user.Indirizzo,
-                                           data.user.Email,data.user.NumTelefono,data.user.Tipologia,data.user.Sesso))
+                                           data.user.Email,data.user.NumTelefono,data.user.Tipologia,data.user.Sesso,data.preferiti))
       console.log(this.shareService.getOtherUser())
 
     }
