@@ -38,9 +38,6 @@ export class BachecaPage {
         this.dialogs.alert("Valori errati")
       }
     });
-
-
-
   }
 
   nuovo_msg(){
