@@ -15,7 +15,11 @@
       <br>
 
       <br><br>
-    <button  (click)="openModal()">Associazioni</button>
+
+    <button  block (click)="openModal()">Associazioni</button>
+
+ <!--   <button  (click)="openModal()">Associazioni</button>-->
+
 
     <ion-range min="0" max="100" [(ngModel)]="firstValue" color="bordeaux_" pin="true">
       <ion-label range-left>0km</ion-label>
@@ -24,7 +28,8 @@
 
   </div>
 
-      <button class="odino"   (click)="ricerca()">
+     <button class = "odino" block (click)="ricerca()">
+         <!--   <button class="odino"   (click)="ricerca()">-->
         Cerca
       </button>
 </div>

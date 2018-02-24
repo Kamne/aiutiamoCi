@@ -25,6 +25,12 @@
     </ion-navbar>
 </ion-header>
 
+<ion-content class="evento-crea" *ngIf="!show">
+    <div style="background-color: #ffffff">
+        <h2>Solo le associazioni possono inserire gli eventi.</h2>
+    </div>
+
+</ion-content>
 <ion-content class="evento-crea" *ngIf="show">
     <!--
     *ngIf="shareService.getUser()!=undefined &&

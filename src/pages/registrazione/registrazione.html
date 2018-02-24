@@ -7,7 +7,7 @@
 <ion-header>
 
     <ion-navbar>
-        <ion-title>Registrazione</ion-title>
+        <ion-title>registrazione</ion-title>
     </ion-navbar>
 
 </ion-header>
@@ -73,96 +73,259 @@
                 </div>
 
 
+<ion-content padding id="signup">
+    <form #f="ngForm" novalidate>
+        <ion-slides>
+            <ion-slide>
+                <br/>
+                <h1> Chi sei </h1>
+                <div id="styleForm">
 
-                <div *ngIf ="showAssociazione" class="inputWithIcon"  id="iva">
-                    <input type="text" [(ngModel)]="iva" placeholder="Partita Iva" />
-                    <i class="fa fa-cogs" aria-hidden="true"></i>
+                    <div class="inputWithIcon">
+                        <select name="tipologia" (change)="onChange(tipologia.value)" ngModel required #tipologia="ngModel">
+                            <option value="" disabled selected hidden >Scegli la tipologia</option>
+                            <option value="assistente">Assistente</option>
+                            <option value="associazione">Associazione</option>
+                            <option value="amministratore">Amministratore</option>
+                            <option value="utente">Utente</option>
+                        </select>
+                        <i class="fa fa-male  fa-fw" aria-hidden="true"></i>
+                    </div>
+
+                    <!-- Errors tipologia -->
+                    <div *ngIf="tipologia.errors?.required && tipologia.touched" class="error">
+                        La tipologia è richiesta.
+                    </div>
+                    <!-- -->
+
+                    <div class="inputWithIcon">
+                        <input type="text" [(ngModel)]="nome" placeholder="Nome" ngModel  name="nome_"  required
+                               #nome_="ngModel" />
+                        <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
+                    </div>
+
+                    <!-- Errors nome -->
+                    <div *ngIf="nome_.errors?.required && nome_.touched" class="error">
+                        Il nome è richiesto.
+                    </div>
+                    <!-- -->
+
+                    <div class="inputWithIcon" id="cognome" *ngIf ="!showAssociazione">
+                        <input type="text" [(ngModel)]="cognome" placeholder="Cognome" ngModel name="cognome_"  required
+                               #cognome_="ngModel"  />
+                        <i class="fa fa-users" aria-hidden="true"></i>
+
+                        <!-- Errors cognome-->
+                        <div *ngIf="cognome_.errors?.required && cognome_.touched" class="error">
+                            Il cognome è richiesto.
+                        </div>
+                        <!-- -->
+                    </div>
+
+                    <div class="inputWithIcon" *ngIf ="!showAssociazione">
+
+                        <select  name="sesso" ngModel  required #sesso="ngModel">
+                            <option value="" disabled selected hidden >Sesso</option>
+                            <option value="Maschile">Maschile</option>
+                            <option value="Femminile">Femminile</option>
+                        </select>
+                        <i class="fas fa-venus-mars"  aria-hidden="true"></i>
+                        <!-- Errors sesso-->
+                        <div *ngIf="sesso.errors?.required && sesso.touched" class="error">
+                            Il sesso è richiesto.
+                        </div>
+                        <!-- -->
+                    </div>
+
+                    <div class="inputWithIcon">
+                        <input type="date" [(ngModel)]="data" placeholder="Data di nascita" ngModel name="data_"  required
+                               #data_="ngModel" />
+                        <i class="fa fa-calendar  fa-lg fa-fw" aria-hidden="true"></i>
+                    </div>
+
+                    <!-- Errors data -->
+                    <div *ngIf="data_.errors?.required && data_.touched" class="error">
+                        La data è richiesta.
+                    </div>
+                    <!-- -->
+
+                    <div class="inputWithIcon">
+                        <input type="text" [(ngModel)]="username" placeholder="Username" ngModel name="username_" required
+                               #username_="ngModel"  />
+                        <i class="fa fa-id-badge" aria-hidden="true"></i>
+                    </div>
+
+                    <!-- Errors username -->
+                    <div *ngIf="username_.errors?.required && username_.touched" class="error">
+                        Username è richiesto.
+                    </div>
+                    <!-- -->
+
+                    <div class="inputWithIcon">
+                        <input type="password" [(ngModel)]="password" placeholder="Password" ngModel name="password_" required
+                               #password_="ngModel"  />
+                        <i class="fa fa-lock fa-fw" aria-hidden="true"></i>
+                    </div>
+
+                    <!-- Errors password-->
+                    <div *ngIf="password_.errors?.required && password_.touched" class="error">
+                        La password è richiesta.
+                    </div>
+                    <!-- -->
+
+                    <div *ngIf ="showAssociazione" class="inputWithIcon" id="descr">
+                    <textarea rows="5" [(ngModel)]="descr" cols="26" placeholder="Descrivi l'associazione"
+                              ngModel  name="descr_" required #descr_="ngModel" ></textarea>
+                        <!-- Errors descr-->
+                        <div *ngIf="descr_.errors?.required && descr_.touched" class="error">
+                            La descrizione è richiesta.
+                        </div>
+                        <!-- -->
+                    </div>
+
+                    <div *ngIf ="showAssociazione" class="inputWithIcon"  id="iva">
+                        <input type="text" [(ngModel)]="iva" placeholder="Partita Iva"  name="partitaiva_" required
+                               ngModel #partitaiva_="ngModel" />
+                        <i class="fa fa-cogs" aria-hidden="true"></i>
+                        <!-- Errors partitaiva-->
+                        <div *ngIf="partitaiva_.errors?.required && partitaiva_.touched" class="error">
+                            La partita iva è richiesta.
+                        </div>
+                        <!-- -->
+                    </div>
+
+                    <div *ngIf ="!showAssociazione" class="inputWithIcon" id="cf">
+                        <input type="text" [(ngModel)]="codFis" placeholder="Codice Fiscale"  name="codfiscale_" required
+                               ngModel  #codfiscale_="ngModel"/>
+                        <i class="fa fa-address-card" aria-hidden="true"></i>
+                        <!-- Errors codfiscale-->
+                        <div *ngIf="codfiscale_.errors?.required && codfiscale_.touched" class="error">
+                            Il codice fiscale è richiesto.
+                        </div>
+                        <!-- -->
+                    </div>
+
+                    <button block  class="zeus" (click) = "indietrissimo()"><b>indietro</b></button>
+                    <button block  class="zeus" (click)="avanti()"><b>avanti</b></button>
                 </div>
-                <div *ngIf ="!showAssociazione" class="inputWithIcon" id="cf">
-                    <input type="text" [(ngModel)]="codFis" placeholder="Codice Fiscale" />
-                    <i class="fa fa-address-card" aria-hidden="true"></i>
+            </ion-slide>
+            <ion-slide>
+
+                <h1>Dove ti trovi?</h1>
+
+                <br/>
+                <div id="styleForm">
+
+                    <div class="inputWithIcon flexContainer" style="text-align: left">
+                        <input type="text" [(ngModel)]="indirizzo" placeholder="Indirizzo"  name="indirizzo_" required
+                               ngModel #indirizzo_="ngModel"
+                               class="inputField" style="padding-left: 10px; "/>
+
+                        <button style="width: 35px; height: 45px; padding: 0; margin-top: 10px; " (click) = "geolocalization()">
+                            <ion-icon class="fa fa-map-marker" style=" "></ion-icon>
+                        </button>
+                    </div>
+
+                    <!-- Errors indirizzo-->
+                    <div *ngIf="indirizzo_.errors?.required && indirizzo_.touched" class="error">
+                        Indirizzo è richiesto.
+                    </div>
+                    <!-- -->
+
+                    <div class="inputWithIcon">
+                        <input type="text" [(ngModel)]="citta" placeholder="Città"  name="citta_" required
+                               ngModel #citta_="ngModel" />
+                        <i class="fa fa-globe" aria-hidden="true"></i>
+                    </div>
+
+                    <!-- Errors citta-->
+                    <div *ngIf="citta_.errors?.required && citta_.touched" class="error">
+                        Citta è richiesta.
+                    </div>
+                    <!-- -->
+
+                    <div class="inputWithIcon">
+                        <input type="text" [(ngModel)]="provincia" placeholder="Provincia"  name="provincia_"  required
+                               ngModel #provincia_="ngModel"  />
+                        <i class="fa fa-bandcamp" aria-hidden="true"></i>
+                    </div>
+
+                    <!-- Errors provincia -->
+                    <div *ngIf="provincia_.errors?.required && provincia_.touched" class="error">
+                        Provincia è richiesta.
+                    </div>
+                    <!-- -->
+
+                    <button block (click) = "indietro()" class="zeus"><b>indietro</b></button>
+                    <button block class="zeus" (click)="avanti()"><b>avanti</b></button>
                 </div>
 
-                <button block  class="zeus" (click) = "indietrissimo()"><b>indietro</b></button>  <button block  class="zeus" (click)="avanti()"><b>avanti</b></button>
-            </div>
 
-        </ion-slide>
-        <ion-slide>
-
-      <h1>Dove ti trovi?</h1>
-
-      <br/>
+            </ion-slide>
 
 
-            <div id="styleForm">
+            <ion-slide *ngIf ="showAssistente">
+                <h1>Cosa sai fare?</h1>
+                <div id="styleForm">
 
-                <div class="inputWithIcon flexContainer" style="text-align: left">
-                    <input type="text" [(ngModel)]="indirizzo" placeholder="Indirizzo" class="inputField" style="padding-left: 10px; "/>
+                    <div class="inputWithIcon" id="competenze">
 
-                    <button style="width: 35px; height: 45px; padding: 0; margin-top: 10px; " (click) = "geolocalization()"><ion-icon class="fa fa-map-marker" style=" "></ion-icon></button>
+                        <button block (click) = "competenze()" class="ade"><b>Competenze</b></button>
+                    </div>
+
+                    <div class="inputWithIcon"  id="titolo">
+                        <input type="text" [(ngModel)]="titStudio" placeholder="Titolo di studio" name="titstudio_"
+                               ngModel required #titstudio_="ngModel"  />
+                        <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                    </div>
+
+                    <!-- Errors titstudio -->
+                    <div *ngIf="titstudio_.errors?.required && titstudio_.touched" class="error">
+                        Titolo di studio è richiesto.
+                    </div>
+                    <!-- -->
+                    <button block (click) = "indietro()" class="zeus"><b>indietro</b></button>
+                    <button block class="zeus" (click)="avanti()"><b>avanti</b></button>
                 </div>
 
-                <div class="inputWithIcon">
-                    <input type="text" [(ngModel)]="citta" placeholder="Città"/>
-                    <i class="fa fa-globe" aria-hidden="true"></i>
+            </ion-slide>
+
+            <ion-slide>
+                <h1>Come contattarti</h1>
+                <br/>
+
+                <div id="styleForm">
+                    <div class="inputWithIcon">
+                        <input type="email" placeholder="Email" [(ngModel)]="email"  name="email_"  required
+                               ngModel #email_="ngModel"/>
+                        <i class="fa fa-envelope fa-fw" aria-hidden="true"></i>
+                    </div>
+
+                    <!-- Errors email-->
+                    <div *ngIf="email_.errors?.required && email_.touched" class="error">
+                        L'email è richiesto.
+                    </div>
+                    <!-- -->
+
+                    <div class="inputWithIcon">
+                        <input type="text" [(ngModel)]="tel" placeholder="Numero di telefono"  name="tel_"   required
+                               ngModel #tel_="ngModel"/>
+                        <i class="fa fa-phone-square" aria-hidden="true"></i>
+                    </div>
+
+                    <!-- Errors tel-->
+                    <div *ngIf="tel_.errors?.required && tel_.touched" class="error">
+                        Il telefono è richiesto.
+                    </div>
+                    <!-- -->
+
+                    <button block (click) = "indietro()" class="zeus"><b>indietro</b></button>
+                    <button block class="zeus" (click)="registrazione(tipologia,sesso)"><b>Conferma</b></button>
+
                 </div>
 
-                <div class="inputWithIcon">
-                    <input type="text" [(ngModel)]="provincia" placeholder="Provincia"  />
-                    <i class="fa fa-bandcamp" aria-hidden="true"></i>
-                </div>
+            </ion-slide>
 
-                <button block (click) = "indietro()" class="zeus"><b>indietro</b></button>  <button block class="zeus" (click)="avanti()"><b>avanti</b></button>
-            </div>
-
-
-        </ion-slide>
-
-        <!--    <ion-slide *ngIf="tipologia == 'Utente'"> -->
-
-<ion-slide *ngIf ="showAssistente">
-<h1>Cosa sai fare</h1>
-          <div id="styleForm">
-
-
-
-                <div class="inputWithIcon" id="competenze">
-                    <!--                  <input type="text" [(ngModel)]="competenze" placeholder="Competenze"/>
-                                      <i class="fa fa-cogs" aria-hidden="true"></i> -->
-                    <button block (click) = "competenze()" class="ade"><b>Competenze</b></button>
-                </div>
-
-                <div class="inputWithIcon"  id="titolo">
-                    <input type="text" [(ngModel)]="titStudio" placeholder="Titolo di studio" />
-                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                </div>
-                <button block (click) = "indietro()" class="zeus"><b>indietro</b></button>  <button block class="zeus" (click)="avanti()"><b>avanti</b></button>
-
-
-            </div>
-
-        </ion-slide>
-
-        <ion-slide>
-            <h1>Come contattarti</h1>
-            <br/>
-
-
-            <div id="styleForm">
-                <div class="inputWithIcon">
-                    <input type="email" placeholder="Email" [(ngModel)]="email"/>
-                    <i class="fa fa-envelope fa-fw" aria-hidden="true"></i>
-                </div>
-
-                <div class="inputWithIcon">
-                    <input type="text" [(ngModel)]="tel" placeholder="Numero di telefono"/>
-                    <i class="fa fa-phone-square" aria-hidden="true"></i>
-                </div>
-                <button block (click) = "indietro()" class="zeus"><b>indietro</b></button>  <button block class="zeus" (click)="registrazione(tipologia,sesso)"><b>Conferma</b></button>
-
-            </div>
-
-        </ion-slide>
-
-    </ion-slides>
+        </ion-slides>
+    </form>
 </ion-content>
