@@ -11,7 +11,8 @@ import { NativeStorage } from '@ionic-native/native-storage';
 import { AlertController } from 'ionic-angular';
 import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult } from '@ionic-native/native-geocoder';
 import { TabsPage } from '../tabs/tabs';
-
+import { RisultatiRicercaPage } from '../risultati-ricerca/risultati-ricerca';
+import { Events } from 'ionic-angular';
 /**
  * Generated class for the RicercaOffertePage page.
  *
@@ -40,7 +41,7 @@ export class RicercaOffertePage {
   checkPatentato:boolean=false;
   checkUrgenze:boolean=false;
 
-  constructor(public modalCtrl: ModalController,public alertCtrl: AlertController,public nativeStorage: NativeStorage, geolocation: Geolocation, public nativeGeocoder: NativeGeocoder,public shareService: ShareService,public http:Http,public spherical: Spherical,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public events: Events,public modalCtrl: ModalController,public alertCtrl: AlertController,public nativeStorage: NativeStorage, geolocation: Geolocation, public nativeGeocoder: NativeGeocoder,public shareService: ShareService,public http:Http,public spherical: Spherical,public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
@@ -90,7 +91,7 @@ export class RicercaOffertePage {
           console.log("username",JSON.parse(this.indirizzi[index]).Username,this.distance/1000)
       }
       if(this.result.length == 0){
-        
+
         return;
       }
       var myData = JSON.stringify({tipologia:"Offerta",risultati:this.result,competenze:this.searchCompetenze.toString(),patentato:Number(this.checkPatentato),urgenza:Number(this.checkUrgenze),automunito:Number(this.checkAutomunito)});
@@ -103,6 +104,9 @@ export class RicercaOffertePage {
         console.log("myData",myData);
         this.http.post('http://aiutiamoc.altervista.org/risultatiRicercaUtenti.php',myData,options).map(res => res.json()).subscribe(   data => {
         console.log("post",data);
+        console.log("post",data);
+        let obj = {other: true,miracolo:true,ris:data};
+        this.events.publish('risRicerca', obj);
 
       })
       }

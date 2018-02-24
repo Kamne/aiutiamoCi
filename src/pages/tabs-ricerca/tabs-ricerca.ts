@@ -10,6 +10,7 @@ import { RicercaOffertePage } from '../ricerca-offerte/ricerca-offerte';
 import { RicercaEventiPage } from '../ricerca-eventi/ricerca-eventi';
 import { ViewController } from 'ionic-angular';
 import { Events } from 'ionic-angular';
+import { RisultatiRicercaPage } from '../risultati-ricerca/risultati-ricerca';
 
 /**
  * Generated class for the TabsRicercaPage page.
@@ -30,8 +31,13 @@ export class TabsRicercaPage {
   tab2Root = RicercaOffertePage;
     tab3Root = RicercaEventiPage;
 
-  constructor(public events: Events,public navParams: NavParams,public viewCtrl: ViewController) {
-
+  constructor(public navCtrl: NavController,public events: Events,public navParams: NavParams,public viewCtrl: ViewController) {
+    events.subscribe('risRicerca', (obj) => {
+      console.log(obj)
+  if(obj.miracolo)
+  this.navCtrl.push(RisultatiRicercaPage,{ricerca: obj.ris})
+  obj.miracolo = false
+    });
 
   }
 }
