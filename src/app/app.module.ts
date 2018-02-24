@@ -6,6 +6,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { MatDialogModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PasswordDimenticataPage } from '../pages/password-dimenticata/password-dimenticata';
+import { RisultatiRicercaPage } from '../pages/risultati-ricerca/risultati-ricerca';
 
 
 import {WelcomePage} from '../pages/welcome/welcome';
@@ -75,6 +76,7 @@ import { SMS } from '@ionic-native/sms';
     TabsProfiloUtentePage,
     HomePage,
     TabsPage,
+    RisultatiRicercaPage,
     RicercaOffertePage,
     RegistrazionePage,
     RubricaPage,
@@ -114,6 +116,7 @@ import { SMS } from '@ionic-native/sms';
     PasswordDimenticataPage,
     AboutPage,
     ContactPage,
+    RisultatiRicercaPage,
     TabsProfiloUtentePage,
     ProfiloPreferitiPage,
     HomePage,
