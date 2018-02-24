@@ -32,12 +32,19 @@ page-profilo {
     text-align: left;
   }
   .profilo-testo label{
-    font-size: 1.4em;
+    font-size: 1.5em;
+    padding-top: 4%;
+      padding-bottom: 4%;
+
     color: color($colors, bordeaux_);
   }
   .profilo-testo span{
-    font-size: 1.4em;
+    font-size: 1.5em;
+    padding-top: 4%;
+      padding-bottom: 4%;
+
     color: color($colors, lightblack_2);
   }
+
 
 }
