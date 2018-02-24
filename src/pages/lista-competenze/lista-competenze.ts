@@ -5,6 +5,7 @@ import { NativeStorage } from '@ionic-native/native-storage';
 import { ShareService } from '../../providers/shareService';
 import { AlertController } from 'ionic-angular';
 import { Events } from 'ionic-angular';
+import { Dialogs } from '@ionic-native/dialogs';
 
 
 @IonicPage()
@@ -16,10 +17,10 @@ export class ListaCompetenzePage {
 nuovo:string;
 show:boolean= this.navParams.get("page")
 visible:boolean= this.navParams.get("visible");
-
+newCompetenze:Array<string> = []
 allCompetenze: Array<string> = this.shareService.getOtherCompetenze() ;
 myCompetenze: Array<string> = this.shareService.getMyCompetenze() ;
-  constructor(public events: Events,public alertCtrl: AlertController, public shareService: ShareService,public  nativeStorage:NativeStorage,public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
+  constructor(public dialogs:Dialogs,public events: Events,public alertCtrl: AlertController, public shareService: ShareService,public  nativeStorage:NativeStorage,public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
 console.log("navParams",this.navParams.get("page"))
 
   }
@@ -65,9 +66,16 @@ insert_competenza(){
       text: 'Conferma',
       handler: data => {
         console.log(data)
+        if(this.shareService.getOtherCompetenze().indexOf(data.comp) < 0 && this.shareService.getMyCompetenze().indexOf(data.comp) < 0){
           this.allCompetenze.push(data.comp)
+          this.newCompetenze.push(data.comp)
+          this.shareService.setNewCompetenze(this.newCompetenze)
             this.shareService.setOtherCompetenze(this.allCompetenze);
-      }
+        }
+        else
+          this.dialogs.alert("Competenza giá presente nella lista")
+
+      }//handler
     }]
   });
   alert.present();
