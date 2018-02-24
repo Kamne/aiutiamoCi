@@ -21,8 +21,8 @@ page-registrazione {
   .error{
     width: 80%;
     font-size: 18px;
-    color: color($colors, white);
-    background: color($colors, lightblack_);
+    color: WHITE;
+    background:none;
     border-radius: 3px;
     padding: 25px;
 
@@ -102,4 +102,5 @@ page-registrazione {
   .efesto{
     overflow-y: scroll;
   }
+
 }

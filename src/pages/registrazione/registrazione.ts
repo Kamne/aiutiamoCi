@@ -66,6 +66,23 @@ titStudio:String = "";
 }
 
   registrazione(tipologia: HTMLInputElement, sesso: HTMLInputElement): void {
+    if(tipologia.value== "" || sesso.value =="" || this.nome=="" ||
+        this.cognome=="" || this.username=="" || this.password=="" ||
+      this.data=="" || this.sex == "" || this.codFis=="" || this.indirizzo=="" ||
+    this.provincia=="" || this.citta=="" || this.provincia || (this.email=="" && this.tel =="")){
+      this.dialogs.alert("Si prega di riempire tutti i campi")
+      return
+    }
+    if(tipologia.value== "assistente" && (this.titStudio =="" || this.myCompetenze.length==0)){
+      this.dialogs.alert("Si prega di riempire tutti i campi")
+      return
+    }
+
+    if(tipologia.value== "associazione" && (this.iva =="" || this.descr=="")){
+      this.dialogs.alert("Si prega di riempire tutti i campi")
+      return
+    }
+
     var headers = new Headers();
     console.log("sesso",this.sex)
     headers.append('Content-Type', 'application/x-www-form-urlencoded' );
