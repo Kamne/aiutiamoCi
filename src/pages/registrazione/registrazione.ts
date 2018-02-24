@@ -5,7 +5,7 @@ import { Slides } from 'ionic-angular';
 import {LoginPage} from '../login/login';
 import {MapPage} from '../map/map';
 import { Dialogs } from '@ionic-native/dialogs';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { Http, Headers, RequestOptions } from "@angular/http";
 import 'rxjs/add/operator/map';
 import { AlertController } from 'ionic-angular';
@@ -22,12 +22,12 @@ import { ShareService } from '../../providers/shareService';
 export class RegistrazionePage {
 @ViewChild(Slides) slides: Slides;
 
-ciccio:FormGroup;
+
 base64Image:String = "assets/imgs/anonimo.png"
 
 
-tipologia:String = "Scegli una tipologia"
-sex:String = "Sesso"
+tipo:String = ""
+sex:String = ""
 nome:String = ""
 cognome:String = ""
 username:String = ""
@@ -52,7 +52,7 @@ otherCompetenze:Array<string> =[]
 titStudio:String = "";
 
 
-  constructor(public shareService: ShareService,public modalCtrl: ModalController,public events: Events,public camera: Camera,public navCtrl: NavController,public alertCtrl: AlertController, public navParams: NavParams, public http: Http, public dialogs: Dialogs, public formBuilder: FormBuilder) {
+  constructor(public shareService: ShareService,public modalCtrl: ModalController,public events: Events,public camera: Camera,public navCtrl: NavController,public alertCtrl: AlertController, public navParams: NavParams, public http: Http, public dialogs: Dialogs) {
     events.subscribe('maps', (maps) => {
       this.indirizzo = maps[0];
       this.citta = maps[1];
@@ -65,20 +65,21 @@ titStudio:String = "";
       console.log('ionViewDidLoad MapPage');
 }
 
-  registrazione(tipologia: HTMLInputElement, sesso: HTMLInputElement): void {
-    if(tipologia.value== "" || sesso.value =="" || this.nome=="" ||
+  registrazione(tipologia: HTMLInputElement): void {
+    console.log("sex",this.sex,"tipo",this.tipo)
+    if(this.tipo== ""  || this.nome=="" ||
         this.cognome=="" || this.username=="" || this.password=="" ||
       this.data=="" || this.sex == "" || this.codFis=="" || this.indirizzo=="" ||
     this.provincia=="" || this.citta=="" || this.provincia || (this.email=="" && this.tel =="")){
       this.dialogs.alert("Si prega di riempire tutti i campi")
       return
     }
-    if(tipologia.value== "assistente" && (this.titStudio =="" || this.myCompetenze.length==0)){
+    if(this.tipo== "assistente" && (this.titStudio =="" || this.myCompetenze.length==0)){
       this.dialogs.alert("Si prega di riempire tutti i campi")
       return
     }
 
-    if(tipologia.value== "associazione" && (this.iva =="" || this.descr=="")){
+    if(this.tipo== "associazione" && (this.iva =="" || this.descr=="")){
       this.dialogs.alert("Si prega di riempire tutti i campi")
       return
     }
@@ -92,7 +93,7 @@ titStudio:String = "";
      cognome:this.cognome,
      username: this.username,
      password: this.password,
-     tipologia:tipologia.value,
+     tipologia:this.tipo,
      nato:this.data,
      sesso:this.sex,
      competenze:","+this.myCompetenze.toString()+",",

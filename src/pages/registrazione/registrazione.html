@@ -21,7 +21,7 @@
                 <div id="styleForm">
 
                     <div class="inputWithIcon">
-                        <select name="tipologia" (change)="onChange(tipologia.value)" ngModel required #tipologia="ngModel">
+                        <select name="tipologia" [(ngModel)]="tipo" (change)="onChange(tipologia.value)" ngModel required #tipologia="ngModel">
                             <option value="" disabled selected hidden >Scegli la tipologia</option>
                             <option value="assistente">Assistente</option>
                             <option value="associazione">Associazione</option>
@@ -63,7 +63,7 @@
 
                     <div class="inputWithIcon" *ngIf ="!showAssociazione">
 
-                        <select  name="sesso" ngModel  required #sesso="ngModel">
+                        <select  name="sesso" [(ngModel)]="sex" ngModel  required #sesso="ngModel">
                             <option value="" disabled selected hidden >Sesso</option>
                             <option value="Maschile">Maschile</option>
                             <option value="Femminile">Femminile</option>
@@ -255,7 +255,7 @@
                     </span>
                     <!-- -->
 
-                    <button block (click) = "indietro()" class="zeus"><b>indietro</b></button>  <button block class="zeus" (click)="registrazione(tipologia,sesso)"><b>Conferma</b></button>
+                    <button block (click) = "indietro()" class="zeus"><b>indietro</b></button>  <button block class="zeus" (click)="registrazione(tipologia)"><b>Conferma</b></button>
 
                 </div>
 
