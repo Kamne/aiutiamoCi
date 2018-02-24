@@ -16,7 +16,7 @@
 
   <ion-list class="list" *ngFor="let e of events">
     <ion-card class="card_">
-      <img src="{{e.img}}" />
+      <img src="assets/imgs/events.jpg" />
       <ion-card-title class="card-title">{{e.nome_evento}}</ion-card-title>
 
       <p class="card-description">
@@ -30,7 +30,7 @@
     <br />
   </ion-list>
  <!--   <button (click)="creaEvento()" >Crea Evento</button><br />-->
-  <ion-fab right bottom>
+  <ion-fab right bottom *ngIf ="shareService.getUser().getTipologia() == 'associazione'">
     <button ion-fab color="bordeaux_"  (click)="creaEvento()"><ion-icon name="add"></ion-icon></button>
   </ion-fab>
 </ion-content>
