@@ -38,7 +38,7 @@
   <ion-col *ngIf="post.Automunito =='1'" start><b class="eolo">Automunito</b></ion-col><ion-col *ngIf="post.Urgenza== '1'" start><b *ngIf="post.Urgenza=='1'" class="eolo">Urgenza</b></ion-col><ion-col *ngIf="post.PatenteDiGuida =='1'" start><b class="eolo">Patentato</b></ion-col>
 </ion-row>
 </ion-grid>
-<button ion-button round  class="odino"><b>Competenze</b></button>
+<button ion-button round (click) = "getCompetenze(post.COmpetenze)" class="odino"><b>Competenze</b></button>
 <br/>
 <span>{{post.Data}}</span>
   </ion-card>

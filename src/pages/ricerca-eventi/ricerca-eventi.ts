@@ -12,7 +12,7 @@ import { AlertController } from 'ionic-angular';
 import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult } from '@ionic-native/native-geocoder';
 import { TabsPage } from '../tabs/tabs';
 import { RisultatiRicercaEventiPage } from '../risultati-ricerca-eventi/risultati-ricerca-eventi';
-
+import { Events } from 'ionic-angular';
 import { Dialogs } from '@ionic-native/dialogs';
 
 
@@ -35,7 +35,7 @@ nome:string =""
 
 
 
-  constructor(public dialogs:Dialogs,public modalCtrl: ModalController,public alertCtrl: AlertController,public nativeStorage: NativeStorage, geolocation: Geolocation, public nativeGeocoder: NativeGeocoder,public shareService: ShareService,public http:Http,public spherical: Spherical,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public events: Events,public dialogs:Dialogs,public modalCtrl: ModalController,public alertCtrl: AlertController,public nativeStorage: NativeStorage, geolocation: Geolocation, public nativeGeocoder: NativeGeocoder,public shareService: ShareService,public http:Http,public spherical: Spherical,public navCtrl: NavController, public navParams: NavParams) {
 
   }
 
@@ -101,7 +101,11 @@ aiutatm(index){
         if(data.message != undefined)
           this.dialogs.alert(data.message)
         else{
-          this.navCtrl.push(RisultatiRicercaEventiPage,{risultati:data})
+          this.result = [];
+          for(var elem of data)
+            this.result.push(JSON.parse(elem))
+            let obj = {miracolo:true,ris:data};
+            this.events.publish('risRicercaEventi', obj);
         }
     })
     }

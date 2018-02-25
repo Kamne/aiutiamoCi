@@ -69,6 +69,7 @@ export class BachecaPage {
   }
 
   callNumTelephone(n: string){
+    console.log("",n)
     this.callNumber.callNumber(n, true)
         .then(() => console.log('Launched dialer!'))
         .catch(() => console.log('Error launching dialer'));
@@ -103,6 +104,9 @@ sendEmail(email){
      }]
    });
    alert.present();
+ }
+ else{
+   this.dialogs.alert("servizio Email non disponibile")
  }
 })
 }

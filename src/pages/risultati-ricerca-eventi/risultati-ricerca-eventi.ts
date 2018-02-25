@@ -15,9 +15,9 @@ import { CallNumber } from '@ionic-native/call-number';
   templateUrl: 'risultati-ricerca-eventi.html',
 })
 export class RisultatiRicercaEventiPage {
-  posts:any;
+  events:any;
   constructor(public navCtrl: NavController, public navParams: NavParams,private callNumber: CallNumber) {
-    this.posts = navParams.get("risultati")
+    this.events = navParams.get("risultati")
   }
 
   ionViewDidLoad() {

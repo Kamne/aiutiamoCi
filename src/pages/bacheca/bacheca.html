@@ -30,21 +30,14 @@
     <ion-col *ngIf="post.automunito =='1'" ><b *ngIf="post.automunito =='1'" class="eolo">Automunito</b></ion-col><ion-col *ngIf="post.urgenza== '1'" start><b  *ngIf="post.Urgenza=='1'" class="eolo">Urgenza</b></ion-col><ion-col *ngIf="post.patente =='1'" start><b *ngIf="post.patente=='1'" class="eolo">Patentato</b></ion-col>
   </ion-row>
   </ion-grid>
-  <button ion-button round  class="odino"><b>Competenze</b></button>
+  <button ion-button round (click)="getCompetenze(post.competenze)" class="odino"><b>Competenze</b></button>
   <br/>
   <span>{{post.data}}</span>
     </ion-card>
   </ion-list>
-
-
   <br />
   <br />
   <br />
-  <!--
-  <button  (click)="nuovo_msg()">
-    Nuovo
-  </button>
-  -->
   <ion-fab right bottom>
     <button ion-fab color="bordeaux_"  (click)="nuovo_msg()"><ion-icon name="add"></ion-icon></button>
   </ion-fab>

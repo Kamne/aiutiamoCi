@@ -11,6 +11,7 @@ import { RicercaEventiPage } from '../ricerca-eventi/ricerca-eventi';
 import { ViewController } from 'ionic-angular';
 import { Events } from 'ionic-angular';
 import { RisultatiRicercaPage } from '../risultati-ricerca/risultati-ricerca';
+import { RisultatiRicercaEventiPage } from '../risultati-ricerca-eventi/risultati-ricerca-eventi';
 
 /**
  * Generated class for the TabsRicercaPage page.
@@ -38,6 +39,11 @@ export class TabsRicercaPage {
   this.navCtrl.push(RisultatiRicercaPage,{ricerca: obj.ris})
   obj.miracolo = false
     });
-
+    events.subscribe('risRicercaEventi', (obj) => {
+      console.log(obj)
+  if(obj.miracolo)
+  this.navCtrl.push(RisultatiRicercaEventiPage,{risultati: obj.ris})
+  obj.miracolo = false
+    });
   }
 }

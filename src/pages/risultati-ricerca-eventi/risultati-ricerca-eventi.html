@@ -11,19 +11,16 @@
   <ion-list class="list" *ngFor="let e of events">
     <ion-card class="card_">
       <img src="assets/imgs/events.jpg" />
-      <ion-card-title class="card-title">{{e.nome_evento}}</ion-card-title>
+      <ion-card-title class="card-title">{{e.Nome_associazione}}</ion-card-title>
 
       <p class="card-description">
-        <span><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;{{e.luogo}}</span><br />
-        <span><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;{{e.data}}&nbsp;-&nbsp;{{e.orario}}</span><br
+        <span><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;{{e.Luogo}}</span><br />
+        <span><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;{{e.DataInizio}}&nbsp;-&nbsp;{{e.OrarioInizio}}</span><br
       /><br />
-        {{e.descrizione}}
+        {{e.Descrizione}}
       </p>
 
     </ion-card>
     <br/>
   </ion-list>
-  <ion-fab right bottom *ngIf ="shareService.getUser().getTipologia() == 'associazione'">
-    <button ion-fab color="bordeaux_"  (click)="creaEvento()"><ion-icon name="add"></ion-icon></button>
-  </ion-fab>
 </ion-content>

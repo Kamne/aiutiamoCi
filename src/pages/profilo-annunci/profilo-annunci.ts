@@ -2,7 +2,7 @@ import { Component, ViewChild  } from '@angular/core';
 import { IonicPage, NavController, NavParams, Slides  } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from "@angular/http";
 import { ShareService } from '../../providers/shareService';
-
+import { Dialogs } from '@ionic-native/dialogs';
 /**
  * Generated class for the ProfiloAnnunciPage page.
  *
@@ -24,7 +24,7 @@ export class ProfiloAnnunciPage {
   radioOfferta:boolean=false;
   radioRichiesta:boolean=true;
 
-  constructor(public shareService:ShareService,public http:Http,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public dialogs: Dialogs,public shareService:ShareService,public http:Http,public navCtrl: NavController, public navParams: NavParams) {
     var headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded' );
     let options = new RequestOptions({ headers: headers });
@@ -68,6 +68,15 @@ offerta(){
   console.log(this.radioOfferta,this.radioRichiesta)
 }
 
-
+getCompetenze(competenze){
+  var comp = competenze.split(",");
+  var msg = "";
+  if(comp.length>0){
+    for(let entry of comp){
+      msg += entry+"\n";
+    }
+  }
+  this.dialogs.alert(msg,"Elenco competenze");
+}
 
 }

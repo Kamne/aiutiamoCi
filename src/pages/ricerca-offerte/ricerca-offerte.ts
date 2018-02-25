@@ -103,7 +103,6 @@ export class RicercaOffertePage {
         console.log("myData",myData);
         this.http.post('http://aiutiamoc.altervista.org/risultatiRicercaUtenti.php',myData,options).map(res => res.json()).subscribe(   data => {
         console.log("post",data);
-        console.log("post",data);
         let obj = {other: true,miracolo:true,ris:data};
         this.events.publish('risRicerca', obj);
 

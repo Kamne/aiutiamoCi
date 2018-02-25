@@ -110,5 +110,7 @@ this.shareService.setPages(this.pages)
       this.Image = src;
     }
 
-
+cambiaImg(){
+  
+}
 }
