@@ -45,7 +45,7 @@
         </div>
 -->
         <form #f="ngForm" (ngSubmit)="onSubmit(f.value)" novalidate>
-
+<!--
         <div style="text-align: center;" (click)="chargeImage()">
 
             <ion-img id="logo" width="250" height="170" [src]="base64Image" >
@@ -53,8 +53,9 @@
                 ]="src"
                 #img="ngModel"  ngModel #img="ngModel"
                  -->
-                <input type="hidden" [ngModel]="base64Image" name="img_evento" #img_evento="ngModel" />
+       <!--         <input type="hidden" [ngModel]="base64Image" name="img_evento" #img_evento="ngModel" />
             </ion-img>
+            -->
 <!--
             <ion-img  width="250" height="170" [src]="base64Image" >
                 <i id="pulsante_camera" class="fa fa-camera  fa-2x" aria-hidden="true" class="imgCameraPosition"></i>
@@ -62,14 +63,15 @@
             </ion-img>
             -->
            <!--     <ion-icon ios="ios-camera" md="md-camera" class="imgCameraPosition"></ion-icon> -->
-
+<!--
         </div>
+            -->
             <div *ngIf="show">
                 <input type="hidden" [ngModel]="tipologia_" name="tipologia" ngModel
                        #tipologia="ngModel" />
                 <input type="hidden" [ngModel]="partitaIVA" name="partitaiva" ngModel
                        #partitaiva="ngModel" />
-                <input type="hidden" [ngModel]="nome_associazione_" name="nome_associazione" ngModel
+                <input type="hidden" [ngModel]="username_associazione" name="username_associazione" ngModel
                        #nome_associazione="ngModel" />
             </div>
 
@@ -194,10 +196,12 @@
         </div>
 
         </form>
+        <!--
         <p>First name value: {{ nome.value }}</p>
         <p>First name valid: {{ nome.valid }}</p>
         <p>Form value: {{ f.value | json }}</p>
         <p>Form valid: {{ f.valid }}</p>
+        -->
     </ion-list>
 
 </ion-content>

@@ -48,6 +48,7 @@ export class EventCreaPage{
 
       this.tipologia_ = shareService.getUser().getTipologia();
       if(this.tipologia_=="associazione"){
+    //    console.log(shareService.getUser().getNome());
         this.username_associazione = shareService.getUser().getUsername();
         this.nome_associazione_ = shareService.getUser().getNome();
         this.show = true;
