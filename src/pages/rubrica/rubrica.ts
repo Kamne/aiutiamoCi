@@ -4,6 +4,7 @@ import { Http, Headers, RequestOptions } from "@angular/http";
 import { ShareService } from '../../providers/shareService';
 import { Utente } from '../../classes/utente';
 import {Associazione} from '../../classes/associazione';
+import {TabsProfiloUtentePage} from '../tabs-profilo-utente/tabs-profilo-utente';
 
 @IonicPage()
 @Component({
@@ -65,7 +66,7 @@ export class RubricaPage {
   }
 
   informazioniUtente(username: string) {
-    alert(username);
+  //  alert(username);
     var headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded' );
     let options = new RequestOptions({ headers: headers });
@@ -74,11 +75,12 @@ export class RubricaPage {
       console.log(data);
       if(data.success){
         var competenze = data.user.Competenze.split(",")
-        this.shareService.setUser(new Utente(data.user.Nome,data.user.Cognome,data.user.Username,data.user.Immagine,
+        this.shareService.setOtherUser(new Utente(data.user.Nome,data.user.Cognome,data.user.Username,data.user.Immagine,
                                             data.user.Nato,competenze,data.user.TitoloStudio,data.user.CF,
                                             data.user.Citta,data.user.Provincia,data.user.Indirizzo,
                                             data.user.Email,data.user.NumTelefono,data.user.Tipologia,data.user.Sesso));
         console.log(username,data.user);
+    //    this.navCtrl.push(TabsProfiloUtentePage);
       }
       else {
         alert("Oooops!");
@@ -87,18 +89,19 @@ export class RubricaPage {
   }
 
   informazioniAssociazione(username: string) {
-    alert(username);
+  //  alert(username);
     var headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded' );
     let options = new RequestOptions({ headers: headers });
     var myData = JSON.stringify({username: username});
     this.http.post('http://aiutiamoc.altervista.org/infoAssociazione.php',myData,options).map(res => res.json()).subscribe(   data => {
       if(data.success){
-      this.shareService.setUser(new Associazione(data.associazione.Nome,data.associazione.Username,data.associazione.Immagine,
+      this.shareService.setOtherUser(new Associazione(data.associazione.Nome,data.associazione.Username,data.associazione.Immagine,
                                            data.associazione.Descrizione,data.associazione.Fondata,data.associazione.PartitaIVA,
                                            data.associazione.Citta,data.associazione.Provincia,data.associazione.Indirizzo,
                                            data.associazione.Email,data.associazione.NumTelefono,data.associazione.Tipologia,data.membri));
-      console.log(username,data.associazione);                        
+      console.log(username,data.associazione);
+        this.navCtrl.push(TabsProfiloUtentePage);
       }
       else {
         alert("Oooops!");

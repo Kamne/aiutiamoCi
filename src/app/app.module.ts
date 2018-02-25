@@ -41,7 +41,7 @@ import { TabsRicercaPage } from '../pages/tabs-ricerca/tabs-ricerca';
 import { StatusBar } from '@ionic-native/status-bar';
 import {FaqPage} from "../pages/faq/faq";
 import {FaqAdminPage} from "../pages/faq-admin/faq-admin";
-
+import {OpzioniAmministratorePage} from "../pages/opzioni-amministratore/opzioni-amministratore";
 import {DiventaAssistentePage} from '../pages/diventa-assistente/diventa-assistente';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -92,7 +92,8 @@ import {ProfiloAssociazionePage} from "../pages/profilo-associazione/profilo-ass
     BachecaPage,
     FaqAdminPage,
     FaqPage,
-    DiventaAssistentePage
+    DiventaAssistentePage,
+    OpzioniAmministratorePage
   ],
   imports: [
     BrowserModule,
@@ -137,7 +138,8 @@ import {ProfiloAssociazionePage} from "../pages/profilo-associazione/profilo-ass
     BachecaPage,
     FaqAdminPage,
     FaqPage,
-    DiventaAssistentePage
+    DiventaAssistentePage,
+    OpzioniAmministratorePage
   ],
   providers: [
     StatusBar,

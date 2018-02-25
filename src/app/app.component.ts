@@ -17,6 +17,7 @@ import {ProfiloPage} from '../pages/profilo/profilo';
 import { Events } from 'ionic-angular';
 import {FaqPage} from "../pages/faq/faq";
 import {FaqAdminPage} from "../pages/faq-admin/faq-admin";
+import {OpzioniAmministratorePage} from "../pages/opzioni-amministratore/opzioni-amministratore";
 
 import {DiventaAssistentePage} from '../pages/diventa-assistente/diventa-assistente';
 import {PasswordDimenticataPage} from '../pages/password-dimenticata/password-dimenticata';

@@ -1,0 +1,42 @@
+<!--
+  Generated template for the OpzioniAmministratorePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Amministrazione</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="content">
+  <br><br>
+  <button block (click)="getUtenti()">Elimina Utente</button>
+  <br><br>
+  <button block (click)="getUtenti()">Elimina Annuncio</button>
+  <br><br>
+
+    <div *ngIf="utenti">
+      <h1>Utenti</h1>
+      <div  id="div_utenti" *ngFor="let a of posts">
+        <ion-item>
+          {{a}}
+        </ion-item>
+      </div>
+    </div>
+<!--
+    <div *ngIf="annunci">
+      <h1>Associazioni</h1>
+      <div class="one" id="div_associazioni" *ngFor="let a of associazioni">
+        <ion-item (click)="informazioniAssociazione(a)">
+          {{a}}
+        </ion-item>
+      </div>
+    </div>
+-->
+
+</ion-content>
