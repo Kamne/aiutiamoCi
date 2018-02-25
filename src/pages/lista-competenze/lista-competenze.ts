@@ -44,7 +44,7 @@ console.log("navParams",this.navParams.get("page"))
       this.shareService.setOtherCompetenze(this.allCompetenze);
       this.myCompetenze.push(name);
       this.shareService.setMyCompetenze(this.myCompetenze);}
-    //  this.shareService.setAllCompetenze(this.allCompetenze);
+
 }
 
 insert_competenza(){

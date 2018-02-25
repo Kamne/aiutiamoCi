@@ -36,9 +36,8 @@ export class ProfiloAnnunciPage {
     this.http.post('http://aiutiamoc.altervista.org/profiloAnnunci.php',myData,options).map(res => res.json()).subscribe(   data => {
     console.log("post",data);
     var elem
-  //  this.richieste = data.richieste
+
     for( elem of data.richieste) {
-    //JSON.parse(x)
     console.log(elem);
     this.richieste.push(JSON.parse(elem))
 }

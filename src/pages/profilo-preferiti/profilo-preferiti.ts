@@ -27,18 +27,6 @@ preferiti:Array<string> =[];
 
   constructor(public events: Events,public alertCtrl: AlertController,public dialogs: Dialogs,public shareService: ShareService, public navCtrl: NavController, public navParams: NavParams,public http:Http) {
 
-/*    var headers = new Headers();
-    headers.append('Content-Type', 'application/x-www-form-urlencoded' );
-    let options = new RequestOptions({ headers: headers });
-    var myData = JSON.stringify({
-      username: this.shareService.getUser().getUsername()
-    });
-    this.http.post('http://aiutiamoc.altervista.org/getPreferiti.php',myData,options).map(res => res.json()).subscribe(   data => {
-      console.log(data);
-      this.preferiti = data.preferiti
-      console.log("Preferiti",data);
-
-   })*/
    if(navParams.get('other') != undefined)
    this.preferiti = this.shareService.getOtherUser().getPreferiti()
    else

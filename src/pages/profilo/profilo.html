@@ -26,13 +26,7 @@
     <br/>
     <div id="profilo-info">
 
-    <!--  <div class="menu">
-        <ul >
-          <li><a (click)="openPage(item)">Info</a></li>
-          <li><a (click)="loadPage('annunci')">Annunci</a></li>
-          <li><a (click)="openPage(item)">Preferiti</a></li>
-        </ul>
-      </div> -->
+
 
        <div class="profilo-testo" *ngIf="shareService.getUser()!=undefined && navParams.get('other') == undefined" >
        <label>Cognome:</label>&nbsp;<span>{{shareService.getUser().getCognome()}}</span> <br />

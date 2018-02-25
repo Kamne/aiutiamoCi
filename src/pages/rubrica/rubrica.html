@@ -13,12 +13,7 @@
     </ion-searchbar>
   </div>
 
- <!-- <div class="menu">
-    <ul >
-      <li><a (click)="openPage(item)">Utente</a></li>
-      <li><a (click)="loadPage('annunci')">Associazione</a></li>
-    </ul>
-  </div> -->
+
 
   <div padding>
     <ion-segment [(ngModel)]="scelta">
@@ -36,10 +31,10 @@
         <div class="one" id="div_assistenti" *ngFor="let a of assistenti">
           <ion-item (click)="informazioniUtente(a)">
             {{a}}
-        </ion-item>  
-        </div>      
+        </ion-item>
+        </div>
     </div>
-  
+
     <div *ngSwitchCase="'associazioni'">
       <h1>Associazioni</h1>
       <div class="one" id="div_associazioni" *ngFor="let a of associazioni">

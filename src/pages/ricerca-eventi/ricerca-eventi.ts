@@ -70,7 +70,7 @@ this.vaccini(this.result);
 
 
 aiutatm(index){
-  this.nativeGeocoder.forwardGeocode(this.indirizzi[this.index])/*.Luogo+","+JSON.parse(this.indirizzi[this.index]).Citta*/
+  this.nativeGeocoder.forwardGeocode(this.indirizzi[this.index])
     .then((coordinates: NativeGeocoderForwardResult) =>{
       var lat = Number(coordinates.latitude);
       var lng = Number(coordinates.longitude);

@@ -21,14 +21,7 @@ page-login {
         width: 100%;
         margin: 0 auto;
         font-size: 1.6em;
-        /*
-        input{
-            padding: 4%;
-            margin: 1px;
-            width: 100%;
-            border: 0;
-        }
-        */
+
     }
 
     #buttons, #usignup {
@@ -42,15 +35,7 @@ page-login {
             -webkit-border-radius: 24px 24px;
             font-size: 1.6em;
             color: white;
-            /*
 
-            background-color: color($colors, bordeaux_);
-            text-align: center;
-            color: color($colors, white);
-            width: 100%;
-            padding: 5%;
-            border: 0;
-            */
         }
     }
 
@@ -68,11 +53,6 @@ page-login {
             font-size: 1.1em;
         }
 
-        /*
-        a {
-            text-decoration: underline;
-            cursor: auto;
-        }
-        */
+
     }
 }

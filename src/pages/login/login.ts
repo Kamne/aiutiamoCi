@@ -173,7 +173,7 @@ aggiornaPages(tipologia){
                       ]},
       {label:'utente',items:[
                             { title: 'Profilo', component: TabsProfiloUtentePage, icon: 'contact' },
-                            { title: 'Info - FAQ', component: WelcomePage, icon: 'information-circle' },
+                            
                             ]},
 
       {label:'setting',items:[
@@ -203,17 +203,12 @@ aggiornaPages(tipologia){
                             { title: 'Info - FAQ', component: WelcomePage, icon: 'information-circle' },
                             ]},
 
-      {label:'setting',items:[
-                            { title: 'Membri', component: MembriPage, icon: 'construct' }
-                            ]},
-
         {label:'ricerca',items:[
             { title: 'Ricerca', component: TabsRicercaPage, icon: 'search' }
 
         ]},
 
         {label:'',items:[
-
                               { title: 'Logout', component: WelcomePage, icon: 'log-out' }
         ]},
 

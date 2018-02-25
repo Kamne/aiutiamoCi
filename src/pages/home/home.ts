@@ -7,13 +7,7 @@ import {TabsRicercaPage} from '../tabs-ricerca/tabs-ricerca';
 import {RubricaPage} from '../rubrica/rubrica';
 import {BachecaPage} from '../bacheca/bacheca';
 import {EventPage} from '../event/event';
-/**
- * Generated class for the HomePage page.
- *
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({
@@ -24,13 +18,13 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public shareService: ShareService ) {
   }
-/*
+
   ionViewDidLoad() {
 
     console.log(this.shareService.getUser().getUsername());
 
   }
-  */
+
 insert(){
   this.navCtrl.push(InserisciPage);
 }
