@@ -22,7 +22,7 @@ import {InserisciPage} from '../inserisci/inserisci';
 import {ProfiloPage} from '../profilo/profilo';
 import {FaqPage} from "../faq/faq";
 import {FaqAdminPage} from "../faq-admin/faq-admin";
-
+import { LoadingController } from 'ionic-angular';
 import {DiventaAssistentePage} from '../diventa-assistente/diventa-assistente';
 import {PasswordDimenticataPage} from '../password-dimenticata/password-dimenticata';
 import {RicercaRichiestePage} from '../ricerca-richieste/ricerca';
@@ -36,7 +36,7 @@ import { Utente } from '../../classes/utente';
 })
 export class LoginPage {
 membri:Array<string> = []
-  constructor(public event:Events,public navCtrl: NavController, public navParams: NavParams, public http: Http, public dialogs: Dialogs,public shareService: ShareService) {
+  constructor(public loading: LoadingController,public event:Events,public navCtrl: NavController, public navParams: NavParams, public http: Http, public dialogs: Dialogs,public shareService: ShareService) {
   }
     pages: any;
   ionViewDidLoad() {
@@ -47,8 +47,12 @@ membri:Array<string> = []
 
 
   if(username.value === "" || password.value === "")
-      console.log("valori errati")
+      this.dialogs.alert("Inserire username o password")
   else{
+    let loader = this.loading.create({
+  content: 'Caricamento...',
+})
+loader.present()
     var myData = JSON.stringify({username: username.value,password: password.value});
   this.http.post('http://aiutiamoc.altervista.org/login.php',myData).map(res => res.json()).subscribe(   data => {
   console.log(data);
@@ -72,6 +76,7 @@ membri:Array<string> = []
                                          data.user.Email,data.user.NumTelefono,data.user.Tipologia,data.user.Sesso,data.preferiti))
     this.event.publish('image', data.user.Immagine);}
     this.aggiornaPages(this.shareService.getUser().getTipologia())
+    loader.dismiss()
     this.navCtrl.setRoot(HomePage)
     console.log(this.shareService.getUser())
 
@@ -104,8 +109,6 @@ aggiornaPages(tipologia){
                             { title: 'Home', component: HomePage, icon: 'home' },
                             { title: 'Inserisci Annuncio', component: InserisciPage, icon: 'create'  },
                             { title: 'Bacheca', component: BachecaPage, icon: 'paper' },
-                         //   { title: 'Rubrica', component: RubricaPage, icon: 'bookmarks' },
-                         //   { title: 'Cerca Assistente', component: WelcomePage, icon: 'search' },
                             { title: 'Eventi', component: EventPage, icon: 'people' },
                       ]},
       {label:'utente',items:[
@@ -114,7 +117,6 @@ aggiornaPages(tipologia){
                             ]},
 
       {label:'setting',items:[
-                      //      { title: 'Opzioni Amministratore', component: WelcomePage, icon: 'construct' }
                             ]},
         {label:'ricerca',items:[
             { title: 'Ricerca', component: TabsRicercaPage, icon: 'search' }
@@ -122,8 +124,7 @@ aggiornaPages(tipologia){
         ]},
 
         {label:'',items:[
-                          //    { title: 'Login', component: LoginPage, icon: 'log-in' },
-                        //      { title: 'Registrati', component: SignupPage, icon: 'log-in' },
+
                              { title: 'Logout', component: WelcomePage, icon: 'log-out' }
         ]},
 
@@ -137,8 +138,7 @@ aggiornaPages(tipologia){
                             { title: 'Home', component: HomePage, icon: 'home' },
                             { title: 'Inserisci Annuncio', component: InserisciPage, icon: 'create'  },
                             { title: 'Bacheca', component: BachecaPage, icon: 'paper' },
-                         //   { title: 'Rubrica', component: RubricaPage, icon: 'bookmarks' },
-                         //   { title: 'Cerca Assistente', component: WelcomePage, icon: 'search' },
+
                             { title: 'Eventi', component: EventPage, icon: 'people' },
                       ]},
       {label:'utente',items:[
@@ -156,8 +156,7 @@ aggiornaPages(tipologia){
         ]},
 
         {label:'',items:[
-                        //      { title: 'Login', component: LoginPage, icon: 'log-in' },
-                        //      { title: 'Registrati', component: SignupPage, icon: 'log-in' },
+
                               { title: 'Logout', component: WelcomePage, icon: 'log-out' }
         ]},
     ];
@@ -170,8 +169,6 @@ aggiornaPages(tipologia){
                             { title: 'Home', component: HomePage, icon: 'home' },
                             { title: 'Inserisci Annuncio', component: InserisciPage, icon: 'create'  },
                             { title: 'Bacheca', component: BachecaPage, icon: 'paper' },
-                         //   { title: 'Rubrica', component: RubricaPage, icon: 'bookmarks' },
-                         //   { title: 'Cerca Assistente', component: WelcomePage, icon: 'search' },
                             { title: 'Eventi', component: EventPage, icon: 'people' },
                       ]},
       {label:'utente',items:[
@@ -189,8 +186,6 @@ aggiornaPages(tipologia){
         ]},
 
         {label:'',items:[
-                        //      { title: 'Login', component: LoginPage, icon: 'log-in' },
-                        //      { title: 'Registrati', component: SignupPage, icon: 'log-in' },
                               { title: 'Logout', component: WelcomePage, icon: 'log-out' }
         ]},
 
@@ -200,10 +195,7 @@ aggiornaPages(tipologia){
     this.pages = [
       {label:'Home',items:[
                             { title: 'Home', component: HomePage, icon: 'home' },
-                          //  { title: 'Inserisci Annuncio', component: InserisciPage, icon: 'create'  },
                             { title: 'Bacheca', component: BachecaPage, icon: 'paper' },
-                         //   { title: 'Rubrica', component: RubricaPage, icon: 'bookmarks' },
-                         //   { title: 'Cerca Assistente', component: WelcomePage, icon: 'search' },
                             { title: 'Eventi', component: EventPage, icon: 'people' },
                       ]},
       {label:'utente',items:[
@@ -221,8 +213,7 @@ aggiornaPages(tipologia){
         ]},
 
         {label:'',items:[
-                        //      { title: 'Login', component: LoginPage, icon: 'log-in' },
-                        //      { title: 'Registrati', component: SignupPage, icon: 'log-in' },
+
                               { title: 'Logout', component: WelcomePage, icon: 'log-out' }
         ]},
 

@@ -5,7 +5,7 @@ import { Slides } from 'ionic-angular';
 import {LoginPage} from '../login/login';
 import {MapPage} from '../map/map';
 import { Dialogs } from '@ionic-native/dialogs';
-
+import { LoadingController } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from "@angular/http";
 import 'rxjs/add/operator/map';
 import { AlertController } from 'ionic-angular';
@@ -52,7 +52,7 @@ otherCompetenze:Array<string> =[]
 titStudio:String = "";
 
 
-  constructor(public shareService: ShareService,public modalCtrl: ModalController,public events: Events,public camera: Camera,public navCtrl: NavController,public alertCtrl: AlertController, public navParams: NavParams, public http: Http, public dialogs: Dialogs) {
+  constructor(public loading: LoadingController,public shareService: ShareService,public modalCtrl: ModalController,public events: Events,public camera: Camera,public navCtrl: NavController,public alertCtrl: AlertController, public navParams: NavParams, public http: Http, public dialogs: Dialogs) {
     events.subscribe('maps', (maps) => {
       this.indirizzo = maps[0];
       this.citta = maps[1];
@@ -83,7 +83,10 @@ titStudio:String = "";
       this.dialogs.alert("Si prega di riempire tutti i campi")
       return
     }
-
+    let loader = this.loading.create({
+  content: 'Caricamento...',
+});
+loader.present();
     var headers = new Headers();
     console.log("sesso",this.sex)
     headers.append('Content-Type', 'application/x-www-form-urlencoded' );
@@ -111,6 +114,7 @@ titStudio:String = "";
    console.log(myData);
  this.http.post('http://aiutiamoc.altervista.org/registrazioneUtente.php',myData,options).map(res => res.json()).subscribe(   data => {
   console.log(data);
+  loader.dismiss();
   if(data.success){
       this.navCtrl.setRoot(LoginPage)
 }

@@ -9,6 +9,7 @@ import 'rxjs/add/operator/map';
 import { ShareService } from '../../providers/shareService';
 import { DatePipe } from '@angular/common';
 import * as moment from "moment";
+import { LoadingController } from 'ionic-angular';
 /**
  * Generated class for the InserisciPage page.
  *
@@ -28,15 +29,18 @@ export class InserisciPage {
   value:string[];
   text:string = ""
   richiesta:any
-  constructor(public navCtrl: NavController, public navParams: NavParams, private speechRecognition: SpeechRecognition, private cd: ChangeDetectorRef,public http: Http,public dialogs: Dialogs, public shareService : ShareService) {
+  constructor(public loading:LoadingController,public navCtrl: NavController, public navParams: NavParams, private speechRecognition: SpeechRecognition, private cd: ChangeDetectorRef,public http: Http,public dialogs: Dialogs, public shareService : ShareService) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad InserisciPage');
   }
 
-  indietro(testo: HTMLInputElement,patente: HTMLInputElement,automunito: HTMLInputElement,urgenza: HTMLInputElement,richiesta: HTMLInputElement,offerta: HTMLInputElement){
-
+  Insert_Annuncio(testo: HTMLInputElement,patente: HTMLInputElement,automunito: HTMLInputElement,urgenza: HTMLInputElement,richiesta: HTMLInputElement,offerta: HTMLInputElement){
+    let loader = this.loading.create({
+  content: 'Caricamento...',
+})
+loader.present()
     var annuncio:string = "";
     if(richiesta.checked)
       annuncio = "richiesta";
@@ -67,6 +71,7 @@ export class InserisciPage {
      console.log(data.success);
      if(data.success){
          console.log("nel if "+data.success);
+         loader.dismiss()
          this.navCtrl.setRoot(HomePage)
      }
 

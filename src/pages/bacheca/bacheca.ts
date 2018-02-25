@@ -4,7 +4,7 @@ import { Http, Headers, RequestOptions } from "@angular/http";
 import { Dialogs } from '@ionic-native/dialogs';
 import {InserisciPage} from '../inserisci/inserisci';
 import { CallNumber } from '@ionic-native/call-number';
-
+import { LoadingController } from 'ionic-angular';
 
 /**
  * Generated class for the BachecaPage page.
@@ -27,16 +27,22 @@ export class BachecaPage {
               public navParams: NavParams,
               public http: Http,
               public dialogs: Dialogs,
+              public loading: LoadingController,
               private callNumber: CallNumber) {
-
+  let loader = this.loading.create({
+    content: 'Caricamento...',
+  })
+  loader.present()
     this.getConfig().map(res => res.json()).subscribe(   data => {
       console.log(data);
+      loader.dismiss()
       if(data.success){
         console.log(data.items);
         this.posts = data.items;
       }else{
         this.dialogs.alert("Valori errati")
       }
+
     });
   }
 

@@ -77,11 +77,9 @@ export class RubricaPage {
         this.shareService.setUser(new Utente(data.user.Nome,data.user.Cognome,data.user.Username,data.user.Immagine,
                                             data.user.Nato,competenze,data.user.TitoloStudio,data.user.CF,
                                             data.user.Citta,data.user.Provincia,data.user.Indirizzo,
-<<<<<<< HEAD
                                             data.user.Email,data.user.NumTelefono,data.user.Tipologia,data.user.Sesso,data.preferiti));
-=======
-                                            data.user.Email,data.user.NumTelefono,data.user.Tipologia,data.user.Sesso));
->>>>>>> fff4351c3e8ab33b702268cad1bba12807861e87
+
+
         console.log(username,data.user);
       }
       else {
@@ -101,13 +99,9 @@ export class RubricaPage {
       this.shareService.setUser(new Associazione(data.associazione.Nome,data.associazione.Username,data.associazione.Immagine,
                                            data.associazione.Descrizione,data.associazione.Fondata,data.associazione.PartitaIVA,
                                            data.associazione.Citta,data.associazione.Provincia,data.associazione.Indirizzo,
-<<<<<<< HEAD
-                                           data.associazione.Email,data.associazione.NumTelefono,data.associazione.Tipologia,data.user.Sesso));
-      console.log(username,data.associazione);
-=======
                                            data.associazione.Email,data.associazione.NumTelefono,data.associazione.Tipologia,data.membri));
-      console.log(username,data.associazione);                        
->>>>>>> fff4351c3e8ab33b702268cad1bba12807861e87
+      console.log(username,data.associazione);
+
       }
       else {
         alert("Oooops!");
