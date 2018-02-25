@@ -7,7 +7,7 @@ import { MatDialogModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PasswordDimenticataPage } from '../pages/password-dimenticata/password-dimenticata';
 import { RisultatiRicercaPage } from '../pages/risultati-ricerca/risultati-ricerca';
-
+import { RisultatiRicercaEventiPage } from '../pages/risultati-ricerca-eventi/risultati-ricerca-eventi';
 
 import {WelcomePage} from '../pages/welcome/welcome';
 import {MembriPage} from '../pages/membri/membri';
@@ -77,6 +77,7 @@ import {ProfiloAssociazionePage} from "../pages/profilo-associazione/profilo-ass
     TabsProfiloUtentePage,
     HomePage,
     TabsPage,
+    RisultatiRicercaEventiPage,
     RisultatiRicercaPage,
     RicercaOffertePage,
     RegistrazionePage,
@@ -121,6 +122,7 @@ import {ProfiloAssociazionePage} from "../pages/profilo-associazione/profilo-ass
     TabsProfiloUtentePage,
     ProfiloPreferitiPage,
     ProfiloAssociazionePage,
+    RisultatiRicercaEventiPage,
     HomePage,
     TabsRicercaPage,
     ProfiloAnnunciPage,
