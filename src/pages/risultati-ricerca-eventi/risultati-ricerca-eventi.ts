@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { CallNumber } from '@ionic-native/call-number';
 
 /**
  * Generated class for the RisultatiRicercaEventiPage page.
@@ -14,12 +15,19 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'risultati-ricerca-eventi.html',
 })
 export class RisultatiRicercaEventiPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  posts:any;
+  constructor(public navCtrl: NavController, public navParams: NavParams,private callNumber: CallNumber) {
+    this.posts = navParams.get("risultati")
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RisultatiRicercaEventiPage');
+  }
+
+  callNumTelephone(n: string){
+    this.callNumber.callNumber(n, true)
+        .then(() => console.log('Launched dialer!'))
+        .catch(() => console.log('Error launching dialer'));
   }
 
 }

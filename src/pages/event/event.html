@@ -29,12 +29,8 @@
     </ion-card>
     <br />
   </ion-list>
- <!--   <button (click)="creaEvento()" >Crea Evento</button><br />-->
+
   <ion-fab right bottom *ngIf ="shareService.getUser().getTipologia() == 'associazione'">
     <button ion-fab color="bordeaux_"  (click)="creaEvento()"><ion-icon name="add"></ion-icon></button>
   </ion-fab>
 </ion-content>
-
-<!--
-https://ionicframework.com/docs/components/#card-image
--->

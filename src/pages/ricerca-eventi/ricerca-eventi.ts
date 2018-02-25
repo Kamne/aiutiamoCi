@@ -11,7 +11,10 @@ import { NativeStorage } from '@ionic-native/native-storage';
 import { AlertController } from 'ionic-angular';
 import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult } from '@ionic-native/native-geocoder';
 import { TabsPage } from '../tabs/tabs';
+import { RisultatiRicercaEventiPage } from '../risultati-ricerca-eventi/risultati-ricerca-eventi';
+
 import { Dialogs } from '@ionic-native/dialogs';
+
 
 @IonicPage()
 @Component({
@@ -98,7 +101,7 @@ aiutatm(index){
         if(data.message != undefined)
           this.dialogs.alert(data.message)
         else{
-          this.navCtrl.push(risultatiRicercaEventiPage)
+          this.navCtrl.push(RisultatiRicercaEventiPage,{risultati:data})
         }
     })
     }

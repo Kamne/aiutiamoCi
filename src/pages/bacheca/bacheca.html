@@ -1,9 +1,4 @@
-<!--
-  Generated template for the BachecaPage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
@@ -22,7 +17,7 @@
           <ion-row>
             <ion-col class="ade" start><b>{{post.username}}</b></ion-col>
             <ion-col >
-              <i id="pulsante" class="fa fa-envelope-square  fa-2x" aria-hidden="true"></i>
+              <i id="pulsante" class="fa fa-envelope-square  fa-2x" aria-hidden="true" (click)="sendEmail(post.email)" ></i>
               <i id="pulsante" class="fa fa-phone-square  fa-2x" aria-hidden="true" (click)="callNumTelephone(post.telefono)"></i>
             </ion-col>
           </ion-row>
