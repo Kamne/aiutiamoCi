@@ -67,14 +67,18 @@ titStudio:String = "";
 
   registrazione(tipologia: HTMLInputElement): void {
     console.log("sex",this.sex,"tipo",this.tipo)
-    if(this.tipo== ""  || this.nome=="" ||
-        this.cognome=="" || this.username=="" || this.password=="" ||
-      this.data=="" || this.sex == "" || this.codFis=="" || this.indirizzo=="" ||
-    this.provincia=="" || this.citta=="" || this.provincia || (this.email=="" && this.tel =="")){
+    if(this.tipo== ""  || this.nome==""
+        || this.username=="" || this.password=="" ||
+        this.data==""   || this.indirizzo=="" ||
+        this.provincia=="" || this.citta=="" || (this.email=="" && this.tel =="")){
+        this.dialogs.alert("Si prega di riempire tutti i campi")
+      return
+    }
+    if((this.tipo== "assistente" || this.tipo =="utente") && (this.cognome=="" || this.sex == "" || this.codFis=="")){
       this.dialogs.alert("Si prega di riempire tutti i campi")
       return
     }
-    if(this.tipo== "assistente" && (this.titStudio =="" || this.myCompetenze.length==0)){
+    if((this.tipo== "assistente") && (this.titStudio =="" || this.myCompetenze.length==0)){
       this.dialogs.alert("Si prega di riempire tutti i campi")
       return
     }
@@ -194,8 +198,6 @@ competenze(){
       this.http.post('http://aiutiamoc.altervista.org/insert_competenze.php',myData,options).map(res => res.json()).subscribe(   data => { //usato per prendere le competenze xD
         console.log(data);
         this.shareService.setNewCompetenze([]) //re-inizializzo l'array
-
-
      })
     }
 
