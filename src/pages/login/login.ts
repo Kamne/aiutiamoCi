@@ -22,7 +22,10 @@ import {InserisciPage} from '../inserisci/inserisci';
 import {ProfiloPage} from '../profilo/profilo';
 import {FaqPage} from "../faq/faq";
 import {FaqAdminPage} from "../faq-admin/faq-admin";
+import {OpzioniAmministratorePage} from "../opzioni-amministratore/opzioni-amministratore";
+
 import { LoadingController } from 'ionic-angular';
+
 import {DiventaAssistentePage} from '../diventa-assistente/diventa-assistente';
 import {PasswordDimenticataPage} from '../password-dimenticata/password-dimenticata';
 import {RicercaRichiestePage} from '../ricerca-richieste/ricerca';
@@ -180,7 +183,7 @@ aggiornaPages(tipologia){
                             ]},
 
       {label:'setting',items:[
-                            { title: 'Opzioni Amministratore', component: WelcomePage, icon: 'construct' }
+                            { title: 'Opzioni Amministratore', component: OpzioniAmministratorePage, icon: 'construct' }
                             ]},
 
         {label:'ricerca',items:[

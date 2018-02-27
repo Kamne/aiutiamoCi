@@ -19,24 +19,43 @@
     <ion-list no-lines>
 
         <form #f="ngForm" (ngSubmit)="onSubmit(f.value)" novalidate>
-
+<!--
         <div style="text-align: center;" (click)="chargeImage()">
 
             <ion-img id="logo" width="250" height="170" [src]="base64Image" >
+<<<<<<< HEAD
+                <input type="file"  [src]="base64Image" name="img" /><!-- [(ngModel)
+                ]="src"
+                #img="ngModel"  ngModel #img="ngModel"
+                 -->
+       <!--         <input type="hidden" [ngModel]="base64Image" name="img_evento" #img_evento="ngModel" />
+            </ion-img>
+            -->
+<!--
+            <ion-img  width="250" height="170" [src]="base64Image" >
+                <i id="pulsante_camera" class="fa fa-camera  fa-2x" aria-hidden="true" class="imgCameraPosition"></i>
+                <ion-icon ios="ios-camera" md="md-camera" class="imgCameraPosition"></ion-icon>
+            </ion-img>
+            -->
+           <!--     <ion-icon ios="ios-camera" md="md-camera" class="imgCameraPosition"></ion-icon> -->
+<!--
+=======
                 <input type="file"  [src]="base64Image" name="img" />
 
                 <input type="hidden" [ngModel]="base64Image" name="img_evento" #img_evento="ngModel" />
             </ion-img>
 
 
+>>>>>>> bf33283f295b270d44feec8b338cb81ba70dfa93
         </div>
+            -->
             <div *ngIf="show">
                 <input type="hidden" [ngModel]="tipologia_" name="tipologia" ngModel
-                       #tipologia="ngModel" />
+                       #tipologia="ngModel"  />
                 <input type="hidden" [ngModel]="partitaIVA" name="partitaiva" ngModel
                        #partitaiva="ngModel" />
-                <input type="hidden" [ngModel]="nome_associazione_" name="nome_associazione" ngModel
-                       #nome_associazione="ngModel" />
+                <input type="hidden" [ngModel]="username_associazione_" name="username_associazione" ngModel
+                       #username_associazione="ngModel" />
             </div>
 
             <div>
@@ -120,7 +139,16 @@
         </div>
 
         </form>
+<<<<<<< HEAD
+        <!--
+        <p>First name value: {{ nome.value }}</p>
+        <p>First name valid: {{ nome.valid }}</p>
+        <p>Form value: {{ f.value | json }}</p>
+        <p>Form valid: {{ f.valid }}</p>
+        -->
+=======
 
+>>>>>>> bf33283f295b270d44feec8b338cb81ba70dfa93
     </ion-list>
 
 </ion-content>

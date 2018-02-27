@@ -1,3 +1,20 @@
 page-opzioni-amministratore {
 
+  .content{
+    background-color: color($colors, lightblack_3);
+    text-align: center;
+  }
+  .cestino{
+    cursor: pointer;
+  }
+  button{
+    background-color: color($colors, bordeaux_);
+    text-align: center;
+    font-size: medium;
+    color: white;
+    width: 70%;
+    padding: 5%;
+    border: 0;
+    -webkit-border-radius: 10px 10px;
+  }
 }
