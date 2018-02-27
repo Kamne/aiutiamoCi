@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-<<<<<<< HEAD
 import { Http, Headers, RequestOptions } from "@angular/http";
 import { AlertController } from 'ionic-angular';
-=======
->>>>>>> bf33283f295b270d44feec8b338cb81ba70dfa93
+
 
 /**
  * Generated class for the OpzioniAmministratorePage page.
@@ -20,7 +18,6 @@ import { AlertController } from 'ionic-angular';
 })
 export class OpzioniAmministratorePage {
 
-<<<<<<< HEAD
   posts: any;
   configUrl = 'http://aiutiamoc.altervista.org/getUtenti.php';
   configUrl_1 = 'http://aiutiamoc.altervista.org/eliminaUtente.php';
@@ -33,15 +30,13 @@ export class OpzioniAmministratorePage {
               public navParams: NavParams,
               public http: Http,
               public alertCtrl: AlertController) {
-=======
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
->>>>>>> bf33283f295b270d44feec8b338cb81ba70dfa93
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad OpzioniAmministratorePage');
   }
-<<<<<<< HEAD
+
   presentAlert(title) {
     let alert = this.alertCtrl.create({
       title: title,
@@ -111,7 +106,4 @@ export class OpzioniAmministratorePage {
       }
     });
   }
-=======
-
->>>>>>> bf33283f295b270d44feec8b338cb81ba70dfa93
 }
