@@ -22,9 +22,8 @@ import {InserisciPage} from '../inserisci/inserisci';
 import {ProfiloPage} from '../profilo/profilo';
 import {FaqPage} from "../faq/faq";
 import {FaqAdminPage} from "../faq-admin/faq-admin";
-<<<<<<< HEAD
 import {OpzioniAmministratorePage} from "../opzioni-amministratore/opzioni-amministratore";
-=======
+
 import { LoadingController } from 'ionic-angular';
 >>>>>>> bf33283f295b270d44feec8b338cb81ba70dfa93
 import {DiventaAssistentePage} from '../diventa-assistente/diventa-assistente';
