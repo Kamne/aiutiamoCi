@@ -4,6 +4,8 @@ import { Http, Headers, RequestOptions } from "@angular/http";
 import { ShareService } from '../../providers/shareService';
 import { Utente } from '../../classes/utente';
 import {Associazione} from '../../classes/associazione';
+import {ProfiloPage} from '../../pages/profilo/profilo';
+import {ProfiloAssociazionePage} from '../../pages/profilo-associazione/profilo-associazione';
 
 @IonicPage()
 @Component({
@@ -81,6 +83,7 @@ export class RubricaPage {
 
 
         console.log(username,data.user);
+        this.navCtrl.push(ProfiloPage);
       }
       else {
         alert("Oooops!");
@@ -101,7 +104,7 @@ export class RubricaPage {
                                            data.associazione.Citta,data.associazione.Provincia,data.associazione.Indirizzo,
                                            data.associazione.Email,data.associazione.NumTelefono,data.associazione.Tipologia,data.membri));
       console.log(username,data.associazione);
-
+      this.navCtrl.push(ProfiloAssociazionePage);
       }
       else {
         alert("Oooops!");
