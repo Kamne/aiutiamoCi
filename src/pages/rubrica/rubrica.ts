@@ -67,7 +67,6 @@ export class RubricaPage {
   }
 
   informazioniUtente(username: string) {
-    alert(username);
     var headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded' );
     let options = new RequestOptions({ headers: headers });
@@ -92,7 +91,6 @@ export class RubricaPage {
   }
 
   informazioniAssociazione(username: string) {
-    alert(username);
     var headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded' );
     let options = new RequestOptions({ headers: headers });
