@@ -7,7 +7,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 import {NgForm} from '@angular/forms';
 import { ShareService } from '../../providers/shareService';
 import { Utente } from '../../classes/utente';
-
+import { LoadingController } from 'ionic-angular';
 
 /**
  * Generated class for the EventCreaPage page.
@@ -39,9 +39,9 @@ export class EventCreaPage{
               public dialogs: Dialogs,
               public alertCtrl: AlertController,
               public camera: Camera,
-              public shareService: ShareService
+              public shareService: ShareService,
+              public loading: LoadingController
   ) {
-    console.log("");
 
     //accesso solo per le associazioni
     if(shareService.getUser()!=undefined){
@@ -81,11 +81,14 @@ export class EventCreaPage{
 
     var mydata = JSON.stringify(f);
     console.log(mydata);
-
+    let loader = this.loading.create({
+  content: 'Caricamento...',
+})
+loader.present()
     this.getConfig(this.configUrl_2, mydata).map(res => res.json()).subscribe(   data => {
       console.log(data);
       if(data.success){
-
+        loader.dismiss()
         this.dialogs.alert("Dati inseriti");
       }else{
         this.dialogs.alert("Valori errati");
@@ -189,4 +192,3 @@ export class EventCreaPage{
   }
 
 }
-

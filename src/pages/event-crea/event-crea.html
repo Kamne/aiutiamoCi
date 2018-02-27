@@ -1,23 +1,4 @@
-<!--
-  Generated template for the EventCreaPage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<!--
-<ion-header>
-    <ion-navbar>
-        <button ion-button menuToggle>
-            <ion-icon name="menu"></ion-icon>
-        </button>
-        <ion-title>Inserisci annuncio</ion-title>
-        <button ion-button (click)="openResearch()">
-            <ion-icon name="search"></ion-icon>
-        </button>
-
-    </ion-navbar>
-</ion-header>
--->
 <ion-header>
     <ion-navbar>
 
@@ -32,23 +13,17 @@
 
 </ion-content>
 <ion-content class="evento-crea" *ngIf="show">
-    <!--
-    *ngIf="shareService.getUser()!=undefined &&
-                    shareService.getUser().getTipologia()=='associazione'"
-    -->
+
     <br />
 
     <ion-list no-lines>
-    <!--
-        <div>
-            <input type="file" placeholder="Immagine evento" name="img_evento" #img />
-        </div>
--->
+
         <form #f="ngForm" (ngSubmit)="onSubmit(f.value)" novalidate>
 <!--
         <div style="text-align: center;" (click)="chargeImage()">
 
             <ion-img id="logo" width="250" height="170" [src]="base64Image" >
+<<<<<<< HEAD
                 <input type="file"  [src]="base64Image" name="img" /><!-- [(ngModel)
                 ]="src"
                 #img="ngModel"  ngModel #img="ngModel"
@@ -64,6 +39,14 @@
             -->
            <!--     <ion-icon ios="ios-camera" md="md-camera" class="imgCameraPosition"></ion-icon> -->
 <!--
+=======
+                <input type="file"  [src]="base64Image" name="img" />
+
+                <input type="hidden" [ngModel]="base64Image" name="img_evento" #img_evento="ngModel" />
+            </ion-img>
+
+
+>>>>>>> bf33283f295b270d44feec8b338cb81ba70dfa93
         </div>
             -->
             <div *ngIf="show">
@@ -120,12 +103,7 @@
             <div *ngIf="data.errors?.required && data.touched" class="error">
                 La data è richiesta.
             </div>
-            <!-- -->
-            <!--
-            <div id="data-ora">
-                <input type="date" name="data_fine" ngModel required #data="ngModel"/>
-            </div>
-            -->
+
             <div id="data-ora" >
                 <input type="time" name="ora" value="--:--" #ora ngModel required #ora="ngModel"/>
             </div>
@@ -157,51 +135,20 @@
 
             <div>
                 <button ion-button id="invia"  [disabled]="f.invalid">Invia</button>
-       <!--
-        <div>
-            <input type="text" placeholder="Nome Evento" formControlName="nome" />
-        </div>
 
-        <div>
-            <select (change)="onChange(categoria.value)" #categoria name="categoria" >
-                <option value="{{categoria.nome}}"  *ngFor="let categoria of categorie"
-                        ngModel>{{categoria
-                    .nome}}</option>
-            </select>
-        </div>
-
-        <div>
-            <input type="text" placeholder="Luogo" name="luogo" #luogo ngModel required />
-        </div>
-
-        <div id="data-ora">
-            <input type="date" #date ngModel required />
-        </div>
-        <div id="data-ora" >
-            <input type="time" name="ora" value="--:--" #ora ngModel required/>
-        </div>
-
-        <div>
-            <textarea cols="20" rows="5" placeholder="Descrizione" name="descrizione" #descrizione ngModel required></textarea>
-        </div>
-
-        <div>
-            <input type="text" name="hashtag" placeholder="Hashtag" #hashtag ngModel required/>
-        </div>
-
-        <div>
-            <button ion-button id="invia" [disabled]="!form.valid">Invia</button><!-- (click) = "creaEvento(img,nome,
-            luogo.date,ora,
-            descrizione,hashtag)"-->
         </div>
 
         </form>
+<<<<<<< HEAD
         <!--
         <p>First name value: {{ nome.value }}</p>
         <p>First name valid: {{ nome.valid }}</p>
         <p>Form value: {{ f.value | json }}</p>
         <p>Form valid: {{ f.valid }}</p>
         -->
+=======
+
+>>>>>>> bf33283f295b270d44feec8b338cb81ba70dfa93
     </ion-list>
 
 </ion-content>

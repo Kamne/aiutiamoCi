@@ -5,7 +5,7 @@ import { Slides } from 'ionic-angular';
 import {LoginPage} from '../login/login';
 import {MapPage} from '../map/map';
 import { Dialogs } from '@ionic-native/dialogs';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LoadingController } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from "@angular/http";
 import 'rxjs/add/operator/map';
 import { AlertController } from 'ionic-angular';
@@ -22,12 +22,12 @@ import { ShareService } from '../../providers/shareService';
 export class RegistrazionePage {
 @ViewChild(Slides) slides: Slides;
 
-ciccio:FormGroup;
+
 base64Image:String = "assets/imgs/anonimo.png"
 
 
-tipologia:String = "Scegli una tipologia"
-sex:String = "Sesso"
+tipo:String = ""
+sex:String = ""
 nome:String = ""
 cognome:String = ""
 username:String = ""
@@ -52,7 +52,7 @@ otherCompetenze:Array<string> =[]
 titStudio:String = "";
 
 
-  constructor(public shareService: ShareService,public modalCtrl: ModalController,public events: Events,public camera: Camera,public navCtrl: NavController,public alertCtrl: AlertController, public navParams: NavParams, public http: Http, public dialogs: Dialogs, public formBuilder: FormBuilder) {
+  constructor(public loading: LoadingController,public shareService: ShareService,public modalCtrl: ModalController,public events: Events,public camera: Camera,public navCtrl: NavController,public alertCtrl: AlertController, public navParams: NavParams, public http: Http, public dialogs: Dialogs) {
     events.subscribe('maps', (maps) => {
       this.indirizzo = maps[0];
       this.citta = maps[1];
@@ -65,7 +65,32 @@ titStudio:String = "";
       console.log('ionViewDidLoad MapPage');
 }
 
-  registrazione(tipologia: HTMLInputElement, sesso: HTMLInputElement): void {
+  registrazione(tipologia: HTMLInputElement): void {
+    console.log("sex",this.sex,"tipo",this.tipo)
+    if(this.tipo== ""  || this.nome==""
+        || this.username=="" || this.password=="" ||
+        this.data==""   || this.indirizzo=="" ||
+        this.provincia=="" || this.citta=="" || (this.email=="" && this.tel =="")){
+        this.dialogs.alert("Si prega di riempire tutti i campi")
+      return
+    }
+    if((this.tipo== "assistente" || this.tipo =="utente") && (this.cognome=="" || this.sex == "" || this.codFis=="")){
+      this.dialogs.alert("Si prega di riempire tutti i campi")
+      return
+    }
+    if((this.tipo== "assistente") && (this.titStudio =="" || this.myCompetenze.length==0)){
+      this.dialogs.alert("Si prega di riempire tutti i campi")
+      return
+    }
+
+    if(this.tipo== "associazione" && (this.iva =="" || this.descr=="")){
+      this.dialogs.alert("Si prega di riempire tutti i campi")
+      return
+    }
+    let loader = this.loading.create({
+  content: 'Caricamento...',
+});
+loader.present();
     var headers = new Headers();
     console.log("sesso",this.sex)
     headers.append('Content-Type', 'application/x-www-form-urlencoded' );
@@ -75,7 +100,7 @@ titStudio:String = "";
      cognome:this.cognome,
      username: this.username,
      password: this.password,
-     tipologia:tipologia.value,
+     tipologia:this.tipo,
      nato:this.data,
      sesso:this.sex,
      competenze:","+this.myCompetenze.toString()+",",
@@ -93,6 +118,7 @@ titStudio:String = "";
    console.log(myData);
  this.http.post('http://aiutiamoc.altervista.org/registrazioneUtente.php',myData,options).map(res => res.json()).subscribe(   data => {
   console.log(data);
+  loader.dismiss();
   if(data.success){
       this.navCtrl.setRoot(LoginPage)
 }
@@ -161,6 +187,19 @@ competenze(){
   myModal.present();
 
   myModal.onDidDismiss(data => {
+    if(this.shareService.getNewCompetenze().length > 0){
+      console.log("Sto facendo l'if")
+      var headers = new Headers();
+      headers.append('Content-Type', 'application/x-www-form-urlencoded' );
+      let options = new RequestOptions({ headers: headers });
+      var myData = JSON.stringify({
+        competenze:this.shareService.getNewCompetenze()
+      });
+      this.http.post('http://aiutiamoc.altervista.org/insert_competenze.php',myData,options).map(res => res.json()).subscribe(   data => { //usato per prendere le competenze xD
+        console.log(data);
+        this.shareService.setNewCompetenze([]) //re-inizializzo l'array
+     })
+    }
 
       this.myCompetenze = this.shareService.getMyCompetenze();
       this.otherCompetenze = this.shareService.getOtherCompetenze()

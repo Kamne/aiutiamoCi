@@ -7,35 +7,34 @@
 <ion-header>
 
     <ion-navbar>
-        <ion-title>registrazione</ion-title>
+        <ion-title>Registrazione</ion-title>
     </ion-navbar>
 
 </ion-header>
-
 
 <ion-content padding id="signup">
     <form #f="ngForm" novalidate>
         <ion-slides>
             <ion-slide>
-                <br/>
+
                 <h1> Chi sei </h1>
                 <div id="styleForm">
 
                     <div class="inputWithIcon">
-                        <select name="tipologia" (change)="onChange(tipologia.value)" ngModel required #tipologia="ngModel">
+                        <select name="tipologia" [(ngModel)]="tipo" (change)="onChange(tipologia.value)" ngModel required #tipologia="ngModel">
                             <option value="" disabled selected hidden >Scegli la tipologia</option>
-                            <option value="assistente">Assistente</option>
-                            <option value="associazione">Associazione</option>
-                            <option value="amministratore">Amministratore</option>
-                            <option value="utente">Utente</option>
+                            <option value="assistente">assistente</option>
+                            <option value="associazione">associazione</option>
+                            <option value="amministratore">amministratore</option>
+                            <option value="utente">utente</option>
                         </select>
                         <i class="fa fa-male  fa-fw" aria-hidden="true"></i>
                     </div>
 
                     <!-- Errors tipologia -->
-                    <div *ngIf="tipologia.errors?.required && tipologia.touched" class="error">
+                    <span *ngIf="tipologia.errors?.required && tipologia.touched" class="error">
                         La tipologia è richiesta.
-                    </div>
+                    </span>
                     <!-- -->
 
                     <div class="inputWithIcon">
@@ -45,9 +44,9 @@
                     </div>
 
                     <!-- Errors nome -->
-                    <div *ngIf="nome_.errors?.required && nome_.touched" class="error">
+                    <span *ngIf="nome_.errors?.required && nome_.touched" class="error">
                         Il nome è richiesto.
-                    </div>
+                    </span>
                     <!-- -->
 
                     <div class="inputWithIcon" id="cognome" *ngIf ="!showAssociazione">
@@ -56,24 +55,24 @@
                         <i class="fa fa-users" aria-hidden="true"></i>
 
                         <!-- Errors cognome-->
-                        <div *ngIf="cognome_.errors?.required && cognome_.touched" class="error">
+                        <span *ngIf="cognome_.errors?.required && cognome_.touched" class="error">
                             Il cognome è richiesto.
-                        </div>
+                        </span>
                         <!-- -->
                     </div>
 
                     <div class="inputWithIcon" *ngIf ="!showAssociazione">
 
-                        <select  name="sesso" ngModel  required #sesso="ngModel">
+                        <select  name="sesso" [(ngModel)]="sex" ngModel  required #sesso="ngModel">
                             <option value="" disabled selected hidden >Sesso</option>
                             <option value="Maschile">Maschile</option>
                             <option value="Femminile">Femminile</option>
                         </select>
                         <i class="fas fa-venus-mars"  aria-hidden="true"></i>
                         <!-- Errors sesso-->
-                        <div *ngIf="sesso.errors?.required && sesso.touched" class="error">
+                        <span *ngIf="sesso.errors?.required && sesso.touched" class="error">
                             Il sesso è richiesto.
-                        </div>
+                        </span>
                         <!-- -->
                     </div>
 
@@ -84,9 +83,9 @@
                     </div>
 
                     <!-- Errors data -->
-                    <div *ngIf="data_.errors?.required && data_.touched" class="error">
+                    <span *ngIf="data_.errors?.required && data_.touched" class="error">
                         La data è richiesta.
-                    </div>
+                    </span>
                     <!-- -->
 
                     <div class="inputWithIcon">
@@ -96,9 +95,9 @@
                     </div>
 
                     <!-- Errors username -->
-                    <div *ngIf="username_.errors?.required && username_.touched" class="error">
+                    <span *ngIf="username_.errors?.required && username_.touched" class="error">
                         Username è richiesto.
-                    </div>
+                    </span>
                     <!-- -->
 
                     <div class="inputWithIcon">
@@ -108,18 +107,18 @@
                     </div>
 
                     <!-- Errors password-->
-                    <div *ngIf="password_.errors?.required && password_.touched" class="error">
+                    <span *ngIf="password_.errors?.required && password_.touched" class="error">
                         La password è richiesta.
-                    </div>
+                    </span>
                     <!-- -->
 
                     <div *ngIf ="showAssociazione" class="inputWithIcon" id="descr">
                     <textarea rows="5" [(ngModel)]="descr" cols="26" placeholder="Descrivi l'associazione"
                               ngModel  name="descr_" required #descr_="ngModel" ></textarea>
                         <!-- Errors descr-->
-                        <div *ngIf="descr_.errors?.required && descr_.touched" class="error">
+                        <span *ngIf="descr_.errors?.required && descr_.touched" class="error">
                             La descrizione è richiesta.
-                        </div>
+                        </span>
                         <!-- -->
                     </div>
 
@@ -128,9 +127,9 @@
                                ngModel #partitaiva_="ngModel" />
                         <i class="fa fa-cogs" aria-hidden="true"></i>
                         <!-- Errors partitaiva-->
-                        <div *ngIf="partitaiva_.errors?.required && partitaiva_.touched" class="error">
+                        <span *ngIf="partitaiva_.errors?.required && partitaiva_.touched" class="error">
                             La partita iva è richiesta.
-                        </div>
+                        </span>
                         <!-- -->
                     </div>
 
@@ -139,19 +138,18 @@
                                ngModel  #codfiscale_="ngModel"/>
                         <i class="fa fa-address-card" aria-hidden="true"></i>
                         <!-- Errors codfiscale-->
-                        <div *ngIf="codfiscale_.errors?.required && codfiscale_.touched" class="error">
+                        <span *ngIf="codfiscale_.errors?.required && codfiscale_.touched" class="error">
                             Il codice fiscale è richiesto.
-                        </div>
+                        </span>
                         <!-- -->
                     </div>
 
-                    <button block  class="zeus" (click) = "indietrissimo()"><b>indietro</b></button>
-                    <button block  class="zeus" (click)="avanti()"><b>avanti</b></button>
+                    <button block  class="zeus" (click) = "indietrissimo()"><b>indietro</b></button>  <button block  class="zeus" (click)="avanti()"><b>avanti</b></button>
                 </div>
             </ion-slide>
             <ion-slide>
 
-                <h1>Dove ti trovi?</h1>
+                <h1>Dove ti trovi</h1>
 
                 <br/>
                 <div id="styleForm">
@@ -167,9 +165,9 @@
                     </div>
 
                     <!-- Errors indirizzo-->
-                    <div *ngIf="indirizzo_.errors?.required && indirizzo_.touched" class="error">
+                    <span *ngIf="indirizzo_.errors?.required && indirizzo_.touched" class="error">
                         Indirizzo è richiesto.
-                    </div>
+                    </span>
                     <!-- -->
 
                     <div class="inputWithIcon">
@@ -179,9 +177,9 @@
                     </div>
 
                     <!-- Errors citta-->
-                    <div *ngIf="citta_.errors?.required && citta_.touched" class="error">
+                    <span *ngIf="citta_.errors?.required && citta_.touched" class="error">
                         Citta è richiesta.
-                    </div>
+                    </span>
                     <!-- -->
 
                     <div class="inputWithIcon">
@@ -191,13 +189,12 @@
                     </div>
 
                     <!-- Errors provincia -->
-                    <div *ngIf="provincia_.errors?.required && provincia_.touched" class="error">
+                    <span *ngIf="provincia_.errors?.required && provincia_.touched" class="error">
                         Provincia è richiesta.
-                    </div>
+                    </span>
                     <!-- -->
 
-                    <button block (click) = "indietro()" class="zeus"><b>indietro</b></button>
-                    <button block class="zeus" (click)="avanti()"><b>avanti</b></button>
+                    <button block (click) = "indietro()" class="zeus"><b>indietro</b></button>  <button block class="zeus" (click)="avanti()"><b>avanti</b></button>
                 </div>
 
 
@@ -205,7 +202,7 @@
 
 
             <ion-slide *ngIf ="showAssistente">
-                <h1>Cosa sai fare?</h1>
+                <h1>Cosa sai fare</h1>
                 <div id="styleForm">
 
                     <div class="inputWithIcon" id="competenze">
@@ -220,12 +217,11 @@
                     </div>
 
                     <!-- Errors titstudio -->
-                    <div *ngIf="titstudio_.errors?.required && titstudio_.touched" class="error">
+                    <span *ngIf="titstudio_.errors?.required && titstudio_.touched" class="error">
                         Titolo di studio è richiesto.
-                    </div>
+                    </span>
                     <!-- -->
-                    <button block (click) = "indietro()" class="zeus"><b>indietro</b></button>
-                    <button block class="zeus" (click)="avanti()"><b>avanti</b></button>
+                    <button block (click) = "indietro()" class="zeus"><b>indietro</b></button>  <button block class="zeus" (click)="avanti()"><b>avanti</b></button>
                 </div>
 
             </ion-slide>
@@ -242,9 +238,9 @@
                     </div>
 
                     <!-- Errors email-->
-                    <div *ngIf="email_.errors?.required && email_.touched" class="error">
+                    <span *ngIf="email_.errors?.required && email_.touched" class="error">
                         L'email è richiesto.
-                    </div>
+                    </span>
                     <!-- -->
 
                     <div class="inputWithIcon">
@@ -254,13 +250,12 @@
                     </div>
 
                     <!-- Errors tel-->
-                    <div *ngIf="tel_.errors?.required && tel_.touched" class="error">
+                    <span *ngIf="tel_.errors?.required && tel_.touched" class="error">
                         Il telefono è richiesto.
-                    </div>
+                    </span>
                     <!-- -->
 
-                    <button block (click) = "indietro()" class="zeus"><b>indietro</b></button>
-                    <button block class="zeus" (click)="registrazione(tipologia,sesso)"><b>Conferma</b></button>
+                    <button block (click) = "indietro()" class="zeus"><b>indietro</b></button>  <button block class="zeus" (click)="registrazione(tipologia)"><b>Conferma</b></button>
 
                 </div>
 

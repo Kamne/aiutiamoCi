@@ -14,7 +14,7 @@ import { Events } from 'ionic-angular';
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
-  //@ViewChild('myTabs') tabRef: Tabs;
+
   params:any;
   tab1Root = ListaCompetenzePage;
   tab2Root = CompetenzeSelectedPage;

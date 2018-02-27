@@ -11,7 +11,8 @@ import { NativeStorage } from '@ionic-native/native-storage';
 import { AlertController } from 'ionic-angular';
 import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult } from '@ionic-native/native-geocoder';
 import { TabsPage } from '../tabs/tabs';
-
+import { RisultatiRicercaPage } from '../risultati-ricerca/risultati-ricerca';
+import { Events } from 'ionic-angular';
 /**
  * Generated class for the RicercaOffertePage page.
  *
@@ -40,7 +41,7 @@ export class RicercaOffertePage {
   checkPatentato:boolean=false;
   checkUrgenze:boolean=false;
 
-  constructor(public modalCtrl: ModalController,public alertCtrl: AlertController,public nativeStorage: NativeStorage, geolocation: Geolocation, public nativeGeocoder: NativeGeocoder,public shareService: ShareService,public http:Http,public spherical: Spherical,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public events: Events,public modalCtrl: ModalController,public alertCtrl: AlertController,public nativeStorage: NativeStorage, geolocation: Geolocation, public nativeGeocoder: NativeGeocoder,public shareService: ShareService,public http:Http,public spherical: Spherical,public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
@@ -73,7 +74,6 @@ export class RicercaOffertePage {
   for( this.index = 0; this.index <this.indirizzi.length;this.index++){
         this.aiutatm(this.index,patentato.value,urgenza.value,automunito.value);
   }
-  this.vaccini(this.result);
 
   }
 
@@ -90,7 +90,7 @@ export class RicercaOffertePage {
           console.log("username",JSON.parse(this.indirizzi[index]).Username,this.distance/1000)
       }
       if(this.result.length == 0){
-        
+
         return;
       }
       var myData = JSON.stringify({tipologia:"Offerta",risultati:this.result,competenze:this.searchCompetenze.toString(),patentato:Number(this.checkPatentato),urgenza:Number(this.checkUrgenze),automunito:Number(this.checkAutomunito)});
@@ -103,6 +103,8 @@ export class RicercaOffertePage {
         console.log("myData",myData);
         this.http.post('http://aiutiamoc.altervista.org/risultatiRicercaUtenti.php',myData,options).map(res => res.json()).subscribe(   data => {
         console.log("post",data);
+        let obj = {other: true,miracolo:true,ris:data};
+        this.events.publish('risRicerca', obj);
 
       })
       }
@@ -110,15 +112,6 @@ export class RicercaOffertePage {
 
       })
       .catch((error: any) => console.log(error));
-  }
-
-  vaccini(res){
-     console.log("vaccini",this.result.length);
-     console.log("vaccini",this.result);
-    var headers = new Headers();
-    headers.append('Content-Type', 'application/x-www-form-urlencoded' );
-    let options = new RequestOptions({ headers: headers });
-
   }
 
   openModal() {
@@ -140,3 +133,71 @@ export class RicercaOffertePage {
   }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//  this.vaccini(this.result); line 77
+
+/*  vaccini(res){
+     console.log("vaccini",this.result.length);
+     console.log("vaccini",this.result);
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded' );
+    let options = new RequestOptions({ headers: headers });
+
+  }*/

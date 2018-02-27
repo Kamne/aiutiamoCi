@@ -4,7 +4,12 @@ import { Http, Headers, RequestOptions } from "@angular/http";
 import { ShareService } from '../../providers/shareService';
 import { Utente } from '../../classes/utente';
 import {Associazione} from '../../classes/associazione';
+<<<<<<< HEAD
 import {TabsProfiloUtentePage} from '../tabs-profilo-utente/tabs-profilo-utente';
+=======
+import {ProfiloPage} from '../../pages/profilo/profilo';
+import {ProfiloAssociazionePage} from '../../pages/profilo-associazione/profilo-associazione';
+>>>>>>> bf33283f295b270d44feec8b338cb81ba70dfa93
 
 @IonicPage()
 @Component({
@@ -66,7 +71,10 @@ export class RubricaPage {
   }
 
   informazioniUtente(username: string) {
+<<<<<<< HEAD
   //  alert(username);
+=======
+>>>>>>> bf33283f295b270d44feec8b338cb81ba70dfa93
     var headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded' );
     let options = new RequestOptions({ headers: headers });
@@ -78,9 +86,15 @@ export class RubricaPage {
         this.shareService.setOtherUser(new Utente(data.user.Nome,data.user.Cognome,data.user.Username,data.user.Immagine,
                                             data.user.Nato,competenze,data.user.TitoloStudio,data.user.CF,
                                             data.user.Citta,data.user.Provincia,data.user.Indirizzo,
-                                            data.user.Email,data.user.NumTelefono,data.user.Tipologia,data.user.Sesso));
+                                            data.user.Email,data.user.NumTelefono,data.user.Tipologia,data.user.Sesso,data.preferiti));
+
+
         console.log(username,data.user);
+<<<<<<< HEAD
     //    this.navCtrl.push(TabsProfiloUtentePage);
+=======
+        this.navCtrl.push(ProfiloPage);
+>>>>>>> bf33283f295b270d44feec8b338cb81ba70dfa93
       }
       else {
         alert("Oooops!");
@@ -89,7 +103,10 @@ export class RubricaPage {
   }
 
   informazioniAssociazione(username: string) {
+<<<<<<< HEAD
   //  alert(username);
+=======
+>>>>>>> bf33283f295b270d44feec8b338cb81ba70dfa93
     var headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded' );
     let options = new RequestOptions({ headers: headers });
@@ -101,7 +118,11 @@ export class RubricaPage {
                                            data.associazione.Citta,data.associazione.Provincia,data.associazione.Indirizzo,
                                            data.associazione.Email,data.associazione.NumTelefono,data.associazione.Tipologia,data.membri));
       console.log(username,data.associazione);
+<<<<<<< HEAD
         this.navCtrl.push(TabsProfiloUtentePage);
+=======
+      this.navCtrl.push(ProfiloAssociazionePage);
+>>>>>>> bf33283f295b270d44feec8b338cb81ba70dfa93
       }
       else {
         alert("Oooops!");
@@ -121,7 +142,7 @@ export class RubricaPage {
         return (a.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
-    
+
   }
 
 }

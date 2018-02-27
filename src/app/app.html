@@ -13,13 +13,11 @@
                     <img [src]="Image">
                 </ion-avatar>
                 <br />
-                <h2 *ngIf="shareService.getUser()!=undefined && shareService.getUser().getTipologia() != 'associazione'">
+                <h2 *ngIf="shareService.getUser()!=undefined">
                     {{shareService.getUser().getUsername()}}
                 </h2><!--  -->
-                <h2 *ngIf="shareService.getUser()!=undefined && shareService.getUser().getTipologia() == 'associazione'">
-                    {{shareService.getUser().getUsername()}}
-                </h2><!--  -->
-                <button>
+
+                <button (click)="cambiaImg()">
                     <ion-icon name="create"></ion-icon>
                 </button>
             </ion-item>

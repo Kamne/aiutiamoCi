@@ -4,8 +4,9 @@ import { Http, Headers, RequestOptions } from "@angular/http";
 import { Dialogs } from '@ionic-native/dialogs';
 import {InserisciPage} from '../inserisci/inserisci';
 import { CallNumber } from '@ionic-native/call-number';
-
-
+import { LoadingController } from 'ionic-angular';
+import { EmailComposer } from '@ionic-native/email-composer';
+import { AlertController } from 'ionic-angular';
 /**
  * Generated class for the BachecaPage page.
  *
@@ -26,21 +27,26 @@ export class BachecaPage {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public http: Http,
+              public alertCtrl: AlertController,
               public dialogs: Dialogs,
-              private callNumber: CallNumber) {
-
+              public loading: LoadingController,
+              public callNumber: CallNumber,
+              public emailComposer:EmailComposer) {
+  let loader = this.loading.create({
+    content: 'Caricamento...',
+  })
+  loader.present()
     this.getConfig().map(res => res.json()).subscribe(   data => {
       console.log(data);
+      loader.dismiss()
       if(data.success){
         console.log(data.items);
         this.posts = data.items;
       }else{
         this.dialogs.alert("Valori errati")
       }
+
     });
-
-
-
   }
 
   nuovo_msg(){
@@ -63,6 +69,7 @@ export class BachecaPage {
   }
 
   callNumTelephone(n: string){
+    console.log("",n)
     this.callNumber.callNumber(n, true)
         .then(() => console.log('Launched dialer!'))
         .catch(() => console.log('Error launching dialer'));
@@ -70,6 +77,48 @@ export class BachecaPage {
   getConfig() {
     return this.http.get(this.configUrl);
   }
+sendEmail(email){
+  this.emailComposer.isAvailable().then((available: boolean) =>{
+ if(available) {
+   let alert = this.alertCtrl.create({
+     title: 'Destinatario: '+email,
+     inputs: [
+       {
+         name: 'body',
+         type: 'text',
+       }
+     ],
 
+     buttons: ['Annulla' ,
+     {
+       text: 'Conferma',
+       handler: data => {
+         console.log(data)
+         if(data.body == "")
+           this.dialogs.alert("Inserisci corpo del messaggio")
+        else
+          this.send(email,data.body)
+
+
+       }//handler
+     }]
+   });
+   alert.present();
+ }
+ else{
+   this.dialogs.alert("servizio Email non disponibile")
+ }
+})
+}
+
+send(address,body){
+  let email = {
+  to: address,
+  subject: 'AiutiamoCi',
+  body: body,
+  isHtml: true
+};
+this.emailComposer.open(email);
+}
 
 }

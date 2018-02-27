@@ -34,16 +34,14 @@ export class MapPage {
   street:string
   map:any
 
-/*  nyc: LatLng = new LatLng(40.8563100,14.2464100);
-london: LatLng = new LatLng(45.4642700,9.1895100);*/
+
 
   @ViewChild('map') element;
 
   constructor(public event:Events,public googleMaps: GoogleMaps, public alertCtrl: AlertController, public plt: Platform, public nav: NavController, geolocation: Geolocation, public nativeGeocoder: NativeGeocoder) {
     plt.ready().then(() => {
       console.log("piattaforma pronta");
-      //this.googleMaps.spherical().computeDistanceBetween(a, b)
-    //  console.log(this.spherical.computeDistanceBetween(this.nyc, this.london))
+
       geolocation.getCurrentPosition().then((location) => {
 
             this.lat = location.coords.latitude

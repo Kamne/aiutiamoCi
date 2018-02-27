@@ -42,9 +42,7 @@ boom(){
      if(this.radioTel){
        this.sms.send(this.tel, 'La tua password é: '+data.risultati);
      }
-     else{
-       //this.sms.send(this.tel, 'La tua password é:',data.risultati);
-     }
+
    }
   else
     console.log("oh stracacchio")

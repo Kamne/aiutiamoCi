@@ -1,103 +1,81 @@
 
-<ion-content padding id="rubrica">
+<ion-content class="content">
 
-  <ion-slides>
-    <ion-slide>
-      <h1>Richieste</h1>
-      <div *ngFor="let post of richieste">
-          <div id="post" >
-            <div id="nome-contatti">
-              <h2>
-                {{post.username}}
-              </h2>
-              <div style="float: left; " >
+  <ion-grid>
+  <ion-row >
+      <ion-col id = "richiesta">
+        <input type="radio" name = "assistenza"  (change)="richiesta()" checked/>
+      <b>  <label for="richiesta">Richiesta </label> </b>
+      </ion-col>
+      <ion-col id = "offerta">
+        <input type="radio" name = "assistenza"   (change)="offerta()"/>
+      <b>  <label for="offerta">Offerta </label> </b>
+      </ion-col>
+  </ion-row>
+</ion-grid>
 
-                <i id="pulsante" class="fa fa-envelope-square  fa-2x" aria-hidden="true"></i>
-                <i id="pulsante" class="fa fa-phone-square  fa-2x" aria-hidden="true" (click)="callNumTelephone(post.telefono)"></i>
+<div *ngIf="radioRichiesta">
 
-              </div>
+  <h1 text-center>Richieste</h1>
+  <div>
+<ion-list>
+  <ion-card *ngFor="let post of richieste">
+    <ion-card-header>
+      <ion-grid>
+        <ion-row>
+          <ion-col class="ade" start><b>{{post.Username}}</b></ion-col>
+          <ion-col >
+            <i id="pulsante" class="fa fa-envelope-square  fa-2x" aria-hidden="true"></i>
+            <i id="pulsante" class="fa fa-phone-square  fa-2x" aria-hidden="true" (click)="callNumTelephone(post.telefono)"></i>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+</ion-card-header>
+<p class="text">{{post.Testo}}</p>
+<br/>
+<ion-grid>
+<ion-row>
+  <ion-col *ngIf="post.Automunito =='1'" start><b class="eolo">Automunito</b></ion-col><ion-col *ngIf="post.Urgenza== '1'" start><b *ngIf="post.Urgenza=='1'" class="eolo">Urgenza</b></ion-col><ion-col *ngIf="post.PatenteDiGuida =='1'" start><b class="eolo">Patentato</b></ion-col>
+</ion-row>
+</ion-grid>
+<button ion-button round (click) = "getCompetenze(post.COmpetenze)" class="odino"><b>Competenze</b></button>
+<br/>
+<span>{{post.Data}}</span>
+  </ion-card>
+</ion-list>
+</div>
+</div>
 
-            </div>
-            <div id="testo">
-              <br />
-              <br />
-              {{post.testo}}
-            </div>
-            <div id="automunito" *ngIf="post.automunito" >
-              Automunito
-            </div>
+<div *ngIf="radioOfferta" >
 
-            <div id="patente" *ngIf="post.patente" style="float:right" >
-              Patentato
-            </div>
-
-            <div id="urgenza" *ngIf="post.urgenza" style="position: center">
-              Urgenza
-            </div>
-
-            <div id="competenze" *ngIf="post.competenze!=''" (click)="getCompetenze(post.competenze)" >
-              <i>Competenze</i>
-            </div>
-
-            <div id="data">
-              {{post.data}}
-            </div>
-
-          </div>
-        <br />
-
-      </div>
-
-        </ion-slide>
-        <ion-slide>
-            <h1>Offerte</h1>
-          <div *ngFor="let post of offerte">
-              <div id="post" >
-                <div id="nome-contatti">
-                  <h2>
-                    {{post.username}}
-                  </h2>
-                  <div style="float: left; " >
-
-                    <i id="pulsante" class="fa fa-envelope-square  fa-2x" aria-hidden="true"></i>
-                    <i id="pulsante" class="fa fa-phone-square  fa-2x" aria-hidden="true" (click)="callNumTelephone(post.telefono)"></i>
-
-                  </div>
-
-                </div>
-                <div id="testo">
-                  <br />
-                  <br />
-                  {{post.testo}}
-                </div>
-                <div id="automunito" *ngIf="post.automunito" >
-                  Automunito
-                </div>
-
-                <div id="patente" *ngIf="post.patente" style="float:right" >
-                  Patentato
-                </div>
-
-                <div id="urgenza" *ngIf="post.urgenza" style="position: center">
-                  Urgenza
-                </div>
-
-                <div id="competenze" *ngIf="post.competenze!=''" (click)="getCompetenze(post.competenze)" >
-                  <i>Competenze</i>
-                </div>
-
-                <div id="data">
-                  {{post.data}}
-                </div>
-
-              </div>
-            <br />
-
-          </div>
-
-
-        </ion-slide>
-
-    </ion-slides>
+  <h1 text-center>Offerta</h1>
+  <div>
+<ion-list>
+  <ion-card *ngFor="let post of offerte">
+    <ion-card-header>
+      <ion-grid>
+        <ion-row>
+          <ion-col class="ade" start><b>{{post.Username}}</b></ion-col>
+          <ion-col >
+            <i id="pulsante" class="fa fa-envelope-square  fa-2x" aria-hidden="true"></i>
+            <i id="pulsante" class="fa fa-phone-square  fa-2x" aria-hidden="true" (click)="callNumTelephone(post.telefono)"></i>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+</ion-card-header>
+<p class="text">{{post.Testo}}</p>
+<br/>
+<ion-grid>
+<ion-row>
+  <ion-col *ngIf="post.Automunito =='1'" start><b class="eolo">Automunito</b></ion-col><ion-col *ngIf="post.Urgenza== '1'" start><b *ngIf="post.Urgenza=='1'" class="eolo">Urgenza</b></ion-col><ion-col *ngIf="post.PatenteDiGuida =='1'" start><b class="eolo">Patentato</b></ion-col>
+</ion-row>
+</ion-grid>
+<button ion-button round  class="odino"><b>Competenze</b></button>
+<br/>
+<span>{{post.Data}}</span>
+  </ion-card>
+</ion-list>
+</div>
+</div>
 
 </ion-content>

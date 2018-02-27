@@ -10,6 +10,7 @@ export class ShareService {
     lastName: string;
     myCompetenze:Array<string>
     allCompetenze:Array<string>
+      newCompetenze:Array<string>
 
     constructor() {
 
@@ -61,5 +62,12 @@ export class ShareService {
        this.allCompetenze = competenze;
     }
 
+    getNewCompetenze(){
+       return this.newCompetenze;
+    }
+
+    setNewCompetenze(competenze){
+       this.newCompetenze = competenze;
+    }
 
 }

@@ -15,14 +15,14 @@ page-registrazione {
     top: 5%;
       background-color: color($colors, lightgrey_);
 
-  //    margin-left: 25px;
+
   }
 
   .error{
     width: 80%;
     font-size: 18px;
-    color: color($colors, white);
-    background: color($colors, lightblack_);
+    color: WHITE;
+    background:none;
     border-radius: 3px;
     padding: 25px;
 
@@ -45,7 +45,7 @@ page-registrazione {
       padding: 5%;
       text-align: center;
       width: 100%;
-      //margin: 0 auto;
+
 
       select, input[type=date]{
           background-color: white;
@@ -59,8 +59,7 @@ page-registrazione {
       }
 
   }
-
-/*  button{
+  button{
       background-color: color($colors, bordeaux_);
 
       border-radius:4px;
@@ -72,10 +71,7 @@ page-registrazione {
       border: 0;
       font-size: 1.2em;
       font-family: 'Roboto', 'sans-serif';
-
-
-
-  }*/
+  }
   .sesso{
     position: relative;
     margin-right: 15%;
@@ -103,4 +99,8 @@ page-registrazione {
     font-size: 1.2em;
     font-family: 'Roboto', 'sans-serif';
   }
+  .efesto{
+    overflow-y: scroll;
+  }
+
 }

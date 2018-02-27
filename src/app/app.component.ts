@@ -102,7 +102,7 @@ this.shareService.setPages(this.pages)
     }
     openResearch(){
         this.menu.close();
-        this.nav.setRoot(TabsRicercaPage);
+        this.nav.push(TabsRicercaPage);
 
     }
 
@@ -111,5 +111,7 @@ this.shareService.setPages(this.pages)
       this.Image = src;
     }
 
-
+cambiaImg(){
+  
+}
 }

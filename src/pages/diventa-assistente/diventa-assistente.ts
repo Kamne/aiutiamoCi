@@ -19,7 +19,7 @@ import {ProfiloPage} from '../profilo/profilo';
 import {FaqPage} from "../faq/faq";
 import {FaqAdminPage} from "../faq-admin/faq-admin";
 import {WelcomePage} from "../welcome/welcome";
-
+import { LoadingController } from 'ionic-angular';
 import {PasswordDimenticataPage} from '../password-dimenticata/password-dimenticata';
 import {RicercaRichiestePage} from '../ricerca-richieste/ricerca';
 
@@ -35,7 +35,7 @@ export class DiventaAssistentePage {
   titStudio:String = "";
   pages:any;
 
-  constructor(public navCtrl: NavController,public modalCtrl: ModalController, public navParams: NavParams, public http: Http, public dialogs: Dialogs, public formBuilder: FormBuilder, public shareService: ShareService) {
+  constructor(public loading:LoadingController,public navCtrl: NavController,public modalCtrl: ModalController, public navParams: NavParams, public http: Http, public dialogs: Dialogs, public formBuilder: FormBuilder, public shareService: ShareService) {
   }
 
   ionViewDidLoad() {
@@ -55,6 +55,10 @@ export class DiventaAssistentePage {
   }
 
   diventaAssistente() {
+    let loader = this.loading.create({
+  content: 'Caricamento...',
+})
+loader.present()
     var headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded' );
     let options = new RequestOptions({ headers: headers });
@@ -66,6 +70,7 @@ export class DiventaAssistentePage {
      this.http.post('http://aiutiamoc.altervista.org/diventaAssistente.php',myData,options).map(res => res.json()).subscribe(   data => {
       console.log(data.success);
       if(data.success){
+        loader.dismiss()
           this.navCtrl.setRoot(LoginPage)
       }
       else{
