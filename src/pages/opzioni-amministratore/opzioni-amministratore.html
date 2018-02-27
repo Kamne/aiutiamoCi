@@ -14,20 +14,32 @@
 
 
 <ion-content padding class="content">
+  <button  (click)="getUtenti()">Elimina Utente</button>
   <br><br>
-  <button block (click)="getUtenti()">Elimina Utente</button>
-  <br><br>
-  <button block (click)="getUtenti()">Elimina Annuncio</button>
+  <button  (click)="getAnnunci()">Elimina Annuncio</button>
   <br><br>
 
     <div *ngIf="utenti">
       <h1>Utenti</h1>
       <div  id="div_utenti" *ngFor="let a of posts">
         <ion-item>
-          {{a}}
+          {{a.username}}&nbsp; ({{a.tipologia}}) <ion-icon ios="ios-trash" md="md-trash" class="cestino"
+                                                 (click)="elimina_utente(a.username,a.tipologia)"></ion-icon>
         </ion-item>
       </div>
     </div>
+  <div *ngIf="annunci">
+    <h1>Annunci</h1>
+    <div  id="div_utenti" *ngFor="let a of posts">
+      <ion-item>
+        <div><b>{{a.username}}</b> <ion-icon ios="ios-trash" md="md-trash" class="cestino"
+                                           (click)="elimina_annuncio(a.username,a.testo)" ></ion-icon>
+        </div>
+        <div>({{a.testo}})</div>
+
+      </ion-item>
+    </div>
+  </div>
 <!--
     <div *ngIf="annunci">
       <h1>Associazioni</h1>
