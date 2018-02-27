@@ -36,7 +36,7 @@ export class InserisciPage {
     console.log('ionViewDidLoad InserisciPage');
   }
 
-  Insert_Annuncio(testo: HTMLInputElement,patente: HTMLInputElement,automunito: HTMLInputElement,urgenza: HTMLInputElement,richiesta: HTMLInputElement,offerta: HTMLInputElement){
+  Insert_Annuncio(patente: HTMLInputElement,automunito: HTMLInputElement,urgenza: HTMLInputElement,richiesta: HTMLInputElement,offerta: HTMLInputElement){
     let loader = this.loading.create({
   content: 'Caricamento...',
 })
@@ -57,7 +57,7 @@ loader.present()
         automunito : Number(automunito.checked),
         patente : Number(patente.checked),
         urgenza : Number(urgenza.checked),
-        testo : testo.value,
+        testo : this.text,
         tipologia : annuncio,
         username : this.shareService.getUser().getUsername(),
         tel : this.shareService.getUser().getTel(),
@@ -77,6 +77,7 @@ loader.present()
 
      else{
        this.dialogs.alert(data.message)
+       loader.present()
      }
          console.log(data.message)
 

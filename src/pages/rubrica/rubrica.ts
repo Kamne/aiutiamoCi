@@ -4,17 +4,8 @@ import { Http, Headers, RequestOptions } from "@angular/http";
 import { ShareService } from '../../providers/shareService';
 import { Utente } from '../../classes/utente';
 import {Associazione} from '../../classes/associazione';
-<<<<<<< HEAD
 import {TabsProfiloUtentePage} from '../../pages/tabs-profilo-utente/tabs-profilo-utente';
 import {ProfiloAssociazioneTabsPage} from '../../pages/profilo-associazione-tabs/profilo-associazione-tabs';
-=======
-<<<<<<< HEAD
-import {TabsProfiloUtentePage} from '../tabs-profilo-utente/tabs-profilo-utente';
-=======
-import {ProfiloPage} from '../../pages/profilo/profilo';
-import {ProfiloAssociazionePage} from '../../pages/profilo-associazione/profilo-associazione';
->>>>>>> bf33283f295b270d44feec8b338cb81ba70dfa93
->>>>>>> 771735b6ee3660d5e9e8097b563a7171bf862aa6
 
 @IonicPage()
 @Component({
@@ -92,7 +83,6 @@ export class RubricaPage {
 
         console.log(username,data.user);
         this.navCtrl.push(TabsProfiloUtentePage);
->>>>>>> 771735b6ee3660d5e9e8097b563a7171bf862aa6
       }
       else {
         alert("Oooops!");
@@ -112,11 +102,8 @@ export class RubricaPage {
                                            data.associazione.Citta,data.associazione.Provincia,data.associazione.Indirizzo,
                                            data.associazione.Email,data.associazione.NumTelefono,data.associazione.Tipologia,data.membri));
       console.log(username,data.associazione);
-<<<<<<< HEAD
         this.navCtrl.push(TabsProfiloUtentePage);
-=======
-      this.navCtrl.push(ProfiloAssociazionePage);
->>>>>>> 771735b6ee3660d5e9e8097b563a7171bf862aa6
+      this.navCtrl.push(ProfiloAssociazioneTabsPage);
       }
       else {
         alert("Oooops!");
