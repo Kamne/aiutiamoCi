@@ -21,7 +21,7 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { TabsProfiloUtentePage } from '../pages/tabs-profilo-utente/tabs-profilo-utente';
-
+import { ProfiloAssociazioneTabsPage } from '../pages/profilo-associazione-tabs/profilo-associazione-tabs';
 
 
 import { RubricaPage } from '../pages/rubrica/rubrica';
@@ -59,6 +59,8 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder';
 import { CallNumber } from '@ionic-native/call-number';
 import { SMS } from '@ionic-native/sms';
 import {ProfiloAssociazionePage} from "../pages/profilo-associazione/profilo-associazione";
+import {ProfiloAssociazioneEventiPage} from "../pages/profilo-associazione-eventi/profilo-associazione-eventi";
+
 
 @NgModule({
   declarations: [
@@ -75,9 +77,11 @@ import {ProfiloAssociazionePage} from "../pages/profilo-associazione/profilo-ass
     MembriPage,
     ContactPage,
     TabsProfiloUtentePage,
+    ProfiloAssociazioneTabsPage,
     HomePage,
     TabsPage,
     RisultatiRicercaEventiPage,
+    ProfiloAssociazioneEventiPage,
     RisultatiRicercaPage,
     RicercaOffertePage,
     RegistrazionePage,
@@ -115,11 +119,13 @@ import {ProfiloAssociazionePage} from "../pages/profilo-associazione/profilo-ass
     AnnunciPage,
     MembriPage,
     SignupPage,
+    ProfiloAssociazioneEventiPage,
     PasswordDimenticataPage,
     AboutPage,
     ContactPage,
     RisultatiRicercaPage,
     TabsProfiloUtentePage,
+    ProfiloAssociazioneTabsPage,
     ProfiloPreferitiPage,
     ProfiloAssociazionePage,
     RisultatiRicercaEventiPage,

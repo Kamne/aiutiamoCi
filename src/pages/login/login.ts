@@ -28,6 +28,8 @@ import {PasswordDimenticataPage} from '../password-dimenticata/password-dimentic
 import {RicercaRichiestePage} from '../ricerca-richieste/ricerca';
 import { ShareService } from '../../providers/shareService';
 import { Utente } from '../../classes/utente';
+import { ProfiloAssociazioneTabsPage } from '../profilo-associazione-tabs/profilo-associazione-tabs';
+
 
 @IonicPage()
 @Component({
@@ -173,7 +175,7 @@ aggiornaPages(tipologia){
                       ]},
       {label:'utente',items:[
                             { title: 'Profilo', component: TabsProfiloUtentePage, icon: 'contact' },
-                            
+
                             ]},
 
       {label:'setting',items:[
@@ -199,7 +201,7 @@ aggiornaPages(tipologia){
                             { title: 'Eventi', component: EventPage, icon: 'people' },
                       ]},
       {label:'utente',items:[
-                            { title: 'Profilo', component: ProfiloAssociazionePage, icon: 'contact' },
+                            { title: 'Profilo', component: ProfiloAssociazioneTabsPage, icon: 'contact' },
                             { title: 'Info - FAQ', component: WelcomePage, icon: 'information-circle' },
                             ]},
 

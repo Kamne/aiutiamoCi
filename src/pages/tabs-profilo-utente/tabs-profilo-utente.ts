@@ -23,7 +23,7 @@ export class TabsProfiloUtentePage {
     tab3Root = ProfiloPreferitiPage;
   constructor(public events: Events,public navCtrl: NavController, public navParams: NavParams) {
     events.subscribe('other', (obj) => {
-      console.log("ciccio")
+      console.log(obj)
   if(obj.miracolo)
   this.navCtrl.push(TabsProfiloUtentePage,obj);
   obj.miracolo = false

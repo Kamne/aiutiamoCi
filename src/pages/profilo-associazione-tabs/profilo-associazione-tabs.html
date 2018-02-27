@@ -7,12 +7,16 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>profilo-associazione-tabs</ion-title>
+    <ion-title>Profilo</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <ion-tabs #myTabs>
+    <ion-tab [root]="tab1Root"  [rootParams]="navParams" tabTitle="Profilo" ></ion-tab>
+    <ion-tab [root]="tab2Root"  [rootParams]="navParams" tabTitle="Membri"></ion-tab>
+    <ion-tab [root]="tab3Root"  [rootParams]="navParams" tabTitle="Eventi"></ion-tab>
+  </ion-tabs>
 </ion-content>
