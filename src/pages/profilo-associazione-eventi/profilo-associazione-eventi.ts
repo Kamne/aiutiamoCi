@@ -15,7 +15,10 @@ export class ProfiloAssociazioneEventiPage {
 
   constructor(public navCtrl: NavController,public navParams: NavParams,public http: Http, public dialogs: Dialogs,public shareService: ShareService) {
     console.log("username",this.shareService.getUser().getUsername());
-    var myData = JSON.stringify({username: this.shareService.getUser().getUsername()});
+    if(navParams.get("other") == undefined)
+      var myData = JSON.stringify({username: this.shareService.getUser().getUsername()});
+    else
+      var myData = JSON.stringify({username: this.shareService.getOtherUser().getUsername()});
     var headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded' );
     let options = new RequestOptions({ headers: headers });

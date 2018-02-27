@@ -86,6 +86,7 @@ loader.present()
 
   else{
     this.dialogs.alert("Valori errati")
+      loader.dismiss()
   }
 })
 
