@@ -25,7 +25,7 @@ import {FaqAdminPage} from "../faq-admin/faq-admin";
 import {OpzioniAmministratorePage} from "../opzioni-amministratore/opzioni-amministratore";
 
 import { LoadingController } from 'ionic-angular';
->>>>>>> bf33283f295b270d44feec8b338cb81ba70dfa93
+
 import {DiventaAssistentePage} from '../diventa-assistente/diventa-assistente';
 import {PasswordDimenticataPage} from '../password-dimenticata/password-dimenticata';
 import {RicercaRichiestePage} from '../ricerca-richieste/ricerca';
