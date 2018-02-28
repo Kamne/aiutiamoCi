@@ -82,7 +82,8 @@ export class RubricaPage {
 
 
         console.log(username,data.user);
-        this.navCtrl.push(TabsProfiloUtentePage);
+        var obj = {other : true}
+        this.navCtrl.push(TabsProfiloUtentePage,obj);
       }
       else {
         alert("Oooops!");
@@ -102,8 +103,8 @@ export class RubricaPage {
                                            data.associazione.Citta,data.associazione.Provincia,data.associazione.Indirizzo,
                                            data.associazione.Email,data.associazione.NumTelefono,data.associazione.Tipologia,data.membri));
       console.log(username,data.associazione);
-        this.navCtrl.push(TabsProfiloUtentePage);
-      this.navCtrl.push(ProfiloAssociazioneTabsPage);
+      var obj = {other : true}
+      this.navCtrl.push(ProfiloAssociazioneTabsPage,obj);
       }
       else {
         alert("Oooops!");

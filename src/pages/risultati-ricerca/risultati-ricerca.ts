@@ -18,6 +18,7 @@ posts: any=[];
 result:any=[];
   constructor(public dialogs: Dialogs,public navCtrl: NavController, public navParams: NavParams) {
     this.result =navParams.get("ricerca")
+    console.log(this.result)
     var elem;
     for(elem of this.result)
       this.posts.push(JSON.parse(elem))
