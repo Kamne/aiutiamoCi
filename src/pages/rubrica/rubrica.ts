@@ -4,7 +4,6 @@ import { Http, Headers, RequestOptions } from "@angular/http";
 import { ShareService } from '../../providers/shareService';
 import { Utente } from '../../classes/utente';
 import {Associazione} from '../../classes/associazione';
-
 import {TabsProfiloUtentePage} from '../../pages/tabs-profilo-utente/tabs-profilo-utente';
 import {ProfiloAssociazioneTabsPage} from '../../pages/profilo-associazione-tabs/profilo-associazione-tabs';
 
@@ -105,6 +104,7 @@ export class RubricaPage {
                                            data.associazione.Email,data.associazione.NumTelefono,data.associazione.Tipologia,data.membri));
       console.log(username,data.associazione);
           this.navCtrl.push(TabsProfiloUtentePage);
+
 
       }
       else {
