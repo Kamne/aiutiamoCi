@@ -7,6 +7,7 @@ import {Associazione} from '../../classes/associazione';
 import {TabsProfiloUtentePage} from '../../pages/tabs-profilo-utente/tabs-profilo-utente';
 import {ProfiloAssociazioneTabsPage} from '../../pages/profilo-associazione-tabs/profilo-associazione-tabs';
 
+
 @IonicPage()
 @Component({
   selector: 'page-rubrica',
@@ -103,8 +104,14 @@ export class RubricaPage {
                                            data.associazione.Citta,data.associazione.Provincia,data.associazione.Indirizzo,
                                            data.associazione.Email,data.associazione.NumTelefono,data.associazione.Tipologia,data.membri));
       console.log(username,data.associazione);
+<<<<<<< HEAD
       var obj = {other : true}
       this.navCtrl.push(ProfiloAssociazioneTabsPage,obj);
+=======
+          this.navCtrl.push(TabsProfiloUtentePage);
+
+
+>>>>>>> 05ea700f00d3f8acd41334f308c5565256448355
       }
       else {
         alert("Oooops!");
